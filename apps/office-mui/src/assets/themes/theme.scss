@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+@import './palettes.scss';
+
+$primaryTheme: mat.define-palette($primary-palette, 500);
+$accentTheme: mat.define-palette($accent-palette, 800);
+$warnTheme: mat.define-palette(mat.$red-palette);
+$custom-theme: mat.define-light-theme($primaryTheme, $accentTheme, $warnTheme);
+
+@include mat.all-component-themes($custom-theme);
