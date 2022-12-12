@@ -1,0 +1,32 @@
+@forward '@nebular/theme/styles/theming';
+@use '@nebular/theme/styles/theming' as *;
+@use '@nebular/theme/styles/themes/dark';
+
+$nb-themes: nb-register-theme((
+    (
+    color-primary-100: #fff7de,
+    color-primary-200: #fff0bd,
+    color-primary-300: #ffe89c,
+    color-primary-400: #ffe07b,
+    color-primary-500: #ffd85a,
+    color-primary-600: #ffd13d,
+    color-primary-700: #ffca1f,
+    color-primary-800: #ffc300,
+    color-primary-900: #e0ab00,
+    color-danger-600: #EB5757,
+    color-basic-100: #f3f3f3,
+    color-basic-200: #e6e6e6,
+    color-basic-300: #d1d1d1,
+    color-basic-400: #b9b9b9,
+    color-basic-500: #a3a3a3,
+    color-basic-600: #828282,
+    color-basic-700: #4f4f4f,
+    color-basic-800: #333333,
+    color-success-200: #6FCF97,
+    color-success-400: #27AE60,
+    color-success-600: #219653,
+    color-info-200: #56CCF2,
+    color-info-400: #2D9CDB,
+    color-info-600: #2F80ED,
+  ),
+), office, dark);
