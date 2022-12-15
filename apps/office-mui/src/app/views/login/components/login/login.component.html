@@ -1,0 +1,85 @@
+<mat-card class="login-wrapper">
+    <div fxLayoutAlign="center" class="header-text">
+      <div class="text-welcome">
+        Login <br />
+        to account
+      </div>
+      <div class="text">
+        If you already have an account, just log in to use the system
+      </div>
+      <div class="text">
+        Don't have an account?
+      </div>
+      <div class="text text-register" routerLink="/register">Register here</div>
+    </div>
+  
+    <form [formGroup]="form" class="form-section">
+      <div class="field-row-item">
+        <mat-form-field floatLabel="auto">
+          <mat-icon matPrefix class="input-icon">person_outline</mat-icon>
+          <input
+            type="text"
+            placeholder="Login"
+            formControlName="name"
+            autocomplete="off"
+            matInput
+          />
+          <mat-error *ngIf="form.controls['name'].hasError('required')">
+            Login is required</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !form.controls['name'].hasError('required') &&
+              form.controls['name'].hasError('email')
+            "
+          >
+            Please enter a valid Login</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="field-row-item">
+        <mat-form-field floatLabel="auto">
+          <mat-icon matPrefix class="input-icon">lock</mat-icon>
+          <input
+            type="password"
+            placeholder="Password"
+            [type]="toggleShowPassword ? 'password' : 'text'"
+            formControlName="password"
+            autocomplete="off"
+            matInput
+          />
+          <mat-icon
+            (click)="toggleShowPassword = !toggleShowPassword"
+            class="input-icon"
+            matSuffix
+          >
+            {{ toggleShowPassword ? "visibility_off" : "visibility" }}</mat-icon
+          >
+          <mat-error *ngIf="form.controls['password'].hasError('required')">
+            Enter your password</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="login-setup">
+        <div>
+          <mat-checkbox class="check" formControlName="check">Remember me</mat-checkbox>
+        </div>
+        <div class="reset-password">Forgot password ?</div>
+      </div>
+      <div class="action-row">
+        <button
+          color="primary"
+          class="login-btn"
+          [disabled]="isValidForm()"
+          mat-raised-button
+        >
+          Login
+        </button>
+      </div>
+      <div class="networks-icons">
+        <mat-icon class="network-icon" svgIcon="facebook-icon"></mat-icon>
+        <mat-icon class="network-icon" svgIcon="google-icon"></mat-icon>
+      </div>
+    </form>
+  </mat-card>
+  
