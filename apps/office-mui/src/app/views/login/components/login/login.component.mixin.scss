@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+@mixin login-mixin($theme) {
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
+  .login-wrapper {
+    .header-text {
+      .text {
+        color: mat.get-color-from-palette($accent, 500);
+      }
+      .text-register {
+        color: mat.get-color-from-palette($primary);
+      }
+    }
+  }
+  .input-icon {
+    color:  mat.get-color-from-palette($accent, 500);
+  }
+  .check {
+    color:  mat.get-color-from-palette($accent, 500);
+  }
+  .reset-password {
+    color: mat.get-color-from-palette($primary);
+  }
+}
