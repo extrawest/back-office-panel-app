@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @import '@angular/material/theming';
 @import './assets/themes/theme.scss';
-
+@import "./assets/themes/customize";
 @import './assets/themes/palettes.scss';
 
 * {
@@ -32,6 +32,10 @@ body {
 $accent: map-get($custom-theme, accent);
 
 .field-row-item {
+  display: block;
+  mat-form-field {
+    width: 100%;
+  }
   .mat-form-field-wrapper {
     .mat-form-field-flex {
       border: 1px solid mat.get-color-from-palette($accent, 500);
