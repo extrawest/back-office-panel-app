@@ -1,0 +1,68 @@
+.page-wrapper {
+  position: relative;
+  width: 90%;
+  min-height: 360px;
+  margin: 0 auto;
+  box-shadow: none !important;
+  .header-text {
+    width: 100%;
+    min-height: 180px;
+    margin: 20px 0;
+    text-align: center;
+    .text-welcome {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 66px;
+      width: 300px;
+      margin: auto;
+    }
+    .text {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 22px;
+      width: 90%;
+      margin: 5px auto;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .text-login {
+      margin-bottom: 5px;
+    }
+  }
+
+  .form-section {
+    .field-row-item {
+      .mat-form-field {
+        width: 100%;
+        min-width: 300px;
+      }
+    }
+    .action-row {
+      margin: 75px 0 0 0;
+      display: flex;
+      justify-content: center;
+      .register-btn {
+        width: 186px;
+        height: 52px;
+        border-radius: 38px;
+        margin: auto;
+        color: white;
+      }
+    }
+    .networks-icons {
+      display: flex;
+      justify-content: space-between;
+      width: 20%;
+      margin: 30px auto 0;
+      .network-icon:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media (min-width: 500px) {
+    margin: 30px auto 0 auto;
+    width: 500px;
+  }
+}
