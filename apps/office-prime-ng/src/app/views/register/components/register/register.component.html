@@ -3,15 +3,19 @@
     <div class="surface-card p-4 w-6 lg:w-5">
       <div class="text-center mb-5">
         <div class="text-5xl mb-3 font-semibold w-full text-center">
-          Login <br />
-          to account
+          Register <br />
+          your account
         </div>
         <div class="text-center text-xs font-light">
           If you already have an account, just log in to use the system
         </div>
-        <div class="text-primary text-center text-sm mt-2 cursor-pointer" routerLink="/register">Register here</div>
+        <div
+          class="text-primary text-center text-sm mt-2 cursor-pointer"
+          routerLink="/login"
+        >
+          Login here
+        </div>
       </div>
-
       <div>
         <form [formGroup]="form">
           <span class="p-input-icon-left">
@@ -21,9 +25,19 @@
               type="text"
               pInputText
               class="w-full mb-3 border-round-3xl"
-              icon="pi pi-user"
-              placeholder="Login"
+              placeholder="Name"
               formControlName="name"
+            />
+          </span>
+          <span class="p-input-icon-left">
+            <i class="pi pi-envelope"></i>
+            <input
+              id="email"
+              type="text"
+              pInputText
+              class="w-full mb-3 border-round-3xl"
+              placeholder="Login"
+              formControlName="email"
             />
           </span>
           <span class="p-input-icon-left p-input-icon-right">
@@ -42,32 +56,16 @@
               (click)="toggleShowPassword = !toggleShowPassword"
             ></i>
           </span>
-
-          <div class="flex justify-content-between">
-            <div class="p-field-checkbox">
-              <p-checkbox
-                [(ngModel)]="checked"
-                inputId="check"
-                formControlName="check"
-              ></p-checkbox>
-              <label for="check" class="text-gray-400 text-sm"
-                >Remember me</label
-              >
-            </div>
-            <div
-              class="text-primary text-sm flex align-self-center vertical-align-middle"
-            >
-              <div>Forgot password?</div>
-            </div>
-          </div>
           <div
             class="flex justify-content-center"
-            [ngStyle]="{ 'margin-top': '50px' }"
+            [ngStyle]="{
+              'margin-top': '30px'
+            }"
           >
             <button
               pButton
               pRipple
-              label="Log In"
+              label="Register"
               class="w-4 bg-primary border-round-3xl mt-4 font-normal"
             ></button>
           </div>
