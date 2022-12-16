@@ -19,7 +19,13 @@
           "apps/office-prime-ng/src/favicon.ico",
           "apps/office-prime-ng/src/assets"
         ],
-        "styles": ["apps/office-prime-ng/src/styles.scss", "node_modules/primeng/resources/primeng.min.css"],
+        "styles": [
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/primeflex/primeflex.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "primeng/resources/themes/lara-light-blue/theme.css",
+          "apps/office-prime-ng/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
