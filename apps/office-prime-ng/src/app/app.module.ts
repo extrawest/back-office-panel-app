@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './views/login/login.module';
+import { RegisterModule } from './views/register/register.module';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -19,7 +20,7 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ReactiveFormsModule,
     LoginModule,
-
+    RegisterModule,
     InputTextModule,
     CheckboxModule,
     ButtonModule,
