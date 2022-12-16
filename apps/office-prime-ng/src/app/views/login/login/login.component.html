@@ -1,0 +1,93 @@
+<div class="min-h-full text-color mt-5" [ngStyle]="{ 'margin-top': '80px' }">
+  <div class="flex justify-content-center">
+    <div class="surface-card p-4 w-6 lg:w-5">
+      <div class="text-center mb-5">
+        <div class="text-5xl mb-3 font-semibold w-full text-center">
+          Login <br />
+          to account
+        </div>
+        <div class="text-center text-xs font-light">
+          If you already have an account, just log in to use the system
+        </div>
+      </div>
+
+      <div>
+        <form [formGroup]="form">
+          <span class="p-input-icon-left">
+            <i class="pi pi-user"></i>
+            <input
+              id="name"
+              type="text"
+              pInputText
+              class="w-full mb-3 border-round-3xl"
+              icon="pi pi-user"
+              placeholder="Login"
+              formControlName="name"
+            />
+          </span>
+          <span class="p-input-icon-left p-input-icon-right">
+            <i class="pi pi-lock"></i>
+            <input
+              id="password"
+              [type]="toggleShowPassword ? 'password' : 'text'"
+              pInputText
+              class="w-full mb-3 border-round-3xl"
+              formControlName="password"
+              icon="pi pi-user"
+              placeholder="Password"
+            />
+            <i
+              [ngClass]="toggleShowPassword ? 'pi pi-eye' : 'pi pi-eye-slash'"
+              (click)="toggleShowPassword = !toggleShowPassword"
+            ></i>
+          </span>
+
+          <div class="flex justify-content-between">
+            <div class="p-field-checkbox">
+              <p-checkbox
+                [(ngModel)]="checked"
+                inputId="check"
+                formControlName="check"
+              ></p-checkbox>
+              <label for="check" class="text-gray-400 text-sm"
+                >Remember me</label
+              >
+            </div>
+            <div
+              class="text-primary text-sm flex align-self-center vertical-align-middle"
+            >
+              <div>Forgot password?</div>
+            </div>
+          </div>
+          <div
+            class="flex justify-content-center"
+            [ngStyle]="{ 'margin-top': '50px' }"
+          >
+            <button
+              pButton
+              pRipple
+              label="Log In"
+              class="w-4 bg-primary border-round-3xl mt-4 font-normal"
+            ></button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <div class="flex justify-content-center mt-5">
+          <div class="px-4 cursor-pointer">
+            <i
+              class="pi pi-facebook text-blue-500"
+              style="font-size: 1.5rem"
+            ></i>
+          </div>
+          <div class="px-4 cursor-pointer">
+            <i
+              class="pi pi-google text-green-500"
+              style="font-size: 1.5rem"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
