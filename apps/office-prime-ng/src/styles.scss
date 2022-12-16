@@ -1,4 +1,4 @@
-@import "./assets/theme/theme.palette";
+@import './assets/theme/theme.palette';
 
 * {
   box-sizing: border-box;
@@ -11,4 +11,32 @@ body {
   padding: 0;
   margin: 0;
   overflow: auto;
+}
+
+.p-inputtext {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.p-button {
+  padding: 0.4rem 1.25rem;
+}
+
+.p-input-icon-left,
+.p-input-icon-right {
+  display: block;
+}
+.p-input-icon-left > i,
+.p-input-icon-right > i {
+  top: 40%;
+  margin-top: -0.5rem;
+}
+.pi {
+  font-size: 0.8rem;
+}
+.p-checkbox .p-checkbox-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-top: 6px;
 }
