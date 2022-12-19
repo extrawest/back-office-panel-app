@@ -1,0 +1,69 @@
+<section class="h-screen justify-center">
+    <div class="h-full">
+      <div class="flex justify-center items-center flex-wrap h-full g-6">
+        <div>
+          <div>
+            <div class="text-4xl mb-2 font-semibold w-full text-center">
+              Register <br />
+              your account
+            </div>
+            <div class="text-center text-xs font-light mt-3">
+              If you already have an account, just log in to use the system
+            </div>
+            <div
+              routerLink="/login"
+              class="text-center text-sm mt-2 cursor-pointer"
+            >
+              Login here
+            </div>
+          </div>
+          <form [formGroup]="form" class="mt-4">
+            <div class="my-6">
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-base bg-white border border-solid border-gray-300 rounded-3xl focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  placeholder="Name"
+                  formControlName="name"
+                />
+              </div>
+            <div class="my-6">
+              <input
+                type="text"
+                class="form-control block w-full px-4 py-2 text-base bg-white border border-solid border-gray-300 rounded-3xl focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                placeholder="Login"
+                formControlName="email"
+              />
+            </div>
+  
+            <div class="mb-6">
+              <input
+                type="password"
+                class="form-control block w-full px-4 py-2 text-base bg-white border border-solid border-gray-300 rounded-3xl focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </div>
+            <div class="text-center my-6 flex justify-center">
+              <button
+                type="button"
+                class="px-10 py-3 bg-yellow-400 text-white text-sm rounded-3xl"
+              >
+                Register
+              </button>
+            </div>
+            <div class="w-2/6 flex flex-row items-center justify-between m-auto">
+              <img
+                src="./../../../../../assets/icons/facebook-icon.svg"
+                class="w-2/6"
+              />
+              <img
+                src="./../../../../../assets/icons/google-icon.svg"
+                class="w-2/6"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
