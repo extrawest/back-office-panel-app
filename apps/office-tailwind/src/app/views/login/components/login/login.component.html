@@ -1,0 +1,81 @@
+<section class="h-screen justify-center">
+  <div class="h-full">
+    <div class="flex justify-center items-center flex-wrap h-full g-6">
+      <div>
+        <div>
+          <div class="text-4xl mb-2 font-semibold w-full text-center">
+            Login <br />
+            your account
+          </div>
+          <div class="text-center text-xs font-light mt-3">
+            If you already have an account, just log in to use the system
+          </div>
+          <div class="text-center text-sm mt-2 cursor-pointer">
+            Don't have an account?
+          </div>
+          <div
+            routerLink="/register"
+            class="text-center text-sm mt-2 cursor-pointer"
+          >
+            Register here
+          </div>
+        </div>
+        <form [formGroup]="form" class="mt-4">
+          <div class="my-6">
+            <input
+              type="text"
+              class="form-control block w-full px-4 py-2 text-base bg-white border border-solid border-gray-300 rounded-3xl focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Email address"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="mb-6">
+            <input
+              type="password"
+              class="form-control block w-full px-4 py-2 text-base bg-white border border-solid border-gray-300 rounded-3xl focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Password"
+              formControlName="password"
+            />
+          </div>
+
+          <div class="flex justify-between items-center mb-6">
+            <div class="form-group form-check">
+              <input
+                type="checkbox"
+                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-3xl bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                formControlName="check"
+                id="check"
+              />
+              <label
+                class="form-check-label inline-block text-sm text-gray-800"
+                for="check"
+                >Remember me</label
+              >
+            </div>
+            <a href="#!" class="text-gray-800 text-sm">Forgot password?</a>
+          </div>
+
+          <div class="text-center my-6 flex justify-center">
+            <button
+              type="button"
+              class="px-10 py-3 bg-yellow-400 text-white text-sm rounded-3xl"
+            >
+              Login
+            </button>
+          </div>
+          <div class="w-2/6 flex flex-row items-center justify-between m-auto">
+            <img
+              src="./../../../../../assets/icons/facebook-icon.svg"
+              class="w-2/6"
+            />
+            <img
+              src="./../../../../../assets/icons/google-icon.svg"
+              class="w-2/6"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
