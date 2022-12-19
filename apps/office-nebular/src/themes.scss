@@ -3,7 +3,6 @@
 @use '@nebular/theme/styles/themes/dark';
 
 $nb-themes: nb-register-theme((
-    (
     color-primary-100: #fff7de,
     color-primary-200: #fff0bd,
     color-primary-300: #ffe89c,
@@ -29,4 +28,4 @@ $nb-themes: nb-register-theme((
     color-info-400: #2D9CDB,
     color-info-600: #2F80ED,
   ),
-), office, dark);
+office, default);
