@@ -1,0 +1,55 @@
+<div class="login-wrapper">
+    <div class="header-text">
+      <div class="text-welcome">
+        Register <br />
+        your account
+      </div>
+      <div class="text">
+        If you already have an account, just log in to use the system
+      </div>
+      <div class="text text-register" routerLink="/login">Login here</div>
+    </div>
+  
+    <form [formGroup]="form" class="form-section">
+      <div class="field-row-item">
+        <div class="form-control-group login-form-margin">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Name"
+              autofocus
+              formControlName="name"
+            />
+          </div>
+        <div class="form-control-group login-form-margin">
+          <input
+            nbInput
+            fullWidth
+            pattern=".+@.+\..+"
+            placeholder="Login"
+            autofocus
+            formControlName="email"
+          />
+        </div>
+  
+        <div class="form-control-group login-form-margin">
+          <input
+            nbInput
+            fullWidth
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="action-row">
+          <button nbButton fullWidth status="primary" class="login-btn color-primary-500">
+            Register
+          </button>
+        </div>
+        <div class="networks-icons">
+            <nb-icon icon="google"></nb-icon>
+            <nb-icon icon="facebook"></nb-icon>
+        </div>
+      </div>
+    </form>
+  </div>
