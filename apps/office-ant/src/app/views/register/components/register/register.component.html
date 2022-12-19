@@ -1,0 +1,47 @@
+<div class="login-wrapper">
+    <div class="header-text">
+        <div class="text-welcome">
+            Register <br />
+            your account
+        </div>
+        <div class="text">
+            If you already have an account, just log in to use the system
+        </div>
+        <div class="text text-register" routerLink="/login">Login here</div>
+    </div>
+    <form nz-form [formGroup]="form" class="login-form">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your name">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="name" placeholder="Name" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input valid email!">
+                <nz-input-group nzPrefixIcon="mail">
+                    <input type="text" nz-input formControlName="email" placeholder="Login" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input [type]="toggleShowPassword ? 'password' : 'text'" nz-input formControlName="password"
+                        placeholder="Password" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div class="wrapper">
+            <button nz-button class="login-form-button" nzType="'primary'">
+                Register
+            </button>
+        </div>
+        <div class="wrapper">
+            <div class="wrapper-inside">
+                <span nz-icon nzType="facebook" nzTheme="outline" class="icon"></span>
+                <span nz-icon nzType="google" nzTheme="outline" class="icon"></span>
+            </div>
+        </div>
+    </form>
+</div>
