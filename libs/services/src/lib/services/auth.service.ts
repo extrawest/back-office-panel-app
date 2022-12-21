@@ -6,14 +6,13 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
   UserCredential,
 } from '@angular/fire/auth';
 import {
   AuthProvider,
   FacebookAuthProvider,
+  fetchSignInMethodsForEmail,
   GoogleAuthProvider,
-  User,
 } from 'firebase/auth';
 import { from, Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -28,36 +27,57 @@ export class AuthService {
     private router: Router
   ) {}
 
-  public login(email: string, password: string): Observable<UserCredential> {
+  public login(email: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  register(email: string, password: string, userName: string) {
-    return from(
-      createUserWithEmailAndPassword(this.auth, email, password)
-    ).subscribe((userCredential) => {
-      this.localStorageService.setValue(
-        'user',
-        JSON.stringify(userCredential.user.uid)
-      );
-      onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          this.router.navigateByUrl('/home');
+  public register(email: string, password: string, userName: string) {
+    return from(createUserWithEmailAndPassword(this.auth, email, password));
+  }
+
+  signInWithGoogle() {
+    return this.authLogin(new GoogleAuthProvider());
+  }
+
+  signInWithFacebook() {
+    return this.authLogin(new FacebookAuthProvider());
+  }
+
+  logInWithPopup(provider: any) {
+    return signInWithPopup(this.auth, provider);
+  }
+
+  getAuthProvider(provider: string) {
+    if (provider === 'google.com') {
+      return new GoogleAuthProvider();
+    } else {
+      return new FacebookAuthProvider();
+    }
+  }
+
+  authLogin(provider: any) {
+    from(this.logInWithPopup(provider)).subscribe({
+      complete: () => {
+        this.router.navigateByUrl('/');
+      },
+      error: (error) => {
+        const code = error.code;
+        if (code === 'auth/account-exists-with-different-credential') {
+          fetchSignInMethodsForEmail(this.auth, error.customData.email).then(
+            (result) => {
+              const provider = this.getAuthProvider(result[0]);
+              this.logInWithPopup(provider).then(() => {
+                onAuthStateChanged(this.auth, (user) => {
+                  if (user) {
+                    this.router.navigateByUrl('/');
+                  }
+                });
+              });
+            }
+          );
         }
-      });
+      },
     });
-  }
-
-  public signInWithGoogle(): Observable<UserCredential> {
-    return this.signInWithPopup(new GoogleAuthProvider());
-  }
-
-  public signInWithFacebook(): Observable<UserCredential> {
-    return this.signInWithPopup(new FacebookAuthProvider());
-  }
-
-  private signInWithPopup(provider: AuthProvider): Observable<UserCredential> {
-    return from(signInWithPopup(this.auth, provider));
   }
 
   public signOut(): Observable<void> {

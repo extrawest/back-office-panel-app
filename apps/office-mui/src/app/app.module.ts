@@ -16,6 +16,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconRegistry } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routes';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +38,11 @@ import { AppRoutingModule } from './app.routes';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [MatIconRegistry],
   bootstrap: [AppComponent],
