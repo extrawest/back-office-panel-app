@@ -19,13 +19,13 @@ export class RegisterComponent {
     this.matIconRegistry.addSvgIcon(
       'facebook-icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        './../../../../../assets/icons/facebook-icon.svg'
+        "./assets/icons/facebook-icon.svg"
       )
     );
     this.matIconRegistry.addSvgIcon(
       'google-icon',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        './../../../../../assets/icons/google-icon.svg'
+        "./assets/icons/google-icon.svg"
       )
     );
     this.form = this.fb.group({

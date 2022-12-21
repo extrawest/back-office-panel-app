@@ -16,7 +16,12 @@
         "tsConfig": "apps/office-tailwind/tsconfig.app.json",
         "assets": [
           "apps/office-tailwind/src/favicon.ico",
-          "apps/office-tailwind/src/assets"
+          "apps/office-tailwind/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
         "styles": ["apps/office-tailwind/src/styles.css"],
         "scripts": []
