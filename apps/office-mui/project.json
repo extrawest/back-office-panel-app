@@ -17,7 +17,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/office-mui/src/favicon.ico",
-          "apps/office-mui/src/assets"
+          "apps/office-mui/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
         "styles": [
           "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",

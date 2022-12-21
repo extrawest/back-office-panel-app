@@ -7,16 +7,12 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/office-ant",
         "index": "apps/office-ant/src/index.html",
         "main": "apps/office-ant/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/office-ant/tsconfig.app.json",
         "inlineStyleLanguage": "less",
         "assets": [
@@ -60,13 +56,8 @@
         }
       },
       "defaultConfiguration": "production",
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
@@ -88,34 +79,23 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "apps/office-ant/**/*.ts",
           "apps/office-ant/**/*.html"
         ]
       },
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/office-ant/jest.config.ts",
         "passWithNoTests": true
       },
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ]
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
     }
   },
   "tags": [],
@@ -143,17 +123,12 @@
     {
       "file": "apps/office-ant/src/app/app.component.spec.ts",
       "hash": "622fae7617e3c744a98186da673bf27c2eb7aa6c",
-      "deps": [
-        "npm:@angular/core",
-        "npm:@angular/router"
-      ]
+      "deps": ["npm:@angular/core", "npm:@angular/router"]
     },
     {
       "file": "apps/office-ant/src/app/app.component.ts",
       "hash": "176f7d4b662a6556daf5ad58b8aa67f1ae426152",
-      "deps": [
-        "npm:@angular/core"
-      ]
+      "deps": ["npm:@angular/core"]
     },
     {
       "file": "apps/office-ant/src/app/app.module.ts",
@@ -167,9 +142,7 @@
     {
       "file": "apps/office-ant/src/app/app.routes.ts",
       "hash": "8762dfe2c6510c01425b35c6cf76371cc0b332c6",
-      "deps": [
-        "npm:@angular/router"
-      ]
+      "deps": ["npm:@angular/router"]
     },
     {
       "file": "apps/office-ant/src/assets/.gitkeep",
@@ -186,9 +159,7 @@
     {
       "file": "apps/office-ant/src/main.ts",
       "hash": "17a5cd4e0acab76fc50883a7833b33e1046c6d97",
-      "deps": [
-        "npm:@angular/platform-browser-dynamic"
-      ]
+      "deps": ["npm:@angular/platform-browser-dynamic"]
     },
     {
       "file": "apps/office-ant/src/styles.less",
@@ -197,9 +168,7 @@
     {
       "file": "apps/office-ant/src/test-setup.ts",
       "hash": "1100b3e8a6ed08f4b5c27a96471846d57023c320",
-      "deps": [
-        "npm:jest-preset-angular"
-      ]
+      "deps": ["npm:jest-preset-angular"]
     },
     {
       "file": "apps/office-ant/tsconfig.app.json",
