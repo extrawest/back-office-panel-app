@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @import '@angular/material/theming';
 @import './assets/themes/theme.scss';
-@import "./assets/themes/customize";
+@import './assets/themes/customize';
 @import './assets/themes/palettes.scss';
 
 * {
@@ -30,6 +30,7 @@ body {
 }
 
 $accent: map-get($custom-theme, accent);
+$warn: map-get($custom-theme, warn);
 
 .field-row-item {
   display: block;
@@ -85,4 +86,10 @@ $accent: map-get($custom-theme, accent);
   .mat-checkbox-frame {
     border-radius: 50%;
   }
+}
+
+.notification-error {
+  min-height: 50px;
+  text-align: center;
+  color: mat.get-color-from-palette($warn, 400);
 }

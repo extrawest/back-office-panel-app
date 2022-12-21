@@ -1,4 +1,7 @@
 <mat-card class="page-wrapper">
+  <mat-card class="notification-error" *ngIf="errorMessage">
+    <h3>Error</h3>
+    <p>{{errorMessage}}</p></mat-card>
   <div fxLayoutAlign="center" class="header-text">
     <div class="text-welcome">
       Register <br />
@@ -76,6 +79,7 @@
         class="register-btn"
         [disabled]="isValidForm()"
         mat-raised-button
+        (click)="onSubmit()"
       >
         Register
       </button>
