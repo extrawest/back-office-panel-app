@@ -92,4 +92,5 @@ $warn: map-get($custom-theme, warn);
   min-height: 50px;
   text-align: center;
   color: mat.get-color-from-palette($warn, 400);
+  padding: 10px;
 }

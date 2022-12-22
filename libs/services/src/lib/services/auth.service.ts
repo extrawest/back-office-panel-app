@@ -6,10 +6,10 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  UserCredential,
+  sendPasswordResetEmail,
+  confirmPasswordReset,
 } from '@angular/fire/auth';
 import {
-  AuthProvider,
   FacebookAuthProvider,
   fetchSignInMethodsForEmail,
   GoogleAuthProvider,
@@ -35,19 +35,27 @@ export class AuthService {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
 
-  signInWithGoogle() {
+  public signInWithGoogle() {
     return this.authLogin(new GoogleAuthProvider());
   }
 
-  signInWithFacebook() {
+  public signInWithFacebook() {
     return this.authLogin(new FacebookAuthProvider());
   }
 
-  logInWithPopup(provider: any) {
+  public resetPassword(email: string) {
+    return from(sendPasswordResetEmail(this.auth, email));
+  }
+
+  public confirmPasswordReset(oobCode: string, newPassword: string) {
+    return from(confirmPasswordReset(this.auth, oobCode, newPassword));
+  }
+
+  private logInWithPopup(provider: any) {
     return signInWithPopup(this.auth, provider);
   }
 
-  getAuthProvider(provider: string) {
+  private getAuthProvider(provider: string) {
     if (provider === 'google.com') {
       return new GoogleAuthProvider();
     } else {
@@ -55,7 +63,7 @@ export class AuthService {
     }
   }
 
-  authLogin(provider: any) {
+  private authLogin(provider: any) {
     from(this.logInWithPopup(provider)).subscribe({
       complete: () => {
         this.router.navigateByUrl('/');
