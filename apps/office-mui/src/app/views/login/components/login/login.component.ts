@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from '@office-app/services/auth-service';
 import { LocalStorageService } from '@office-app/services/local-storage-service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'office-app-login',
@@ -13,8 +14,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form: FormGroup;
+  formReset: FormGroup;
   toggleShowPassword = true;
-  errorMessage: string;
+  message: Subject<string> = new Subject();
+  resetPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -41,6 +44,9 @@ export class LoginComponent {
       password: ['', [Validators.required]],
       check: [''],
     });
+    this.formReset = this.fb.group({
+      resetPassword: ['', [Validators.required, Validators.email]],
+    });
   }
 
   public isValidForm(): boolean {
@@ -50,7 +56,7 @@ export class LoginComponent {
   public onSubmit() {
     const { name, password, check } = this.form.getRawValue();
     this.authService.login(name, password).subscribe({
-      error: ({ code }) => this.showErrorMessage(String(code)),
+      error: ({ code }) => this.showMessage(String(code)),
       next: (user) => {
         if (user) {
           this.redirectToHomePage();
@@ -73,11 +79,21 @@ export class LoginComponent {
     this.authService.signInWithFacebook();
   }
 
+  public forgetPassword() {
+    const { resetPassword } = this.formReset.getRawValue();
+    this.authService.resetPassword(resetPassword).subscribe({
+      error: ({ code }) => this.showMessage(String(code)),
+      complete: () => {
+        this.showMessage('We sent you a link to reset your password');
+      },
+    });
+  }
+
   private redirectToHomePage(): void {
     this.router.navigate(['/']);
   }
 
-  private showErrorMessage(error: string) {
-    this.errorMessage = error;
+  private showMessage(massage: string) {
+    this.message.next(massage);
   }
 }
