@@ -1,7 +1,7 @@
 <mat-card class="login-wrapper">
-  <mat-card class="notification-error" *ngIf="errorMessage">
-    <h3>Error</h3>
-    <p>{{ errorMessage }}</p>
+  <mat-card class="notification-error" *ngIf="message | async as message">
+    <h3>Notification</h3>
+    <p>{{ message }}</p>
   </mat-card>
   <div fxLayoutAlign="center" class="header-text">
     <div class="text-welcome">
@@ -17,7 +17,7 @@
 
   <form [formGroup]="form" class="form-section">
     <div class="field-row-item">
-      <mat-form-field floatLabel="auto">
+      <mat-form-field>
         <mat-icon matPrefix class="input-icon">person_outline</mat-icon>
         <input
           type="text"
@@ -68,8 +68,51 @@
           >Remember me</mat-checkbox
         >
       </div>
-      <div class="reset-password">Forgot password ?</div>
+      <div class="reset-password" (click)="resetPassword = !resetPassword">
+        Forgot password ?
+      </div>
     </div>
+    <mat-card class="notification-error" *ngIf="resetPassword">
+      <form [formGroup]="formReset">
+        <h3>Please enter your login to reset your password</h3>
+        <div class="action-row">
+          <mat-form-field floatLabel="auto">
+            <input
+              type="text"
+              placeholder="Email"
+              formControlName="resetPassword"
+              autocomplete="off"
+              matInput
+            />
+
+            <mat-error
+              *ngIf="formReset.controls['resetPassword'].hasError('required')"
+            >
+              Login is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                !formReset.controls['resetPassword'].hasError('required') &&
+                formReset.controls['resetPassword'].hasError('email')
+              "
+            >
+              Please enter a valid Login</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="action-row">
+          <button
+            color="primary"
+            class="login-btn"
+            (click)="forgetPassword()"
+            mat-flat-button
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-card>
     <div class="action-row">
       <button
         color="primary"
