@@ -17,8 +17,12 @@
     "paths": {
       "@office-app/assets": ["libs/assets/src/index.ts"],
       "@office-app/services": ["libs/services/src/index.ts"],
-      "@office-app/services/auth-service": ["libs/services/src/lib/services/auth.service.ts"],
-      "@office-app/services/local-storage-service": ["libs/services/src/lib/services/local-storage.service.ts"]
+      "@office-app/services/auth-service": [
+        "libs/services/src/lib/services/auth.service.ts"
+      ],
+      "@office-app/services/local-storage-service": [
+        "libs/services/src/lib/services/local-storage.service.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
