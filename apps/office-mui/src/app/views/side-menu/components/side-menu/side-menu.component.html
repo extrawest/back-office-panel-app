@@ -1,0 +1,29 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened class="side-menu">
+    <div class="user-data">
+      <div class="user-image"></div>
+      <div class="user-name">Bhdan Horodusklky</div>
+      <div class="user-role">Admin</div>
+    </div>
+    <mat-nav-list class="menu-list">
+      <div
+        mat-list-item
+        class="menu-item"
+        *ngFor="let item of menuItems"
+        [routerLink]="item.url"
+      >
+        <img matListItemAvatar [src]="item.image" />
+        <a class="menu-item-name">{{ item.name }}</a>
+      </div>
+    </mat-nav-list>
+    <div class="logout">
+      <img class="logout-icon" src="./assets/icons/logout-icon.png" />
+      <span class="logout-text">Log out</span>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
