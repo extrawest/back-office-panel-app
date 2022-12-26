@@ -21,6 +21,10 @@ body {
   margin: 0;
 }
 
+a {
+  padding: 0;
+}
+
 .material-icons {
   font-size: 24px;
   font-family: 'Material Icons', 'Material Icons';
@@ -93,4 +97,24 @@ $warn: map-get($custom-theme, warn);
   text-align: center;
   color: mat.get-color-from-palette($warn, 400);
   padding: 10px;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+  mat-sidenav {
+    width: 25%;
+    box-shadow: 0px 4px 34px rgba(96, 94, 94, 0.09);
+    border-right: none;
+    &.mat-drawer-side {
+      border-right: none;
+    }
+  }
+
+  mat-sidenav-content {
+    width: 100%;
+  }
+}
+
+.mat-mdc-list-item .mdc-list-item__primary-text {
+  font-size: 12px;
 }

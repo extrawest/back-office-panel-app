@@ -12,6 +12,11 @@ export const appRoutes: Routes = [
     loadChildren: () =>
       import('./views/register/register.module').then((m) => m.RegisterModule),
   },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./views/side-menu/side-menu.module').then((m) => m.SideMenuModule),
+  },
 ];
 
 @NgModule({
