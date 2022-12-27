@@ -1,0 +1,52 @@
+.page-wrapper {
+  width: 100%;
+  padding: 32px;
+  border: 1px solid #dfe0eb;
+  border-radius: 8px;
+  .page-header {
+    .page-title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 26px;
+    }
+    .page-view-button {
+      font-weight: 600;
+      font-size: 14px;
+      color: #3751ff;
+    }
+  }
+  .page-table {
+    margin-top: 40px;
+    .page-table-header {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 20px;
+
+      color: #c5c7cd;
+    }
+    .ticket-name {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    .ticket-number {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      color: #9fa2b4;
+    }
+  }
+  mat-divider {
+    margin: 15px 0;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-checkbox {
+  border-radius: 50%;
+}
