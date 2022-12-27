@@ -90,7 +90,7 @@ export class LoginComponent {
   }
 
   private redirectToHomePage(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   private showMessage(massage: string) {

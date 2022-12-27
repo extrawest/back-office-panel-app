@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 export const appRoutes: Routes = [
   {
@@ -15,12 +15,19 @@ export const appRoutes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./views/side-menu/side-menu.module').then((m) => m.SideMenuModule),
+      import('./views/side-menu/side-menu.module').then(
+        (m) => m.SideMenuModule
+      ),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [
+    RouterModule.forRoot(appRoutes, {
+      useHash: true,
+      preloadingStrategy: PreloadAllModules,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
