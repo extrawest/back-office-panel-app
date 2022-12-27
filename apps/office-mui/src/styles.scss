@@ -112,9 +112,19 @@ mat-sidenav-container {
 
   mat-sidenav-content {
     width: 100%;
+    background-color: white;
   }
+}
+
+mat-sidenav-content {
+  width: 75%;
 }
 
 .mat-mdc-list-item .mdc-list-item__primary-text {
   font-size: 12px;
+}
+.mdc-form-field > label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 26px;
 }
