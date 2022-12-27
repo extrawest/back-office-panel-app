@@ -16,7 +16,7 @@
         <a class="menu-item-name">{{ item.name }}</a>
       </div>
     </mat-nav-list>
-    <div class="logout">
+    <div class="logout" (click)="onLogout()">
       <img class="logout-icon" src="./assets/icons/logout-icon.png" />
       <span class="logout-text">Log out</span>
     </div>
