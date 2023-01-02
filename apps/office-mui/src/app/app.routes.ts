@@ -19,6 +19,11 @@ export const appRoutes: Routes = [
         (m) => m.SideMenuModule
       ),
   },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
