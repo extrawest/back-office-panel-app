@@ -7,7 +7,6 @@
     .user-image {
       width: 100px;
       height: 100px;
-      background-color: cadetblue;
       border-radius: 50%;
       margin-bottom: 10px;
     }
@@ -53,4 +52,22 @@
 
 mat-sidenav-content {
   width: 75%;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.file-upload {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }

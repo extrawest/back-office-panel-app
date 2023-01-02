@@ -1,7 +1,33 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened class="side-menu">
     <div class="user-data">
-      <div class="user-image"></div>
+      <div>
+        <div
+          *ngIf="imageUrl | async as url; else defaultImage"
+          class="user-image"
+        >
+          <img [src]="url" alt="Profile photo" class="user-image" />
+        </div>
+        <ng-template #defaultImage class="user-image">
+          <img
+            src="./assets/icons/unknown-user.png"
+            alt="Profile photo"
+            class="user-image"
+          />
+        </ng-template>
+        <div>
+          <label for="file-upload" class="file-upload">
+            Upload your image
+          </label>
+          <input
+            class="ng-hide"
+            id="file-upload"
+            type="file"
+            matInput
+            (change)="uploadPhoto($event)"
+          />
+        </div>
+      </div>
       <div class="user-name">Bhdan Horodusklky</div>
       <div class="user-role">Admin</div>
     </div>
