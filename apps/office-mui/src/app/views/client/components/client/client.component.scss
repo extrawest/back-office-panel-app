@@ -1,0 +1,49 @@
+.page-wrapper {
+  padding: 70px 45px;
+  .page-table {
+    margin-top: 50px;
+    padding: 32px;
+    border: 1px solid #dfe0eb;
+    border-radius: 8px;
+
+    .page-table-header {
+      width: 82%;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 40px;
+    }
+    .page-table-buttons {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      width: 18%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 0;
+}

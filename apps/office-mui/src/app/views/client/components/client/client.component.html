@@ -1,0 +1,51 @@
+<div class="page-wrapper">
+  <h2>Clients</h2>
+  <div class="page-table">
+    <div class="flex">
+      <div class="page-table-header">All tickets</div>
+      <div class="page-table-buttons">
+        <div class="flex">
+          <mat-icon svgIcon="plus-icon"></mat-icon>
+          <div>Add</div>
+        </div>
+        <div class="flex">
+          <mat-icon svgIcon="filter-icon"></mat-icon>
+          <div>Filter</div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table>
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef>Ticket details</th>
+          <td mat-cell *matCellDef="let element">{{ element.details }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Customer name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+          <th mat-header-cell *matHeaderCellDef>Priority</th>
+          <td mat-cell *matCellDef="let element">{{ element.priority }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

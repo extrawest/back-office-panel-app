@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from '@office-app/services/auth-service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'office-app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
   form: FormGroup;
   toggleShowPassword = true;
   errorMessage: string;
+  registerSubscription: Subscription;
   constructor(
     private fb: FormBuilder,
     private matIconRegistry: MatIconRegistry,
@@ -46,12 +48,17 @@ export class RegisterComponent {
 
   public onSubmit() {
     const { name, email, password } = this.form.getRawValue();
-    this.authService.register(email, password, name).subscribe({
-      error: ({ code }) => this.showErrorMessage(String(code)),
-      complete: () => {
-        this.router.navigate(['/']);
-      },
-    });
+    this.registerSubscription = this.authService.register(
+      email,
+      password,
+      name
+    );
+  }
+
+  public ngOnDestroy(): void {
+    if (this.registerSubscription) {
+      this.registerSubscription.unsubscribe();
+    }
   }
 
   private showErrorMessage(error: string) {

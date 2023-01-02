@@ -60,12 +60,10 @@ export class LoginComponent {
       next: (user) => {
         if (user) {
           this.redirectToHomePage();
-          if (check) {
-            this.localStorageService.setValue(
-              'user',
-              JSON.stringify(user.user.uid)
-            );
-          }
+          this.localStorageService.setValue(
+            'user',
+            JSON.stringify(user.user.uid)
+          );
         }
       },
     });

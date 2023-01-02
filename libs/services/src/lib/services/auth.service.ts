@@ -16,7 +16,7 @@ import {
 } from 'firebase/auth';
 import { from, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { getDatabase, ref, set } from 'firebase/database';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({ providedIn: 'root' })
@@ -32,7 +32,27 @@ export class AuthService {
   }
 
   public register(email: string, password: string, userName: string) {
-    return from(createUserWithEmailAndPassword(this.auth, email, password));
+    const user = {
+      email: email,
+      userName: userName,
+    };
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).subscribe({
+      next: (userCredential) => {
+        set(ref(getDatabase(), 'users/' + userCredential.user.uid), user);
+        this.localStorageService.setValue(
+          'user',
+          JSON.stringify(userCredential.user.uid)
+        );
+      },
+      complete: () => {
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        return error;
+      },
+    });
   }
 
   public signInWithGoogle() {
