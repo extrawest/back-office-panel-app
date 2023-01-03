@@ -6,11 +6,14 @@ import {
   ref as fbRef,
   update,
   child,
+  push,
   get,
 } from 'firebase/database';
 import { LocalStorageService } from './local-storage.service';
 import { getStorage, uploadBytesResumable, ref } from 'firebase/storage';
 import { initializeApp } from '@angular/fire/app';
+import { Ticket } from './../interfaces/ticket.interface';
+import { PriorityEnum } from './../enums/priority.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +45,37 @@ export class UserService {
     ).pipe(
       map((data: any) => data.val()),
       catchError((error) => throwError(() => error))
+    );
+  }
+
+  addTicket(
+    ticketDetails: string,
+    customerName: string,
+    date: number,
+    priority: PriorityEnum
+  ) {
+    const ticket: Ticket = {
+      ticketDetails: ticketDetails,
+      customerName: customerName,
+      date: date,
+      priority: priority,
+    };
+    const ticketId = push(
+      fbRef(getDatabase(), `users/` + this.user + '/tickets'),
+      ticket
+    ).key;
+    ticket['ticketId'] = ticketId!;
+    return from(
+      update(
+        fbRef(getDatabase(), `users/` + this.user + '/tickets/' + ticketId),
+        ticket
+      )
+    );
+  }
+
+  getUserTickets() {
+    return from(
+      get(child(fbRef(getDatabase()), 'users/' + this.user + '/tickets'))
     );
   }
 }
