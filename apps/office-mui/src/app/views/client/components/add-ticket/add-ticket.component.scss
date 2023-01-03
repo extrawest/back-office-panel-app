@@ -1,0 +1,36 @@
+.modal {
+  padding: 20px 30px;
+  .modal-header {
+    display: flex;
+
+    .modal-title {
+      font-weight: 700;
+      font-size: 24px;
+      margin: 0 auto 20px;
+      width: 90%;
+      text-align: center;
+    }
+  }
+  mat-dialog-content,
+  mat-dialog-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  box-shadow: 7px 4px 50px 21px rgba(0, 0, 0, 0.04);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.submit-button {
+  width: 20%;
+  height: 30px;
+  border-radius: 38px;
+  margin: auto;
+}
