@@ -25,6 +25,12 @@
       ],
       "@office-app/services/user-service": [
         "libs/services/src/lib/services/user.service.ts"
+      ],
+      "@office-app/services/priority-enum": [
+        "libs/services/src/lib/enums/priority.enum.ts"
+      ],
+      "@office-app/services/ticket-interface": [
+        "libs/services/src/lib/interfaces/ticket.interface.ts"
       ]
     }
   },
