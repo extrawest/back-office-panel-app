@@ -8,6 +8,11 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   {
@@ -17,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ClientComponent],
+  declarations: [ClientComponent, AddTicketComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -27,6 +32,10 @@ const routes: Routes = [
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [MatIconRegistry],
 })
