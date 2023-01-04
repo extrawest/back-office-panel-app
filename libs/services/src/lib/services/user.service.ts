@@ -51,7 +51,7 @@ export class UserService {
   addTicket(
     ticketDetails: string,
     customerName: string,
-    date: number,
+    date: string,
     priority: PriorityEnum
   ) {
     const ticket: Ticket = {
@@ -76,6 +76,9 @@ export class UserService {
   getUserTickets() {
     return from(
       get(child(fbRef(getDatabase()), 'users/' + this.user + '/tickets'))
+    ).pipe(
+      map((data) => data.val()),
+      catchError((error) => throwError(() => error))
     );
   }
 }
