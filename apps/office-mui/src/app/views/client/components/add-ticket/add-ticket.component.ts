@@ -1,4 +1,4 @@
-import { Component, Inject, NgZone, ViewChild } from '@angular/core';
+import { Component, Inject, NgZone, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -17,6 +17,7 @@ import { UserService } from '@office-app/services/user-service';
 export class AddTicketComponent {
   form: FormGroup;
   priorities = PriorityEnum;
+  public isModalClosed = false;
   constructor(
     public dialogRef: MatDialogRef<AddTicketComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Ticket,
@@ -60,6 +61,7 @@ export class AddTicketComponent {
       .subscribe({
         complete: () => {
           this.closeDialog();
+          this.isModalClosed = true;
         },
       });
   }

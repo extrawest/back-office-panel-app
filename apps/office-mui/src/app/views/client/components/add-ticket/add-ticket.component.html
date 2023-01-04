@@ -1,7 +1,7 @@
 <div class="modal">
   <div class="modal-header">
     <h1 class="modal-title">Add new</h1>
-    <mat-icon svgIcon="close-icon"></mat-icon>
+    <mat-icon svgIcon="close-icon" (click)="closeDialog()"></mat-icon>
   </div>
   <div mat-dialog-content>
     <form [formGroup]="form">
@@ -44,7 +44,7 @@
         <div>
           <mat-form-field appearance="fill" floatLabel="auto">
             <mat-label>Choose priority</mat-label>
-            <mat-select #fontSize value="" (selectionChange)="triggerResize()">
+            <mat-select #fontSize value="" (selectionChange)="triggerResize()" formControlName="priority">
               <mat-option
                 *ngFor="let priority of priorities | keyvalue"
                 [value]="priority.value"
