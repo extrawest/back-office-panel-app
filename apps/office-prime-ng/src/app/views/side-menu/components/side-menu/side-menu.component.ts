@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '@office-app/services/auth-service';
 import { LocalStorageService } from '@office-app/services/local-storage-service';
 import { Router } from '@angular/router';
 import { UserService } from '@office-app/services/user-service';
 import { environment } from './../../../../../environments/environment';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { menuItems } from '@office-app/services/menu-items';
 
 @Component({
@@ -12,9 +13,11 @@ import { menuItems } from '@office-app/services/menu-items';
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
 })
-export class SideMenuComponent {
-  imageUrl: Subject<string> = new Subject<string>();
-  menuItems = menuItems;
+export class SideMenuComponent implements OnDestroy {
+  public imageUrl: Subject<string> = new Subject<string>();
+  public menuItems = menuItems;
+  public userName: string;
+  private componentDestroyed$: Subject<void> = new Subject();
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -22,20 +25,29 @@ export class SideMenuComponent {
     private userService: UserService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getImage();
+    this.getUserName();
+  }
+
+  ngOnDestroy(): void {
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
   }
 
   public onLogout(): void {
-    this.authService.signOut().subscribe(() => {
-      if (this.localStorageService.hasValue('user')) {
-        this.localStorageService.removeValue('user');
-      }
-      this.router.navigate(['/login']);
-    });
+    this.authService
+      .signOut()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(() => {
+        if (this.localStorageService.hasValue('user')) {
+          this.localStorageService.removeValue('user');
+        }
+        this.router.navigate(['/login']);
+      });
   }
 
-  public uploadPhoto(event: any) {
+  public uploadPhoto(event: any): void {
     const file = event.currentFiles[0];
     const reader = new FileReader();
     if (file) {
@@ -43,16 +55,31 @@ export class SideMenuComponent {
       reader.onload = () => {
         if (typeof reader.result === 'string') {
           this.imageUrl.next(reader.result);
-          this.userService.addProfileImage(reader.result).subscribe();
+          this.userService
+            .addProfileImage(reader.result)
+            .pipe(takeUntil(this.componentDestroyed$))
+            .subscribe();
         }
       };
     }
     this.userService.uploadFile(file, environment.firebaseConfig);
   }
 
-  public getImage() {
-    this.userService.getProfileImage().subscribe((val) => {
-      this.imageUrl.next(val);
-    });
+  private getImage(): void {
+    this.userService
+      .getProfileImage()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((val) => {
+        this.imageUrl.next(val);
+      });
+  }
+
+  private getUserName(): void {
+    this.userService
+      .getUserName()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((name) => {
+        this.userName = name;
+      });
   }
 }

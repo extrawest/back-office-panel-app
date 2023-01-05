@@ -81,4 +81,13 @@ export class UserService {
       catchError((error) => throwError(() => error))
     );
   }
+
+  getUserName() {
+    return from(
+      get(child(fbRef(getDatabase()), 'users/' + this.user + '/userName'))
+    ).pipe(
+      map((data: any) => data.val()),
+      catchError((error) => throwError(() => error))
+    );
+  }
 }
