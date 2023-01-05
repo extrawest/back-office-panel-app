@@ -6,11 +6,11 @@
           Register <br />
           your account
         </div>
-        <div class="text-center text-xs font-light">
+        <div class="text-center text-sm font-light">
           If you already have an account, just log in to use the system
         </div>
         <div
-          class="text-primary text-center text-sm mt-2 cursor-pointer"
+          class="text-primary text-center text-base mt-2 cursor-pointer"
           routerLink="/login"
         >
           Login here
@@ -67,6 +67,7 @@
               pRipple
               label="Register"
               class="w-4 bg-primary border-round-3xl mt-4 font-normal"
+              (click)="onSubmit()"
             ></button>
           </div>
         </form>
