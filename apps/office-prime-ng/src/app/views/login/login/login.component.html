@@ -6,15 +6,22 @@
           Login <br />
           to account
         </div>
-        <div class="text-center text-xs font-light">
+        <div class="text-center text-sm font-light">
           If you already have an account, just log in to use the system
         </div>
-        <div class="text-center text-sm mt-2 cursor-pointer">Don't have an account?</div>
-        <div class="text-primary text-center text-sm mt-2 cursor-pointer" routerLink="/register">Register here</div>
+        <div class="text-center text-base mt-2 cursor-pointer">
+          Don't have an account?
+        </div>
+        <div
+          class="text-primary text-center text-base mt-2 cursor-pointer"
+          routerLink="/register"
+        >
+          Register here
+        </div>
       </div>
 
       <div>
-        <form [formGroup]="form">
+        <form [formGroup]="form" [ngStyle]="{ 'margin-top': '60px' }">
           <span class="p-input-icon-left">
             <i class="pi pi-user"></i>
             <input
@@ -27,7 +34,10 @@
               formControlName="name"
             />
           </span>
-          <span class="p-input-icon-left p-input-icon-right">
+          <span
+            class="p-input-icon-left p-input-icon-right"
+            [ngStyle]="{ 'margin-top': '20px' }"
+          >
             <i class="pi pi-lock"></i>
             <input
               id="password"
@@ -51,16 +61,49 @@
                 inputId="check"
                 formControlName="check"
               ></p-checkbox>
-              <label for="check" class="text-gray-400 text-sm"
+              <label for="check" class="text-gray-400 text-base"
                 >Remember me</label
               >
             </div>
             <div
-              class="text-primary text-sm flex align-self-center vertical-align-middle"
+              class="text-primary text-base flex align-self-center vertical-align-middle"
             >
-              <div>Forgot password?</div>
+              <div
+                class="cursor-pointer"
+                (click)="resetPassword = !resetPassword"
+              >
+                Forgot password?
+              </div>
             </div>
           </div>
+          <p-card *ngIf="resetPassword">
+            <form [formGroup]="formReset">
+              <h3>Please enter your login to reset your password</h3>
+              <span class="p-input-icon-left">
+                <i class="pi pi-user"></i>
+                <input
+                  id="name"
+                  type="text"
+                  pInputText
+                  class="w-full mb-3 border-round-3xl"
+                  placeholder="Email"
+                  formControlName="resetPassword"
+                />
+              </span>
+              <div
+                class="flex justify-content-center"
+                [ngStyle]="{ 'margin-top': '10px' }"
+              >
+                <button
+                  pButton
+                  pRipple
+                  label="Submit"
+                  class="w-4 bg-primary border-round-3xl mt-4 font-normal"
+                  (click)="forgetPassword()"
+                ></button>
+              </div>
+            </form>
+          </p-card>
           <div
             class="flex justify-content-center"
             [ngStyle]="{ 'margin-top': '50px' }"
@@ -70,19 +113,20 @@
               pRipple
               label="Log In"
               class="w-4 bg-primary border-round-3xl mt-4 font-normal"
+              (click)="onSubmit()"
             ></button>
           </div>
         </form>
       </div>
       <div>
         <div class="flex justify-content-center mt-5">
-          <div class="px-4 cursor-pointer">
+          <div class="px-4 cursor-pointer" (click)="onSignInWithFacebook()">
             <i
               class="pi pi-facebook text-blue-500"
               style="font-size: 1.5rem"
             ></i>
           </div>
-          <div class="px-4 cursor-pointer">
+          <div class="px-4 cursor-pointer" (click)="onSignInWithGoogle()">
             <i
               class="pi pi-google text-green-500"
               style="font-size: 1.5rem"
