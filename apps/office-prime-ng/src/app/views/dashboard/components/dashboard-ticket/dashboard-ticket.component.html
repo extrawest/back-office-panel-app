@@ -1,0 +1,24 @@
+<div
+  class="p-3 w-12"
+  [ngStyle]="{ border: '1px solid #dfe0eb', 'border-radius': '8px' }"
+>
+  <div class="flex justify-content-between">
+    <div class="text-lg font-semibold text-color">Unresolved tickets</div>
+    <div class="text-base font-semibold text-blue-600">View details</div>
+  </div>
+
+  <div class="mt-6">
+    <div>
+      <div class="flex justify-content-between">
+        <div class="p-field-checkbox">
+          <p-checkbox inputId="check"></p-checkbox>
+          <label for="check" class="text-xs font-bold"
+            >Waiting on Feature Request</label
+          >
+        </div>
+        <div class="text-xs text-gray-600 font-medium">3345</div>
+      </div>
+      <p-divider></p-divider>
+    </div>
+  </div>
+</div>
