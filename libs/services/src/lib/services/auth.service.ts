@@ -22,7 +22,7 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(
-    private readonly auth: Auth,
+    private auth: Auth,
     private localStorageService: LocalStorageService,
     private router: Router
   ) {}
