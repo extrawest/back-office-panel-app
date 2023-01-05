@@ -8,14 +8,14 @@
         <img
           [src]="url"
           alt="Profile photo"
-          class="border-circle w-4rem h-4rem"
+          class="border-circle w-5rem h-5rem"
         />
       </div>
       <ng-template #defaultImage class="border-circle w-4rem h-4rem">
         <img
           src="./assets/icons/unknown-user.png"
           alt="Profile photo"
-          class="border-circle w-4rem h-4rem"
+          class="border-circle w-5rem h-5rem"
         />
       </ng-template>
       <div class="mt-1">
@@ -52,6 +52,10 @@
         <span class="text-base text-gray-400 ml-2">Log out</span>
       </div>
     </div>
-    <div class="w-9"></div>
+  </div>
+  <div class="w-9">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

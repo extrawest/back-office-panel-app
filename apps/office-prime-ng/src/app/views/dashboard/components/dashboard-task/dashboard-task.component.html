@@ -1,0 +1,26 @@
+<div
+  class="p-3 w-12"
+  [ngStyle]="{ border: '1px solid #dfe0eb', 'border-radius': '8px' }"
+>
+  <div class="flex justify-content-between">
+    <div class="text-lg font-semibold text-color">Tasks</div>
+    <div class="text-base font-semibold text-blue-600">View all</div>
+  </div>
+  <div class="mt-6">
+    <div class="flex justify-content-between">
+      <div class="text-base font-bold text-gray-500">Create new task</div>
+      <img src="./assets/icons/add-icon.svg" class="cursor-pointer" />
+    </div>
+    <div>
+      <p-divider></p-divider>
+      <div class="flex justify-content-between">
+        <div class="p-field-checkbox">
+          <p-checkbox inputId="check"></p-checkbox>
+          <label for="check" class="text-xs font-bold"
+            >Finish ticket update</label
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
