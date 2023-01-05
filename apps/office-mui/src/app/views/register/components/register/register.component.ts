@@ -12,10 +12,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnDestroy {
-  form: FormGroup;
-  toggleShowPassword = true;
-  errorMessage: string;
-  registerSubscription: Subscription;
+  public form: FormGroup;
+  public toggleShowPassword = true;
+  public errorMessage: string;
+  private registerSubscription: Subscription;
   constructor(
     private fb: FormBuilder,
     private matIconRegistry: MatIconRegistry,
