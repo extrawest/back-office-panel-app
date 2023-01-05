@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@office-app/services/auth-service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'office-app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
 })
-export class ResetPasswordComponent {
-  form: FormGroup;
-  toggleShowPassword = true;
-  message: Subject<string> = new Subject();
-  oobCode: string;
+export class ResetPasswordComponent implements OnDestroy {
+  public form: FormGroup;
+  public toggleShowPassword = true;
+  public message: Subject<string> = new Subject();
+  private oobCode: string;
+  private componentDestroyed$: Subject<void> = new Subject();
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -24,12 +26,19 @@ export class ResetPasswordComponent {
       password: ['', [Validators.required]],
       approvePassword: ['', [Validators.required]],
     });
-    this.activatedRoute.queryParams.subscribe((params) => {
-      if (!params) {
-        this.router.navigate(['/login']);
-      }
-      this.oobCode = params['oobCode'];
-    });
+    this.activatedRoute.queryParams
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((params) => {
+        if (!params) {
+          this.router.navigate(['/login']);
+        }
+        this.oobCode = params['oobCode'];
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
   }
 
   public isValidForm() {
@@ -41,6 +50,7 @@ export class ResetPasswordComponent {
     const { approvePassword } = this.form.getRawValue();
     this.authService
       .confirmPasswordReset(this.oobCode, approvePassword)
+      .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({
         complete: () => this.router.navigate(['/login']),
         error: ({ code }) => this.showMessage(String(code)),
