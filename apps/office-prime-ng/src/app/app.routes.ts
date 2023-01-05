@@ -13,9 +13,16 @@ export const appRoutes: Routes = [
       import('./views/register/register.module').then((m) => m.RegisterModule),
   },
   {
+    path: 'home',
+    loadChildren: () =>
+      import('./views/side-menu/side-menu.module').then(
+        (m) => m.SideMenuModule
+      ),
+  },
+  {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
 ];
 
