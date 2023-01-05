@@ -31,6 +31,9 @@
       ],
       "@office-app/services/ticket-interface": [
         "libs/services/src/lib/interfaces/ticket.interface.ts"
+      ],
+      "@office-app/services/menu-items": [
+        "libs/services/src/lib/consts/menu-item.const.ts"
       ]
     }
   },
