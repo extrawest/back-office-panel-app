@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '@office-app/services/auth-service';
 import { LocalStorageService } from '@office-app/services/local-storage-service';
 import { Router } from '@angular/router';
 import { UserService } from '@office-app/services/user-service';
 import { environment } from './../../../../../environments/environment';
 import { Subject } from 'rxjs';
+import { menuItems } from '@office-app/services/menu-items';
 
 @Component({
   selector: 'office-app-side-menu',
@@ -12,34 +13,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./side-menu.component.scss'],
 })
 export class SideMenuComponent {
-  menuItems = [
-    {
-      name: 'Dashboard',
-      url: '/home/dashboard',
-      image: './assets/icons/info-icon.png',
-    },
-    {
-      name: 'Team',
-      image: './assets/icons/team-icon.png',
-    },
-    {
-      name: 'Offers',
-      image: './assets/icons/offer-icon.png',
-    },
-    {
-      name: 'Partners',
-      image: './assets/icons/call-center-icon.png',
-    },
-    {
-      name: 'Finances',
-      image: './assets/icons/finance-icon.png',
-    },
-    {
-      name: 'Clients',
-      url: '/home/clients',
-      image: './assets/icons/man-icon.png',
-    },
-  ];
+  menuItems = menuItems;
   imageUrl: Subject<string> = new Subject<string>();
   constructor(
     private authService: AuthService,
