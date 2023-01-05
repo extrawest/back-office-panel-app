@@ -85,7 +85,6 @@ export class ClientComponent implements OnDestroy {
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe((result) => {
         if (result) {
-          console.log(result);
           Object.values(result).forEach((value: any) => {
             this.ticketsArray.push(value);
           });
