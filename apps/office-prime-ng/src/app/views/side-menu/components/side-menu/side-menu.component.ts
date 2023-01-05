@@ -13,8 +13,8 @@ import { menuItems } from '@office-app/services/menu-items';
   styleUrls: ['./side-menu.component.scss'],
 })
 export class SideMenuComponent {
-  menuItems = menuItems;
   imageUrl: Subject<string> = new Subject<string>();
+  menuItems = menuItems;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -36,7 +36,7 @@ export class SideMenuComponent {
   }
 
   public uploadPhoto(event: any) {
-    const file = event.target.files[0];
+    const file = event.currentFiles[0];
     const reader = new FileReader();
     if (file) {
       reader.readAsDataURL(file);

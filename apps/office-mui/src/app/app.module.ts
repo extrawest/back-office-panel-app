@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { LoginModule } from './views/login/login.module';
 import { RegisterModule } from './views/register/register.module';

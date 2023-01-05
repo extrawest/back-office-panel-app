@@ -17,7 +17,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/office-prime-ng/src/favicon.ico",
-          "apps/office-prime-ng/src/assets"
+          "apps/office-prime-ng/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
         "styles": [
           "node_modules/primeicons/primeicons.css",
