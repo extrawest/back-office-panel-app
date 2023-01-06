@@ -43,13 +43,13 @@ export class ClientComponent implements OnDestroy {
     this.first = 0;
   }
 
-  isLastPage(): boolean {
+  public get isLastPage(): boolean {
     return this.ticketsArray
       ? this.first === this.ticketsArray.length - this.rows
       : true;
   }
 
-  isFirstPage(): boolean {
+  public get isFirstPage(): boolean {
     return this.ticketsArray ? this.first === 0 : true;
   }
 

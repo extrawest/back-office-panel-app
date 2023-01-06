@@ -24,7 +24,7 @@ export class ResetPasswordComponent implements OnDestroy {
   ) {
     this.form = this.fb.group({
       password: ['', [Validators.required]],
-      approvePassword: ['', [Validators.required]],
+      isPasswordMatch: ['', [Validators.required]],
     });
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.componentDestroyed$))
@@ -42,14 +42,14 @@ export class ResetPasswordComponent implements OnDestroy {
   }
 
   public isValidForm() {
-    const { password, approvePassword } = this.form.getRawValue();
-    return password !== approvePassword;
+    const { password, isPasswordMatch } = this.form.getRawValue();
+    return password !== isPasswordMatch;
   }
 
   public onSubmit(): void {
-    const { approvePassword } = this.form.getRawValue();
+    const { isPasswordMatch } = this.form.getRawValue();
     this.authService
-      .confirmPasswordReset(this.oobCode, approvePassword)
+      .confirmPasswordReset(this.oobCode, isPasswordMatch)
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({
         complete: () => this.router.navigate(['/login']),

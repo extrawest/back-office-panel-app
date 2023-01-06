@@ -21,7 +21,7 @@
       </div>
 
       <div>
-        <form [formGroup]="form" [ngStyle]="{ 'margin-top': '60px' }">
+        <form [formGroup]="form" class="mt-8">
           <span class="p-input-icon-left">
             <i class="pi pi-user"></i>
             <input
@@ -34,10 +34,7 @@
               formControlName="name"
             />
           </span>
-          <span
-            class="p-input-icon-left p-input-icon-right"
-            [ngStyle]="{ 'margin-top': '20px' }"
-          >
+          <span class="p-input-icon-left p-input-icon-right mt-4">
             <i class="pi pi-lock"></i>
             <input
               id="password"
@@ -90,10 +87,7 @@
                   formControlName="resetPassword"
                 />
               </span>
-              <div
-                class="flex justify-content-center"
-                [ngStyle]="{ 'margin-top': '10px' }"
-              >
+              <div class="flex justify-content-center mt-2">
                 <button
                   pButton
                   pRipple
@@ -104,10 +98,7 @@
               </div>
             </form>
           </p-card>
-          <div
-            class="flex justify-content-center"
-            [ngStyle]="{ 'margin-top': '50px' }"
-          >
+          <div class="flex justify-content-center mt-7">
             <button
               pButton
               pRipple
