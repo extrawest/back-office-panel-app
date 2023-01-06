@@ -58,9 +58,10 @@ export class ClientComponent implements OnDestroy {
     this.displayModal = true;
   }
 
-  public closeAccountModal(event: MouseEvent) {
+  public closeAccountModal(event: boolean) {
     if (event) {
       this.displayModal = false;
+      this.getTickets();
     }
   }
 
