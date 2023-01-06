@@ -7,6 +7,7 @@ import { ClientComponent } from './components/client/client.component';
 import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     HttpClientModule,
     TableModule,
     ButtonModule,
+    DialogModule
   ],
 })
 export class ClientModule {}
