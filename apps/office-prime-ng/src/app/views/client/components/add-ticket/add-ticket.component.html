@@ -1,0 +1,77 @@
+<p-dialog
+  header="Add new ticket"
+  [modal]="true"
+  [style]="{ width: '60vw', height: '380px' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  [visible]="isModalVisible"
+  [closable]="true"
+  class="text-center m-auto"
+>
+  <div>
+    <form [formGroup]="form" class="px-4 h-full">
+      <div class="flex align-items-center justify-content-between mt-4">
+        <div class="w-5">
+          <span class="w-full">
+            <input
+              type="text"
+              pInputText
+              class="w-full border-round-3xl"
+              placeholder="Ticket details"
+              formControlName="ticketDetails"
+            />
+          </span>
+        </div>
+        <div class="w-5">
+          <span class="w-full">
+            <input
+              type="text"
+              pInputText
+              class="w-full border-round-3xl"
+              placeholder="Customer name"
+              formControlName="customerName"
+            />
+          </span>
+        </div>
+      </div>
+      <div class="flex align-items-center justify-content-between mt-5 px-0">
+        <div class="w-5">
+          <span class="w-full">
+            <input
+              type="date"
+              pInputText
+              class="w-full border-round-3xl"
+              placeholder="Date"
+              formControlName="date"
+            />
+          </span>
+        </div>
+        <div class="w-5">
+          <p-dropdown
+            [options]="priorities"
+            placeholder="Priority"
+            optionLabel="name"
+            class="w-full border-round-3xl"
+          ></p-dropdown>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="mt-8">
+    <div class="flex w-8 m-auto justify-content-around">
+      <button
+        (click)="addTicket()"
+        label="Add"
+        class="bg-primary border-round-3xl w-5"
+        pButton
+      ></button>
+      <button
+        (click)="closeModal()"
+        label="Cancel"
+        class="bg-red-400 border-round-3xl w-5"
+        pButton
+      ></button>
+    </div>
+  </div>
+</p-dialog>

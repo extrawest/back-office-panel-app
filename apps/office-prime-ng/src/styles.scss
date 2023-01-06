@@ -41,11 +41,6 @@ body {
   margin-top: 6px;
 }
 
-.p-datatable {
-  border: 1px solid #dfe0eb;
-  border-radius: 8px;
-}
-
 .p-datatable .p-datatable-thead > tr > th {
   background: none;
   padding: 0.3rem 1rem;
@@ -53,4 +48,9 @@ body {
 
 .p-datatable .p-datatable-tbody > tr > td {
   padding: 0.8rem 1rem;
+}
+
+.p-dropdown {
+  width: 100%;
+  border-radius: 1.5rem;
 }

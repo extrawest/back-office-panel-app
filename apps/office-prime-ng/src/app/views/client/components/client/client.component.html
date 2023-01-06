@@ -1,49 +1,54 @@
 <div class="w-12 p-7">
   <h2 class="mb-5">Clients</h2>
-  <!-- <div class="p-mb-3">
-        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
-        <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
-        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
-    </div> -->
-  <p-table
-    *ngIf="ticketsArray.length"
-    [value]="ticketsArray"
-    [paginator]="true"
-    [rows]="rows"
-    [showCurrentPageReport]="true"
-    [(first)]="first"
-    [rowsPerPageOptions]="[10, 25, 50]"
-  >
-    <ng-template pTemplate="header">
-      <div class="flex my-5 mx-3 w-12">
-        <div class="w-10 text-base font-bold">Tickets</div>
-        <div class="w-2 flex justify-content-between">
-          <div class="flex cursor-pointer">
-            <img src="./assets/icons/plus-icon.svg" alt="" />
-            <div class="text-xs font-bold text-gray-400">Add</div>
-          </div>
-          <div class="flex cursor-pointer">
-            <img src="./assets/icons/filter-icon.svg" alt="" />
-            <div class="text-xs font-bold text-gray-400">Filter</div>
-          </div>
+  <div class="px-2 border-1 border-gray-300 border-round-lg">
+    <div class="flex my-5 w-12 px-3">
+      <div class="w-10 text-base font-bold">Tickets</div>
+      <div class="w-2 flex justify-content-between">
+        <div
+          class="flex align-items-center cursor-pointer"
+          (click)="showModalDialog()"
+        >
+          <img src="./assets/icons/plus-icon.svg" alt="" />
+          <div class="text-xs font-bold text-gray-400">Add</div>
+        </div>
+        <div class="flex align-items-center cursor-pointer">
+          <img src="./assets/icons/filter-icon.svg" alt="" />
+          <div class="text-xs font-bold text-gray-400">Filter</div>
         </div>
       </div>
-      <tr>
-        <th
-          class="text-xs font-bold text-gray-300"
-          *ngFor="let header of headers"
-        >
-          {{ header }}
-        </th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-data>
-      <tr>
-        <td class="text-sm font-bold">{{ data.ticketDetails }}</td>
-        <td class="text-sm font-bold">{{ data.customerName }}</td>
-        <td class="text-sm font-bold">{{ data.date }}</td>
-        <td class="text-sm font-bold">{{ data.priority }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
+    </div>
+    <p-table
+      *ngIf="ticketsArray.length"
+      [value]="ticketsArray"
+      [paginator]="true"
+      [rows]="rows"
+      [showCurrentPageReport]="true"
+      [(first)]="first"
+      [rowsPerPageOptions]="[10, 25, 50]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th
+            class="text-xs font-bold text-gray-300"
+            *ngFor="let header of headers"
+          >
+            {{ header }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td class="text-sm font-bold">{{ data.ticketDetails }}</td>
+          <td class="text-sm font-bold">{{ data.customerName }}</td>
+          <td class="text-sm font-bold">{{ data.date }}</td>
+          <td class="text-sm font-bold">{{ data.priority }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
+
+<office-app-add-ticket
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-add-ticket>
