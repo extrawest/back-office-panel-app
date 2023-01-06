@@ -12,6 +12,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ClientComponent implements OnDestroy {
   public ticketsArray: Ticket[] = [];
+  public displayModal: boolean;
   public headers: string[] = [
     'Ticket details',
     'Customer name',
@@ -51,6 +52,16 @@ export class ClientComponent implements OnDestroy {
 
   public get isFirstPage(): boolean {
     return this.ticketsArray ? this.first === 0 : true;
+  }
+
+  public showModalDialog() {
+    this.displayModal = true;
+  }
+
+  public closeAccountModal(event: MouseEvent) {
+    if (event) {
+      this.displayModal = false;
+    }
   }
 
   private getTickets() {
