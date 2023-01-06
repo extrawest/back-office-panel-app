@@ -1,8 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { PriorityEnum } from '@office-app/services/priority-enum';
+import { UserService } from '@office-app/services/user-service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'office-app-add-ticket',
   templateUrl: './add-ticket.component.html',
   styleUrls: ['./add-ticket.component.scss'],
 })
-export class AddTicketComponent {}
+export class AddTicketComponent implements OnDestroy {
+  @Output() isModalClosed = new EventEmitter<boolean>();
+  public form: FormGroup;
+  public priorities: any = [];
+  private componentDestroyed$: Subject<void> = new Subject();
+  public isModalVisible = true;
+  constructor(private fb: FormBuilder, private userService: UserService) {
+    this.form = this.fb.group({
+      ticketDetails: [''],
+      customerName: [''],
+      date: [''],
+      priority: [''],
+    });
+    Object.values(PriorityEnum).map((priority) => {
+      const obj: any = {};
+      obj.name = priority;
+      this.priorities.push(obj);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
+  }
+
+  public closeModal() {
+    this.isModalVisible = false;
+    this.isModalClosed.emit(true);
+  }
+
+  public addTicket() {
+    const { ticketDetails, customerName, date, priority } =
+      this.form.getRawValue();
+    this.userService
+      .addTicket(ticketDetails, customerName, date, priority)
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe({
+        complete: () => {
+          this.closeModal();
+        },
+      });
+  }
+}
