@@ -22,6 +22,11 @@
             "glob": "**/*",
             "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
             "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
           }
         ],
         "styles": [
