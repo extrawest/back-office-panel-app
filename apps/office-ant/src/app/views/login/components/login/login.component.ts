@@ -12,9 +12,9 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./login.component.less'],
 })
 export class LoginComponent implements OnDestroy {
-  form: FormGroup;
+  public form: FormGroup;
   public formReset: FormGroup;
-  toggleShowPassword = true;
+  public toggleShowPassword = true;
   public resetPassword = false;
   public message: Subject<string> = new Subject();
   private componentDestroyed$: Subject<void> = new Subject();
