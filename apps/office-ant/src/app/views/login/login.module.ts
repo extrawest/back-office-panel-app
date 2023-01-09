@@ -8,16 +8,22 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
   },
+  {
+    path: 'reset',
+    component: ResetPasswordComponent,
+  }
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -28,6 +34,7 @@ const routes: Routes = [
     NzInputModule,
     NzCheckboxModule,
     NzIconModule,
+    NzCardModule,
   ],
   exports: [LoginComponent],
 })
