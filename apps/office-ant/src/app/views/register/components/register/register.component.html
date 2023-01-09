@@ -33,7 +33,7 @@
             </nz-form-control>
         </nz-form-item>
         <div class="wrapper">
-            <button nz-button class="login-form-button" nzType="'primary'">
+            <button nz-button class="login-form-button" nzType="'primary'" [disabled]="isValidForm()" (click)="onSubmit()">
                 Register
             </button>
         </div>
