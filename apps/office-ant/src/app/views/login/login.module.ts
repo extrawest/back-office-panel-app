@@ -10,6 +10,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
   {
     path: 'reset',
     component: ResetPasswordComponent,
-  }
+  },
 ];
 
 @NgModule({
@@ -35,6 +36,7 @@ const routes: Routes = [
     NzCheckboxModule,
     NzIconModule,
     NzCardModule,
+    NzButtonModule,
   ],
   exports: [LoginComponent],
 })
