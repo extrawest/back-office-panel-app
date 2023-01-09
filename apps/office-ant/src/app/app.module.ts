@@ -4,15 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { uk_UA } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
-import uk from '@angular/common/locales/uk';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-registerLocaleData(uk);
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,9 +21,10 @@ registerLocaleData(uk);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-  ],
-  providers: [
-    { provide: NZ_I18N, useValue: uk_UA }
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   bootstrap: [AppComponent],
 })
