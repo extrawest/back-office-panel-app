@@ -4,6 +4,20 @@ export const routes: Routes = [
   {
     path: '',
     component: SideMenuComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./../../views/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 
