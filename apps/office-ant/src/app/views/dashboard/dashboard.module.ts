@@ -7,6 +7,10 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
 import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
+import { DashboardTicketComponent } from './components/dashboard-ticket/dashboard-ticket.component';
+import { DashboardTaskComponent } from './components/dashboard-task/dashboard-task.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 const routes: Routes = [
   {
@@ -16,7 +20,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DashboardMainComponent, DashboardChartComponent],
+  declarations: [
+    DashboardMainComponent,
+    DashboardChartComponent,
+    DashboardTicketComponent,
+    DashboardTaskComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -27,6 +36,8 @@ const routes: Routes = [
       echarts: () => import('echarts'),
     }),
     NzGridModule,
+    NzDividerModule,
+    NzCheckboxModule,
   ],
 })
 export class DashboardModule {}
