@@ -13,6 +13,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'clients',
+        loadChildren: () =>
+          import('./../../views/client/client.module').then(
+            (m) => m.ClientModule
+          ),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
