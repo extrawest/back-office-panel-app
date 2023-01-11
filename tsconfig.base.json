@@ -34,6 +34,9 @@
       ],
       "@office-app/services/menu-items": [
         "libs/services/src/lib/consts/menu-item.const.ts"
+      ],
+      "@office-app/services/priorities": [
+        "libs/services/src/lib/consts/priorities.const.ts"
       ]
     }
   },
