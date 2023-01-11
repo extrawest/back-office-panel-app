@@ -69,13 +69,11 @@ export class ClientComponent implements OnDestroy {
     this.userService
       .getUserTickets()
       .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe((result) => {
-        if (result) {
-          Object.values(result).forEach((value: any) => {
-            this.ticketsArray.push(value);
-          });
-          this.ticketsArray.reverse();
+      .subscribe((result: any[]) => {
+        if (!result) {
+          return;
         }
+        this.ticketsArray = [...Object.values(result)].reverse();
       });
     this.ticketsArray = [];
   }
