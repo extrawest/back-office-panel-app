@@ -44,11 +44,15 @@
         <div>
           <mat-form-field appearance="fill" floatLabel="auto">
             <mat-label>Choose priority</mat-label>
-            <mat-select #fontSize value="" (selectionChange)="triggerResize()" formControlName="priority">
+            <mat-select
+              #fontSize
+              (selectionChange)="triggerResize()"
+              formControlName="priority"
+            >
               <mat-option
-                *ngFor="let priority of priorities | keyvalue"
-                [value]="priority.value"
-                >{{ priority.value }}</mat-option
+                *ngFor="let priority of priorities"
+                [value]="priority"
+                >{{ priority }}</mat-option
               >
             </mat-select>
           </mat-form-field>

@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PriorityEnum } from '@office-app/services/priority-enum';
 import { UserService } from '@office-app/services/user-service';
+import { Priorities } from '@office-app/services/priorities';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -23,7 +24,7 @@ export class AddTicketComponent implements OnDestroy {
       date: [''],
       priority: [''],
     });
-    Object.values(PriorityEnum).map((priority) => {
+    Priorities.map((priority) => {
       const obj: any = {};
       obj.name = priority;
       this.priorities.push(obj);

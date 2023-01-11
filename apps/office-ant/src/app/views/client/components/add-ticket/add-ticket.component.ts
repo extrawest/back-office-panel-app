@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PriorityEnum } from '@office-app/services/priority-enum';
 import { UserService } from '@office-app/services/user-service';
+import { Priorities } from '@office-app/services/priorities';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 export class AddTicketComponent implements OnDestroy {
   @Output() isModalClosed = new EventEmitter<boolean>();
   public form: FormGroup;
-  public priorities = PriorityEnum;
+  public priorities = Priorities;
   private componentDestroyed$: Subject<void> = new Subject();
   public isModalVisible = true;
   constructor(private fb: FormBuilder, private userService: UserService) {
