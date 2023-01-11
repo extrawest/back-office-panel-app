@@ -10,6 +10,7 @@ import { Ticket } from '@office-app/services/ticket-interface';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Priorities } from '@office-app/services/priorities';
 
 @Component({
   selector: 'office-app-add-ticket',
@@ -18,7 +19,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class AddTicketComponent implements OnDestroy{
   public form: FormGroup;
-  public priorities = PriorityEnum;
+  public priorities = Priorities;
   public isModalClosed = false;
   private componentDestroyed$: Subject<void> = new Subject();
   

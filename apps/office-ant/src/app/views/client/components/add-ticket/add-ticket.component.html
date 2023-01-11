@@ -51,9 +51,9 @@
             <nz-form-item>
               <nz-select nzPlaceHolder="Priority" formControlName="priority">
                 <nz-option
-                  *ngFor="let priority of priorities | keyvalue"
-                  [nzValue]="priority.value"
-                  [nzLabel]="priority.value"
+                  *ngFor="let priority of priorities"
+                  [nzValue]="priority"
+                  [nzLabel]="priority"
                 ></nz-option>
               </nz-select>
             </nz-form-item>

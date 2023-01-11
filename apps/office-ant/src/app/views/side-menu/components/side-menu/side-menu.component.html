@@ -3,26 +3,28 @@
     <div nzOffset="2" class="menu-wrapper">
       <div>
         <div *ngIf="imageUrl | async as url; else defaultImage">
-            <img
-              [src]="url"
-              alt="Profile photo"
-              class="user-image"
-            />
-          </div>
-          <ng-template #defaultImage class="border-circle w-4rem h-4rem">
-            <img
-              src="./assets/icons/unknown-user.png"
-              alt="Profile photo"
-              class=""
-            />
-          </ng-template>
+          <img [src]="url" alt="Profile photo" class="user-image" />
+        </div>
+        <ng-template #defaultImage>
+          <img
+            src="./assets/icons/unknown-user.png"
+            alt="Profile photo"
+            class="user-image"
+          />
+        </ng-template>
       </div>
-      <h2 class="user-name">{{userName}}</h2>
+      <h2 class="user-name">{{ userName }}</h2>
       <h5 class="user-role">Admin</h5>
       <div class="menu-items">
         <ul>
           <nz-space [nzSize]="100" nzDirection="vertical">
-            <li *ngFor="let item of menuItems" nz-row nzSpaceItem class="menu-item">
+            <li
+              *ngFor="let item of menuItems"
+              nz-row
+              nzSpaceItem
+              class="menu-item"
+              [routerLink]="item.url"
+            >
               <img [src]="item.image" class="menu-icon" />
               <div class="menu-name">{{ item.name }}</div>
             </li>
@@ -30,14 +32,14 @@
         </ul>
       </div>
       <div nz-row class="logout-wrapper" (click)="onLogout()">
-        <img src="./assets/icons/logout-icon.png" class="menu-icon">
+        <img src="./assets/icons/logout-icon.png" class="menu-icon" />
         <div>Log out</div>
       </div>
     </div>
   </div>
   <div nz-col nzSpan="18">
     <div>
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
