@@ -33,63 +33,12 @@ a {
   }
 }
 
+$primary: map-get($custom-theme, primary);
 $accent: map-get($custom-theme, accent);
 $warn: map-get($custom-theme, warn);
 
-.field-row-item {
-  display: block;
-  mat-form-field {
-    width: 100%;
-  }
-  .mat-form-field-wrapper {
-    .mat-form-field-flex {
-      border: 1px solid mat.get-color-from-palette($accent, 500);
-      border-radius: 50px;
-      .mat-form-field-prefix {
-        padding-left: 20px;
-        margin: auto;
-      }
-      .mat-form-field-infix {
-        padding: 12px 5px;
-        border-top: 0;
-
-        .mat-input-element {
-          padding-left: 15px;
-        }
-        .mat-form-field-label-wrapper {
-          margin: 4px 20px;
-          font-size: 14px;
-          font-weight: 300;
-          color: mat.get-color-from-palette($accent, 800);
-          .custom-theme .mat-form-field.mat-focused .mat-form-field-label {
-            display: none;
-          }
-        }
-      }
-      .mat-form-field-suffix {
-        padding-right: 30px;
-        margin: auto;
-        .mat-icon {
-          margin-top: 2px;
-        }
-      }
-    }
-    .mat-form-field-underline {
-      height: 0;
-      .mat-form-field-ripple {
-        height: 0;
-      }
-    }
-  }
-}
-
-.mat-checkbox .mat-checkbox-layout .mat-checkbox-inner-container {
-  .mat-checkbox-background {
-    border-radius: 50%;
-  }
-  .mat-checkbox-frame {
-    border-radius: 50%;
-  }
+mat-form-field {
+  width: 100%;
 }
 
 .notification-error {
@@ -99,32 +48,11 @@ $warn: map-get($custom-theme, warn);
   padding: 10px;
 }
 
-mat-sidenav-container {
-  height: 100vh;
-  mat-sidenav {
-    width: 25%;
-    box-shadow: 0px 4px 34px rgba(96, 94, 94, 0.09);
-    border-right: none;
-    &.mat-drawer-side {
-      border-right: none;
-    }
-  }
-
-  mat-sidenav-content {
-    width: 100%;
-    background-color: white;
-  }
-}
-
-mat-sidenav-content {
-  width: 75%;
-}
-
-.mat-mdc-list-item .mdc-list-item__primary-text {
-  font-size: 12px;
-}
-.mdc-form-field > label {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 26px;
+mat-flat-button,
+button {
+  width: 186px;
+  height: 52px;
+  border-radius: 38px;
+  margin: auto;
+  color: mat.get-color-from-palette($primary);
 }
