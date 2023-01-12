@@ -68,3 +68,9 @@ mat-sidenav {
 .mat-mdc-list-item .mdc-list-item__primary-text {
   font-size: 12px;
 }
+
+mat-card {
+  padding: 22px;
+  border: 1px solid mat.get-color-from-palette($accent, 400);
+  border-radius: 8px;
+}

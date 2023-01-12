@@ -12,6 +12,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { MatCardModule } from '@angular/material/card';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
     MatDividerModule,
     MatIconModule,
     MatCheckboxModule,
+    MatCardModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     })
