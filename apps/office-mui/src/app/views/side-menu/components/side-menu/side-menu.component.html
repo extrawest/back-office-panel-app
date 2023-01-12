@@ -32,7 +32,7 @@
       <div class="user-role">Admin</div>
     </div>
     <mat-nav-list class="menu-list">
-      <div
+      <mat-list-item
         mat-list-item
         class="menu-item"
         *ngFor="let item of menuItems"
@@ -40,7 +40,7 @@
       >
         <img matListItemAvatar [src]="item.image" />
         <a class="menu-item-name">{{ item.name }}</a>
-      </div>
+      </mat-list-item>
     </mat-nav-list>
     <div class="logout" (click)="onLogout()">
       <img class="logout-icon" src="./assets/icons/logout-icon.png" />
