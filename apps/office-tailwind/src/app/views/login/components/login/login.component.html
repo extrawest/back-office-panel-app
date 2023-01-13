@@ -53,23 +53,56 @@
                 >Remember me</label
               >
             </div>
-            <a href="#!" class="text-gray-800 text-sm">Forgot password?</a>
+            <a
+              (click)="resetPassword = !resetPassword"
+              class="text-gray-800 text-sm"
+              >Forgot password?</a
+            >
+          </div>
+
+          <div
+            class="max-w-sm rounded overflow-hidden shadow-lg p-1"
+            *ngIf="resetPassword"
+          >
+            <form [formGroup]="formReset" class="mt-4">
+              <h3>Please enter your login to reset your password</h3>
+              <div class="my-6">
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-base bg-white border border-solid border-gray-300 rounded-3xl focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  placeholder="Email"
+                  formControlName="resetPassword"
+                />
+              </div>
+              <div class="text-center my-6 flex justify-center">
+                <button
+                  type="button"
+                  class="px-10 py-3 bg-yellow-400 text-white text-sm rounded-3xl"
+                  (click)="forgetPassword()"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
           </div>
 
           <div class="text-center my-6 flex justify-center">
             <button
               type="button"
               class="px-10 py-3 bg-yellow-400 text-white text-sm rounded-3xl"
+              (click)="onSubmit()"
             >
               Login
             </button>
           </div>
           <div class="w-2/6 flex flex-row items-center justify-between m-auto">
             <img
+              (click)="onSignInWithFacebook()"
               src="./assets/icons/facebook-icon.svg"
               class="w-2/6"
             />
             <img
+              (click)="onSignInWithGoogle()"
               src="./assets/icons/google-icon.svg"
               class="w-2/6"
             />
