@@ -23,8 +23,11 @@
       "@office-app/services/local-storage-service": [
         "libs/services/src/lib/services/local-storage.service.ts"
       ],
-      "@office-app/services/user-service": [
-        "libs/services/src/lib/services/user.service.ts"
+      "@office-app/services/menu-items": [
+        "libs/services/src/lib/consts/menu-item.const.ts"
+      ],
+      "@office-app/services/priorities": [
+        "libs/services/src/lib/consts/priorities.const.ts"
       ],
       "@office-app/services/priority-enum": [
         "libs/services/src/lib/enums/priority.enum.ts"
@@ -32,11 +35,8 @@
       "@office-app/services/ticket-interface": [
         "libs/services/src/lib/interfaces/ticket.interface.ts"
       ],
-      "@office-app/services/menu-items": [
-        "libs/services/src/lib/consts/menu-item.const.ts"
-      ],
-      "@office-app/services/priorities": [
-        "libs/services/src/lib/consts/priorities.const.ts"
+      "@office-app/services/user-service": [
+        "libs/services/src/lib/services/user.service.ts"
       ]
     }
   },
