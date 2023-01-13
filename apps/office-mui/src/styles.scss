@@ -74,3 +74,29 @@ mat-card {
   border: 1px solid mat.get-color-from-palette($accent, 400);
   border-radius: 8px;
 }
+
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 0;
+}
+
+th {
+  font-weight: 700;
+  font-size: 12px;
+  color: #9fa2b4;
+}
+
+td {
+  font-weight: 500;
+  font-size: 14px;
+  color: #252733;
+}
