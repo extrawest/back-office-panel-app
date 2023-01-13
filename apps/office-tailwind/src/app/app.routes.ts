@@ -12,6 +12,18 @@ export const appRoutes: Routes = [
     loadChildren: () =>
       import('./views/register/register.module').then((m) => m.RegisterModule),
   },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./views/side-menu/side-menu.module').then(
+        (m) => m.SideMenuModule
+      ),
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
@@ -19,4 +31,3 @@ export const appRoutes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
