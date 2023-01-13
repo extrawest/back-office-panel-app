@@ -1,4 +1,4 @@
-<mat-card class="login-wrapper">
+<div class="login-wrapper">
   <mat-card class="notification-error" *ngIf="message | async as message">
     <h3>Notification</h3>
     <p>{{ message }}</p>
@@ -104,7 +104,6 @@
         <div class="action-row">
           <button
             color="primary"
-            class="login-btn"
             (click)="forgetPassword()"
             mat-flat-button
           >
@@ -116,7 +115,6 @@
     <div class="action-row">
       <button
         color="primary"
-        class="login-btn"
         [disabled]="isValidForm()"
         (click)="onSubmit()"
         mat-raised-button
@@ -137,4 +135,4 @@
       ></mat-icon>
     </div>
   </form>
-</mat-card>
+</div>

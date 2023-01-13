@@ -2,12 +2,8 @@
   padding: 70px 45px;
   .page-table {
     margin-top: 50px;
-    padding: 32px;
-    border: 1px solid #dfe0eb;
-    border-radius: 8px;
 
     .page-table-header {
-      width: 82%;
       font-weight: 700;
       font-size: 16px;
       line-height: 26px;
@@ -19,7 +15,6 @@
       line-height: 20px;
       width: 18%;
       display: flex;
-      color: #9fa2b4;
       justify-content: space-between;
     }
     .table-button:hover,
@@ -39,28 +34,4 @@ mat-icon {
   height: 18px;
   margin-right: 5px;
 }
-table {
-  width: 100%;
-}
 
-.mat-elevation-z8,
-.mat-mdc-elevation-specific.mat-elevation-z8 {
-  box-shadow: none;
-}
-
-.mdc-data-table__cell,
-.mdc-data-table__header-cell {
-  padding: 0;
-}
-
-th {
-  font-weight: 700;
-  font-size: 12px;
-  color: #9fa2b4;
-}
-
-td {
-  font-weight: 500;
-  font-size: 14px;
-  color: #252733;
-}
