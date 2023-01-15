@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NbCheckboxModule } from '@nebular/theme';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbIconModule } from '@nebular/theme';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -14,14 +15,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     NbCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    NbIconModule
+    NbIconModule,
   ],
 })
 export class LoginModule {}
