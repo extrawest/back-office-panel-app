@@ -45,13 +45,6 @@ mat-form-field {
   width: 100%;
 }
 
-.notification-error {
-  min-height: 50px;
-  text-align: center;
-  color: mat.get-color-from-palette($warn, 400);
-  padding: 10px;
-}
-
 mat-flat-button,
 button {
   width: 186px;
@@ -70,9 +63,12 @@ mat-sidenav {
 }
 
 mat-card {
+  width: 50%;
   padding: 22px;
+  margin: auto;
   border: 1px solid mat.get-color-from-palette($accent, 400);
   border-radius: 8px;
+  text-align: center;
 }
 
 table {
@@ -99,4 +95,14 @@ td {
   font-weight: 500;
   font-size: 14px;
   color: #252733;
+}
+
+.mdc-list-item--with-leading-avatar .mdc-list-item__start {
+  margin-left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+mat-divider {
+  margin: 15px 0;
 }
