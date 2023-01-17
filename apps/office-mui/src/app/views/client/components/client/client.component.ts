@@ -1,12 +1,4 @@
-import {
-  Component,
-  Inject,
-  ViewChild,
-  AfterViewInit,
-  ViewChildren,
-  Input,
-  OnDestroy,
-} from '@angular/core';
+import { Component, ViewChildren, OnDestroy } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatPaginator } from '@angular/material/paginator';
@@ -69,8 +61,8 @@ export class ClientComponent implements OnDestroy {
         date: this.date,
         priority: this.priority,
       },
-      width: '55%',
-      height: '50%',
+      width: '65%',
+      height: '60%',
     });
 
     dialogRef
@@ -88,6 +80,7 @@ export class ClientComponent implements OnDestroy {
           return;
         }
         this.ticketsArray = [...Object.values(result)].reverse();
+        console.log(this.ticketsArray);
       });
     this.ticketsArray = [];
   }
