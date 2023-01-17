@@ -1,1 +1,71 @@
+<div class="w-full p-10">
+  <h2 class="mb-8">Clients</h2>
+  <div class="px-4 border border-solid rounded-lg border-slate-300">
+    <div class="flex my-6 w-full px-3">
+      <div class="w-4/5 text-base font-bold">Tickets</div>
+      <div class="w-1/6 flex justify-between">
+        <div
+          class="flex items-center cursor-pointer"
+          (click)="showModalDialog()"
+        >
+          <img src="./assets/icons/plus-icon.svg" alt="" />
+          <div class="text-xs font-bold text-gray-400">Add</div>
+        </div>
+        <div class="flex items-center cursor-pointer">
+          <img src="./assets/icons/filter-icon.svg" alt="" />
+          <div class="text-xs font-bold text-gray-400">Filter</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="min-w-full">
+              <thead class="border-b">
+                <tr>
+                  <th
+                    scope="col"
+                    class="text-xs font-bold text-gray-300 px-6 py-4 text-center"
+                    *ngFor="let header of headers"
+                  >
+                    {{ header }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b" *ngFor="let ticket of ticketsArray">
+                  <td
+                    class="text-sm font-medium px-6 py-4 text-gray-900 text-center"
+                  >
+                    {{ ticket.ticketDetails }}
+                  </td>
+                  <td
+                    class="text-sm font-medium px-6 py-4 text-gray-900 text-center"
+                  >
+                    {{ ticket.customerName }}
+                  </td>
+                  <td
+                    class="text-sm font-medium px-6 py-4 text-gray-900 text-center"
+                  >
+                    {{ ticket.date }}
+                  </td>
+                  <td
+                    class="text-sm font-medium px-6 py-4 text-gray-900 text-center"
+                  >
+                    {{ ticket.priority }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<office-app-add-ticket
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-add-ticket>
