@@ -1,16 +1,19 @@
-<div class="page-wrapper">
+<div style="padding: 70px 45px">
   <h2>Clients</h2>
-  <mat-card class="page-table">
-    <div class="flex">
-      <div class="page-table-header">All tickets</div>
-      <div class="page-table-buttons">
-        <div class="flex" (click)="openDialog()">
+  <mat-card style="width: 100%">
+    <div style="display: flex; justify-content: space-between">
+      <h3>All tickets</h3>
+      <div style="display: flex; justify-content: space-between">
+        <div
+          style="display: flex; justify-content: space-between"
+          (click)="openDialog()"
+        >
           <mat-icon svgIcon="plus-icon"></mat-icon>
-          <div class="table-button">Add</div>
+          <div>Add</div>
         </div>
-        <div class="flex">
+        <div style="display: flex; justify-content: space-between">
           <mat-icon svgIcon="filter-icon"></mat-icon>
-          <div class="table-button">Filter</div>
+          <div>Filter</div>
         </div>
       </div>
     </div>
@@ -18,7 +21,9 @@
       <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="details">
           <th mat-header-cell *matHeaderCellDef>Ticket details</th>
-          <td mat-cell *matCellDef="let element">{{ element.ticketDetails }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.ticketDetails }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="name">
@@ -28,7 +33,7 @@
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Date</th>
-          <td mat-cell *matCellDef="let element">{{ element.date | date}}</td>
+          <td mat-cell *matCellDef="let element">{{ element.date | date }}</td>
         </ng-container>
 
         <ng-container matColumnDef="priority">
