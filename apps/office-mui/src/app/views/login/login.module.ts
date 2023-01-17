@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -13,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconRegistry } from '@angular/material/icon';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const routes: Routes = [
   {
@@ -39,6 +39,7 @@ const routes: Routes = [
     MatInputModule,
     MatCheckboxModule,
     HttpClientModule,
+    MatGridListModule
   ],
   exports: [LoginComponent],
   providers: [MatIconRegistry],

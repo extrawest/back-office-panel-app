@@ -1,24 +1,24 @@
-<div class="login-wrapper">
-  <mat-card class="notification-error" *ngIf="message | async as message">
+<mat-card>
+  <mat-card *ngIf="message | async as message">
     <h3>Notification</h3>
     <p>{{ message }}</p>
   </mat-card>
-  <div fxLayoutAlign="center" class="header-text">
-    <div class="text-welcome">
+  <div>
+    <h1>
       Login <br />
       to account
-    </div>
-    <div class="text">
-      If you already have an account, just log in to use the system
-    </div>
-    <div class="text">Don't have an account?</div>
-    <div class="text text-register" routerLink="/register">Register here</div>
+    </h1>
+    <p>If you already have an account, just log in to use the system</p>
+    <p routerLink="/register">
+      Don't have an account? <br />
+      Register here
+    </p>
   </div>
 
-  <form [formGroup]="form" class="form-section">
-    <div class="field-row-item">
+  <form [formGroup]="form">
+    <div>
       <mat-form-field>
-        <mat-icon matPrefix class="input-icon">person_outline</mat-icon>
+        <mat-icon matPrefix>person_outline</mat-icon>
         <input
           type="text"
           placeholder="Login"
@@ -39,9 +39,9 @@
         >
       </mat-form-field>
     </div>
-    <div class="field-row-item">
+    <div>
       <mat-form-field floatLabel="auto">
-        <mat-icon matPrefix class="input-icon">lock</mat-icon>
+        <mat-icon matPrefix>lock</mat-icon>
         <input
           type="password"
           placeholder="Password"
@@ -62,20 +62,16 @@
         >
       </mat-form-field>
     </div>
-    <div class="login-setup">
+    <div style="display: flex; justify-content: space-between">
       <div>
-        <mat-checkbox class="check" formControlName="check"
-          >Remember me</mat-checkbox
-        >
+        <mat-checkbox formControlName="check">Remember me</mat-checkbox>
       </div>
-      <div class="reset-password" (click)="resetPassword = !resetPassword">
-        Forgot password ?
-      </div>
+      <div (click)="resetPassword = !resetPassword">Forgot password ?</div>
     </div>
-    <mat-card class="notification-error" *ngIf="resetPassword">
+    <mat-card *ngIf="resetPassword">
       <form [formGroup]="formReset">
         <h3>Please enter your login to reset your password</h3>
-        <div class="action-row">
+        <div>
           <mat-form-field floatLabel="auto">
             <input
               type="text"
@@ -101,18 +97,14 @@
           </mat-form-field>
         </div>
 
-        <div class="action-row">
-          <button
-            color="primary"
-            (click)="forgetPassword()"
-            mat-flat-button
-          >
+        <div>
+          <button color="primary" (click)="forgetPassword()" mat-flat-button>
             Submit
           </button>
         </div>
       </form>
     </mat-card>
-    <div class="action-row">
+    <div>
       <button
         color="primary"
         [disabled]="isValidForm()"
@@ -122,17 +114,12 @@
         Login
       </button>
     </div>
-    <div class="networks-icons">
+    <div style="display: flex; justify-content: space-evenly; margin: 20px">
       <mat-icon
-        class="network-icon"
         svgIcon="facebook-icon"
         (click)="onSignInWithFacebook()"
       ></mat-icon>
-      <mat-icon
-        class="network-icon"
-        svgIcon="google-icon"
-        (click)="onSignInWithGoogle()"
-      ></mat-icon>
+      <mat-icon svgIcon="google-icon" (click)="onSignInWithGoogle()"></mat-icon>
     </div>
   </form>
-</div>
+</mat-card>
