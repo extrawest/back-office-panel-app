@@ -7,8 +7,8 @@
   <ng-container *nzModalContent>
     <div>
       <form [formGroup]="form" nz-form>
-        <div nz-row>
-          <div nz-col nzSpan="6" nzOffset="3">
+        <div nz-row nzJustify="space-evenly">
+          <div nz-col nzSpan="8">
             <nz-form-item>
               <nz-input-group>
                 <input
@@ -20,7 +20,7 @@
               </nz-input-group>
             </nz-form-item>
           </div>
-          <div nz-col nzSpan="6" nzOffset="5">
+          <div nz-col nzSpan="8">
             <nz-form-item>
               <nz-input-group>
                 <input
@@ -34,8 +34,8 @@
           </div>
         </div>
 
-        <div nz-row>
-          <div nz-col nzSpan="6" nzOffset="3">
+        <div nz-row nzJustify="space-evenly">
+          <div nz-col nzSpan="8">
             <nz-form-item>
               <nz-input-group>
                 <input
@@ -47,7 +47,7 @@
               </nz-input-group>
             </nz-form-item>
           </div>
-          <div nz-col nzSpan="6" nzOffset="5">
+          <div nz-col nzSpan="8">
             <nz-form-item>
               <nz-select nzPlaceHolder="Priority" formControlName="priority">
                 <nz-option
@@ -59,13 +59,12 @@
             </nz-form-item>
           </div>
         </div>
-        <div class="wrapper" nz-row>
+        <div nz-row>
           <button
             nz-col
             nzSpan="6"
             nzOffset="9"
             nz-button
-            class=""
             nzType="primary"
             (click)="addTicket()"
           >

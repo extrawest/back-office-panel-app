@@ -11,6 +11,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     NzIconModule,
     NzCardModule,
     NzButtonModule,
+    NzGridModule
   ],
   exports: [LoginComponent],
 })

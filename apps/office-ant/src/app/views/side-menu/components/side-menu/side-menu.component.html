@@ -1,40 +1,36 @@
 <div nz-row>
-  <div nz-col nzSpan="6" class="side-menu">
-    <div nzOffset="2" class="menu-wrapper">
-      <div>
-        <div *ngIf="imageUrl | async as url; else defaultImage">
-          <img [src]="url" alt="Profile photo" class="user-image" />
+  <div nz-col nzSpan="5" nzOffset="1">
+    <div nzOffset="2">
+      <nz-space nzDirection="vertical" nzSize="large">
+        <div *nzSpaceItem>
+          <div *ngIf="imageUrl | async as url; else defaultImage">
+            <img
+              [src]="url"
+              alt="Profile photo"
+              style="width: 60px; height: 60px; border-radius: 50%"
+            />
+          </div>
+          <ng-template #defaultImage>
+            <img src="./assets/icons/unknown-user.png" alt="Profile photo" />
+          </ng-template>
         </div>
-        <ng-template #defaultImage>
-          <img
-            src="./assets/icons/unknown-user.png"
-            alt="Profile photo"
-            class="user-image"
-          />
-        </ng-template>
-      </div>
-      <h2 class="user-name">{{ userName }}</h2>
-      <h5 class="user-role">Admin</h5>
-      <div class="menu-items">
-        <ul>
-          <nz-space [nzSize]="100" nzDirection="vertical">
-            <li
-              *ngFor="let item of menuItems"
-              nz-row
-              nzSpaceItem
-              class="menu-item"
-              [routerLink]="item.url"
-            >
-              <img [src]="item.image" class="menu-icon" />
-              <div class="menu-name">{{ item.name }}</div>
+        <div *nzSpaceItem>
+          <h2>{{ userName }}</h2>
+          <p>Admin</p>
+        </div>
+        <div *nzSpaceItem>
+          <ul>
+            <li *ngFor="let item of menuItems" nz-row [routerLink]="item.url">
+              <img [src]="item.image" />
+              <div>{{ item.name }}</div>
             </li>
-          </nz-space>
-        </ul>
-      </div>
-      <div nz-row class="logout-wrapper" (click)="onLogout()">
-        <img src="./assets/icons/logout-icon.png" class="menu-icon" />
-        <div>Log out</div>
-      </div>
+          </ul>
+        </div>
+        <div *nzSpaceItem nz-row (click)="onLogout()">
+          <img src="./assets/icons/logout-icon.png" />
+          <div>Log out</div>
+        </div>
+      </nz-space>
     </div>
   </div>
   <div nz-col nzSpan="18">

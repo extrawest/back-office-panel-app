@@ -1,112 +1,109 @@
-<div class="login-wrapper">
-  <div class="header-text">
-    <div class="text-welcome">
-      Login <br />
-      to account
-    </div>
-    <div class="text">
-      If you already have an account, just log in to use the system
-    </div>
-    <div class="text">Don't have an account?</div>
-    <div class="text text-register" routerLink="/register">
-      <a>Register here</a>
-    </div>
-  </div>
-  <form nz-form [formGroup]="form" class="login-form">
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please input valid username!">
-        <nz-input-group nzPrefixIcon="user">
-          <input
-            type="text"
-            nz-input
-            formControlName="name"
-            placeholder="Login"
-          />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
-        <nz-input-group nzPrefixIcon="lock">
-          <input
-            [type]="toggleShowPassword ? 'password' : 'text'"
-            nz-input
-            formControlName="password"
-            placeholder="Password"
-          />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <div nz-row class="login-form-margin">
-      <div nz-col [nzSpan]="12">
-        <label nz-checkbox formControlName="check">
-          <span>Remember me</span>
-        </label>
+<div nz-row>
+  <div nz-col nzSpan="10" nzOffset="6">
+    <nz-card>
+      <div>
+        <h1>
+          Login <br />
+          to account
+        </h1>
+        <p>If you already have an account, just log in to use the system</p>
+        <p routerLink="/register">
+          Don't have an account? <br />
+          Register here
+        </p>
       </div>
-      <div nz-col [nzSpan]="12">
-        <a class="login-form-forgot" (click)="resetPassword = !resetPassword"
-          >Forgot password?</a
-        >
-      </div>
-      <nz-card
-        style="width: 300px"
-        *ngIf="resetPassword"
-        nzTitle="Please enter your login to reset your password"
-      >
-        <form nz-form [formGroup]="formReset">
-          <nz-form-item>
-            <nz-form-control nzErrorTip="Please input valid username!">
-              <nz-input-group nzPrefixIcon="user">
-                <input
-                  type="text"
-                  nz-input
-                  formControlName="resetPassword"
-                  placeholder="Email"
-                />
-              </nz-input-group>
-            </nz-form-control>
-          </nz-form-item>
-          <div class="wrapper">
-            <button
-              nz-button
-              class="login-form-button"
-              nzType="primary"
-              (click)="forgetPassword()"
-            >
-              Submit
-            </button>
+      <form nz-form [formGroup]="form">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input valid username!">
+            <nz-input-group nzPrefixIcon="user">
+              <input
+                type="text"
+                nz-input
+                formControlName="name"
+                placeholder="Login"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input
+                [type]="toggleShowPassword ? 'password' : 'text'"
+                nz-input
+                formControlName="password"
+                placeholder="Password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <label nz-checkbox formControlName="check">
+              <span>Remember me</span>
+            </label>
           </div>
-        </form>
-      </nz-card>
-    </div>
-    <div class="wrapper">
-      <button
-        nz-button
-        class="login-form-button"
-        [disabled]="isValidForm()"
-        nzType="primary"
-        (click)="onSubmit()"
-      >
-        Log in
-      </button>
-    </div>
-    <div class="wrapper">
-      <div class="wrapper-inside">
-        <span
-          nz-icon
-          nzType="facebook"
-          nzTheme="outline"
-          class="icon cursor-pointer"
-          (click)="onSignInWithFacebook()"
-        ></span>
-        <span
-          nz-icon
-          nzType="google"
-          nzTheme="outline"
-          class="icon cursor-pointer"
-          (click)="onSignInWithGoogle()"
-        ></span>
-      </div>
-    </div>
-  </form>
+          <div nz-col nzSpan="12">
+            <a (click)="resetPassword = !resetPassword">Forgot password?</a>
+          </div>
+          <nz-card
+            style="width: 300px"
+            *ngIf="resetPassword"
+            nzTitle="Please enter your login to reset your password"
+          >
+            <form nz-form [formGroup]="formReset">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Please input valid username!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input
+                      type="text"
+                      nz-input
+                      formControlName="resetPassword"
+                      placeholder="Email"
+                    />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <div>
+                <button nz-button nzType="primary" (click)="forgetPassword()">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </nz-card>
+        </div>
+        <div>
+          <button
+            nz-button
+            [disabled]="isValidForm()"
+            nzType="primary"
+            (click)="onSubmit()"
+          >
+            Log in
+          </button>
+        </div>
+        <div nz-row>
+          <span
+            nz-col
+            nzSpan="3"
+            nzOffset="9"
+            nz-icon
+            nzType="facebook"
+            nzTheme="outline"
+            style="font-size: 28px; margin-top: 10px"
+            (click)="onSignInWithFacebook()"
+          ></span>
+          <span
+            nz-col
+            nzSpan="3"
+            nz-icon
+            nzType="google"
+            nzTheme="outline"
+            style="font-size: 28px; margin-top: 10px"
+            (click)="onSignInWithGoogle()"
+          ></span>
+        </div>
+      </form>
+    </nz-card>
+  </div>
 </div>
