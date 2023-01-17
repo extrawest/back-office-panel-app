@@ -1,14 +1,12 @@
-<div class="dashboard-wrapper">
-  <h2 class="dashboard-wrapper-title">Dashboard</h2>
-  <div class="dashboard-chart">
+<div>
+  <h2>Dashboard</h2>
+  <div style="margin: 35px 0">
     <office-app-dashboard-chart></office-app-dashboard-chart>
   </div>
-  <div class="dashboard-tables">
+  <div style="display: flex; justify-content: space-between">
     <office-app-dashboard-ticket
-      class="dashboard-tables-side"
+      style="width: 48%"
     ></office-app-dashboard-ticket>
-    <office-app-dashboard-task
-      class="dashboard-tables-side"
-    ></office-app-dashboard-task>
+    <office-app-dashboard-task style="width: 48%"></office-app-dashboard-task>
   </div>
 </div>
