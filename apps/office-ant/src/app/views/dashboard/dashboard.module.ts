@@ -11,6 +11,7 @@ import { DashboardTicketComponent } from './components/dashboard-ticket/dashboar
 import { DashboardTaskComponent } from './components/dashboard-task/dashboard-task.component';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     NzGridModule,
     NzDividerModule,
     NzCheckboxModule,
+    NzCardModule
   ],
 })
 export class DashboardModule {}
