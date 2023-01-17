@@ -1,21 +1,19 @@
-<div class="page-wrapper">
-  <mat-card class="notification-error" *ngIf="errorMessage">
+<mat-card>
+  <mat-card *ngIf="errorMessage">
     <h3>Error</h3>
     <p>{{ errorMessage }}</p></mat-card
   >
-  <div fxLayoutAlign="center" class="header-text">
-    <div class="text-welcome">
+  <div>
+    <h1>
       Register <br />
       your account
-    </div>
-    <div class="text">
-      If you already have an account, just log in to use the system
-    </div>
-    <div class="text text-login" routerLink="/login">Log in here</div>
+    </h1>
+    <p>If you already have an account, just log in to use the system</p>
+    <p routerLink="/login">Log in here</p>
   </div>
 
-  <form [formGroup]="form" class="form-section">
-    <div class="field-row-item">
+  <form [formGroup]="form">
+    <div>
       <mat-form-field floatLabel="auto">
         <mat-icon matPrefix class="input-icon">person_outline</mat-icon>
         <input
@@ -51,7 +49,7 @@
         >
       </mat-form-field>
     </div>
-    <div class="field-row-item">
+    <div>
       <mat-form-field floatLabel="auto">
         <mat-icon matPrefix class="input-icon">lock</mat-icon>
         <input
@@ -74,7 +72,7 @@
         >
       </mat-form-field>
     </div>
-    <div class="action-row">
+    <div>
       <button
         color="primary"
         [disabled]="isValidForm()"
@@ -84,9 +82,9 @@
         Register
       </button>
     </div>
-    <div class="networks-icons">
-      <mat-icon class="network-icon" svgIcon="facebook-icon"></mat-icon>
-      <mat-icon class="network-icon" svgIcon="google-icon"></mat-icon>
+    <div style="display: flex; justify-content: space-evenly; margin: 20px">
+      <mat-icon svgIcon="facebook-icon"></mat-icon>
+      <mat-icon svgIcon="google-icon"></mat-icon>
     </div>
   </form>
-</div>
+</mat-card>
