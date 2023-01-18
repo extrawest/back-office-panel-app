@@ -3,10 +3,16 @@
   <div style="margin: 35px 0">
     <office-app-dashboard-chart></office-app-dashboard-chart>
   </div>
-  <div style="display: flex; justify-content: space-between">
-    <office-app-dashboard-ticket
-      style="width: 48%"
-    ></office-app-dashboard-ticket>
-    <office-app-dashboard-task style="width: 48%"></office-app-dashboard-task>
-  </div>
+  <mat-grid-list rowHeight="300px" cols="2">
+    <mat-grid-tile>
+      <office-app-dashboard-ticket
+        style="width: 100%"
+      ></office-app-dashboard-ticket>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <office-app-dashboard-task
+        style="width: 100%"
+      ></office-app-dashboard-task>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

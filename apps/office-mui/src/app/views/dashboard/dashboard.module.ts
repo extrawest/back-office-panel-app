@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     MatIconModule,
     MatCheckboxModule,
     MatCardModule,
+    MatGridListModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     })

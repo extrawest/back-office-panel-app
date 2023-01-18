@@ -106,3 +106,8 @@ td {
 mat-divider {
   margin: 15px 0;
 }
+
+.mat-grid-list .mat-grid-tile .mat-grid-tile-content {
+  display: flex;
+  justify-content: flex-start !important;
+}
