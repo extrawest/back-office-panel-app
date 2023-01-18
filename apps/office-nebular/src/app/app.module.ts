@@ -22,7 +22,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     FormsModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-    NbThemeModule.forRoot({ name: 'office' }),
+    NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
