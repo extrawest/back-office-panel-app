@@ -1,4 +1,4 @@
-import { Component, ViewChildren, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatPaginator } from '@angular/material/paginator';
@@ -17,7 +17,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnDestroy {
-  @ViewChildren(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public displayedColumns: string[] = ['details', 'name', 'date', 'priority'];
   public ticketDetails: string;
   public customerName: string;
@@ -80,6 +80,8 @@ export class ClientComponent implements OnDestroy {
           return;
         }
         this.ticketsArray = [...Object.values(result)].reverse();
+        this.dataSource = new MatTableDataSource<any>(this.ticketsArray);
+        this.dataSource.paginator = this.paginator;
       });
     this.ticketsArray = [];
   }
