@@ -80,7 +80,6 @@ export class ClientComponent implements OnDestroy {
           return;
         }
         this.ticketsArray = [...Object.values(result)].reverse();
-        console.log(this.ticketsArray);
       });
     this.ticketsArray = [];
   }
