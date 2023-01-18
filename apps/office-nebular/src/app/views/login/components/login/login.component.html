@@ -1,14 +1,12 @@
-<div class="login-wrapper">
+<nb-card>
   <div class="header-text">
-    <div class="text-welcome">
+    <h1>
       Login <br />
       to account
-    </div>
-    <div class="text">
-      If you already have an account, just log in to use the system
-    </div>
-    <div class="text">Don't have an account?</div>
-    <div class="text text-register" routerLink="/register">Register here</div>
+    </h1>
+    <p>If you already have an account, just log in to use the system</p>
+    <p>Don't have an account?</p>
+    <p routerLink="/register">Register here</p>
   </div>
 
   <form [formGroup]="form" class="form-section">
@@ -37,17 +35,53 @@
         <div class="form-control-group accept-group">
           <nb-checkbox formControlName="check">Remember me</nb-checkbox>
         </div>
-        <div><a class="color-primary-500">Forgot Password?</a></div>
+        <div>
+          <a class="color-primary-500" (click)="resetPassword = !resetPassword"
+            >Forgot Password?</a
+          >
+        </div>
       </div>
+      <nb-card *ngIf="resetPassword">
+        <nb-card-body>
+          <nb-card-header
+            ><h4>
+              Please enter your login to reset your password
+            </h4></nb-card-header
+          >
+
+          <form [formGroup]="form">
+            <div class="form-control-group login-form-margin">
+              <input
+                nbInput
+                fullWidth
+                pattern=".+@.+\..+"
+                placeholder="Email"
+                autofocus
+                formControlName="resetPassword"
+              />
+            </div>
+            <div class="action-row">
+              <button
+                nbButton
+                fullWidth
+                (click)="forgetPassword()"
+                class="login-btn color-primary-500"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
       <div class="action-row">
-        <button nbButton fullWidth class="login-btn color-primary-500">
+        <button nbButton fullWidth (click)="onSubmit()" class="login-btn">
           Log In
         </button>
       </div>
       <div class="networks-icons">
-        <nb-icon icon="google"></nb-icon>
-        <nb-icon icon="facebook"></nb-icon>
+        <nb-icon (click)="onSignInWithFacebook()" icon="google"></nb-icon>
+        <nb-icon (click)="onSignInWithGoogle()" icon="facebook"></nb-icon>
       </div>
     </div>
   </form>
-</div>
+</nb-card>

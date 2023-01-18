@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SideMenuRoutes } from './side-menu.routes';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { NbSidebarModule, NbCardModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbInputModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -13,6 +15,11 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     FormsModule,
     ReactiveFormsModule,
     SideMenuRoutes,
+    NbThemeModule,
+    NbSidebarModule.forRoot(),
+    NbCardModule,
+    NbLayoutModule,
+    NbInputModule,
   ],
 })
 export class SideMenuModule {}

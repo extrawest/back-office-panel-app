@@ -17,9 +17,17 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/office-nebular/src/favicon.ico",
-          "apps/office-nebular/src/assets"
+          "apps/office-nebular/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
-        "styles": ["apps/office-nebular/src/styles.scss"],
+        "styles": [
+          "apps/office-nebular/src/styles.scss",
+          "node_modules/@nebular/theme/styles/prebuilt/default.css"
+        ],
         "scripts": []
       },
       "configurations": {

@@ -1,12 +1,10 @@
-@use 'themes' as *;
+@use './themes.scss' as *;
 
 @use '@nebular/theme/styles/globals' as *;
 
 @include nb-install() {
   @include nb-theme-global();
 }
-
-@import './themes.scss';
 
 * {
   box-sizing: border-box;
@@ -25,6 +23,11 @@ body {
   margin: 0;
 }
 
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
 nb-layout-header nav {
   background-color: white;
   box-shadow: none;
@@ -34,13 +37,41 @@ nb-layout .layout {
   background-color: white;
 }
 
+button,
+[nbButton] {
+  width: 40%;
+  height: 30px;
+  border-radius: 38px;
+  margin: 10px auto;
+}
+
+nb-card {
+  margin: 20px auto;
+  padding: 20px 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
 [nbInput] {
-  width: 100%;
+  width: 60%;
   height: 35px;
   border-radius: 38px;
   padding: 15px;
+  margin: 10px auto;
 }
 
 input[type='checkbox'] {
   border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.nb-theme-default [nbInput].status-basic {
+  background-color: transparent !important;
+  border: none;
+  height: 40px;
+  margin: 10px 0;
+}
+
+.nb-theme-default [nbInput].size-medium {
+  padding: 0 !important;
 }
