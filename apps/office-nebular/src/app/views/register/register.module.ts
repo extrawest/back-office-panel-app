@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbIconModule } from '@nebular/theme';
+import { NbIconModule, NbInputModule, NbButtonModule } from '@nebular/theme';
 
 const routes: Routes = [
   {
@@ -20,7 +20,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    NbIconModule
+    NbIconModule,
+    NbInputModule,
+    NbButtonModule,
   ],
 })
-export class RegisterModule { }
+export class RegisterModule {}

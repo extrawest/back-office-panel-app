@@ -4,7 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { NbCheckboxModule } from '@nebular/theme';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbIconModule, NbCardModule, NbThemeModule } from '@nebular/theme';
+import {
+  NbIconModule,
+  NbCardModule,
+  NbThemeModule,
+  NbInputModule,
+  NbButtonModule,
+} from '@nebular/theme';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
@@ -28,7 +34,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     NbThemeModule,
     NbIconModule,
-    NbCardModule
+    NbCardModule,
+    NbInputModule,
+    NbButtonModule,
   ],
 })
 export class LoginModule {}

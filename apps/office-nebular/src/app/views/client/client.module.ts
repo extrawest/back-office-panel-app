@@ -4,7 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientComponent } from './components/client/client.component';
-import { AddTicketComponent } from './components/add-ticket/add-ticket.component';
+import {
+  NbCardModule,
+  NbThemeModule,
+  NbTreeGridModule,
+  NbDialogModule,
+  NbInputModule,
+  NbSelectModule,
+  NbButtonModule,
+} from '@nebular/theme';
 
 const routes: Routes = [
   {
@@ -14,13 +22,20 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ClientComponent, AddTicketComponent],
+  declarations: [ClientComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NbCardModule,
+    NbThemeModule,
+    NbTreeGridModule,
+    NbDialogModule.forRoot(),
+    NbInputModule,
+    NbSelectModule,
+    NbButtonModule,
   ],
 })
 export class ClientModule {}
