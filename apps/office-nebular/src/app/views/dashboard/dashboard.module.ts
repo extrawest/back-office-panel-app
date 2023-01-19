@@ -8,6 +8,12 @@ import { DashboardChartComponent } from './components/dashboard-chart/dashboard-
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardTaskComponent } from './components/dashboard-task/dashboard-task.component';
 import { DashboardTicketComponent } from './components/dashboard-ticket/dashboard-ticket.component';
+import {
+  NbIconModule,
+  NbCardModule,
+  NbThemeModule,
+  NbCheckboxModule,
+} from '@nebular/theme';
 
 const routes: Routes = [
   {
@@ -32,6 +38,10 @@ const routes: Routes = [
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
+    NbIconModule,
+    NbCardModule,
+    NbThemeModule,
+    NbCheckboxModule,
   ],
 })
 export class DashboardModule {}
