@@ -1,8 +1,11 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, TemplateRef } from '@angular/core';
 import { Ticket } from '@office-app/services/ticket-interface';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NbDialogService } from '@nebular/theme';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Priorities } from '@office-app/services/priorities';
 
 @Component({
   selector: 'office-app-client',
@@ -11,6 +14,8 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ClientComponent implements OnDestroy {
   public ticketsArray: Ticket[] = [];
+  public form: FormGroup;
+  public priorities = Priorities;
   public displayModal: boolean;
   public headers: string[] = [
     'Ticket details',
@@ -19,7 +24,17 @@ export class ClientComponent implements OnDestroy {
     'Priority',
   ];
   private componentDestroyed$: Subject<void> = new Subject();
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private dialogService: NbDialogService,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      ticketDetails: [''],
+      customerName: [''],
+      date: [''],
+      priority: [''],
+    });
     this.getTickets();
   }
 
@@ -28,15 +43,21 @@ export class ClientComponent implements OnDestroy {
     this.componentDestroyed$.complete();
   }
 
-  public showModalDialog() {
-    this.displayModal = true;
+  public open(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, {});
   }
 
-  public closeAccountModal(event: boolean) {
-    if (event) {
-      this.displayModal = false;
-      this.getTickets();
-    }
+  public addTicket() {
+    const { ticketDetails, customerName, date, priority } =
+      this.form.getRawValue();
+    this.userService
+      .addTicket(ticketDetails, customerName, date, priority)
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe({
+        complete: () => {
+          this.getTickets();
+        },
+      });
   }
 
   private getTickets() {
