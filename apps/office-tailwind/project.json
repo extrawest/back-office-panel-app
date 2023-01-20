@@ -55,6 +55,9 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4204
+      },
       "configurations": {
         "production": {
           "browserTarget": "office-tailwind:build:production"
