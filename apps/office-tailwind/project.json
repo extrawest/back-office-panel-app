@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-tailwind",
         "index": "apps/office-tailwind/src/index.html",
         "main": "apps/office-tailwind/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": "apps/office-tailwind/src/polyfills.ts",
         "tsConfig": "apps/office-tailwind/tsconfig.app.json",
         "assets": [
           "apps/office-tailwind/src/favicon.ico",

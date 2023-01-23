@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-mui",
         "index": "apps/office-mui/src/index.html",
         "main": "apps/office-mui/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": "apps/office-mui/src/polyfills.ts",
         "tsConfig": "apps/office-mui/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
