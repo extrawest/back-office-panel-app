@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-prime-ng",
         "index": "apps/office-prime-ng/src/index.html",
         "main": "apps/office-prime-ng/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": "apps/office-prime-ng/src/polyfills.ts",
         "tsConfig": "apps/office-prime-ng/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
