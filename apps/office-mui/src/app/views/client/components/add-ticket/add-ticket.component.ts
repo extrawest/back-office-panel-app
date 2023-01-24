@@ -1,11 +1,10 @@
-import { Component, Inject, NgZone, ViewChild, Input, Output, OnDestroy } from '@angular/core';
+import { Component, Inject, NgZone, ViewChild, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
-import { PriorityEnum } from '@office-app/services/priority-enum';
 import { Ticket } from '@office-app/services/ticket-interface';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
