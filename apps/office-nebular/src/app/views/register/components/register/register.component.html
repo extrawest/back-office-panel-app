@@ -1,16 +1,14 @@
-<div>
-  <div class="header-text">
-    <h1>
-      Register <br />
-      your account
-    </h1>
-    <p>If you already have an account, just log in to use the system</p>
-    <p routerLink="/login">Login here</p>
-  </div>
+<div class="w-75 mx-auto mt-4 text-center">
+  <h1>
+    Register <br />
+    your account
+  </h1>
+  <p>If you already have an account, just log in to use the system</p>
+  <p routerLink="/login">Login here</p>
 
-  <form [formGroup]="form" class="form-section">
-    <div class="field-row-item">
-      <div class="form-control-group login-form-margin">
+  <form [formGroup]="form" class="w-75 mx-auto mt-4">
+    <div class="w-50 mx-auto">
+      <div class="mt-2">
         <input
           nbInput
           fullWidth
@@ -19,7 +17,7 @@
           formControlName="name"
         />
       </div>
-      <div class="form-control-group login-form-margin">
+      <div class="mt-2">
         <input
           nbInput
           fullWidth
@@ -30,7 +28,7 @@
         />
       </div>
 
-      <div class="form-control-group login-form-margin">
+      <div class="mt-2">
         <input
           nbInput
           fullWidth
@@ -39,19 +37,12 @@
           placeholder="Password"
         />
       </div>
-      <div class="action-row">
-        <button
-          nbButton
-          fullWidth
-          status="primary"
-          class="login-btn color-primary-500"
-        >
-          Register
-        </button>
+      <div class="mt-2">
+        <button nbButton fullWidth status="primary">Register</button>
       </div>
-      <div class="networks-icons">
-        <nb-icon icon="google"></nb-icon>
-        <nb-icon icon="facebook"></nb-icon>
+      <div class="d-flex justify-content-between mt-4">
+        <nb-icon icon="google" class="w-25 h-25 col-2"></nb-icon>
+        <nb-icon icon="facebook" class="w-25 h-25 col-2"></nb-icon>
       </div>
     </div>
   </form>
