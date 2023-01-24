@@ -14,6 +14,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DashboardTaskDialogComponent } from './components/dashboard-task-dialog/dashboard-task-dialog.component';
+import { DashboardTicketDialogComponent } from './components/dashboard-ticket-dialog/dashboard-ticket-dialog.component';
 
 const routes: Routes = [
   {
@@ -28,6 +34,8 @@ const routes: Routes = [
     DashboardChartComponent,
     DashboardTaskComponent,
     DashboardTicketComponent,
+    DashboardTaskDialogComponent,
+    DashboardTicketDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -40,9 +48,13 @@ const routes: Routes = [
     MatCheckboxModule,
     MatCardModule,
     MatGridListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     NgxEchartsModule.forRoot({
-      echarts: () => import('echarts')
-    })
+      echarts: () => import('echarts'),
+    }),
   ],
   providers: [MatIconRegistry],
 })
