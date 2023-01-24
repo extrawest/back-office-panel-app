@@ -1,13 +1,11 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyB5LCWhxcBk71vw6TxBL8gxjRq7k7oFq88',
-    authDomain: 'office-app-861a4.firebaseapp.com',
-    databaseURL:
-      'https://office-app-861a4-default-rtdb.europe-west1.firebasedatabase.app',
-    projectId: 'office-app-861a4',
-    storageBucket: 'office-app-861a4.appspot.com',
-    messagingSenderId: '394735462398',
-    appId: '1:394735462398:web:5ef5b3ba2a353585d142af',
+    apiKey: 'AIzaSyCKCEkV5o608FBp_wlUwWcnx5Y_vJf-2n8',
+    authDomain: 'office-tailwind.firebaseapp.com',
+    projectId: 'office-tailwind',
+    storageBucket: 'office-tailwind.appspot.com',
+    messagingSenderId: '67727907173',
+    appId: '1:67727907173:web:cb7ec482850798977e298c',
   },
 };
