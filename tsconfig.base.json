@@ -32,6 +32,15 @@
       "@office-app/services/priority-enum": [
         "libs/services/src/lib/enums/priority.enum.ts"
       ],
+      "@office-app/services/task-interface": [
+        "libs/services/src/lib/interfaces/task.interface.ts"
+      ],
+      "@office-app/services/task-types": [
+        "libs/services/src/lib/consts/task-type.const.ts"
+      ],
+      "@office-app/services/task-types-enum": [
+        "libs/services/src/lib/enums/task-type.enum.ts"
+      ],
       "@office-app/services/ticket-interface": [
         "libs/services/src/lib/interfaces/ticket.interface.ts"
       ],
