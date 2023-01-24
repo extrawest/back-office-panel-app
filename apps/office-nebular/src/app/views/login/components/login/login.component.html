@@ -1,17 +1,15 @@
-<nb-card>
-  <div class="header-text">
-    <h1>
-      Login <br />
-      to account
-    </h1>
-    <p>If you already have an account, just log in to use the system</p>
-    <p>Don't have an account?</p>
-    <p routerLink="/register">Register here</p>
-  </div>
+<div class="w-75 mx-auto mt-4 text-center">
+  <h1>
+    Login <br />
+    to account
+  </h1>
+  <p>If you already have an account, just log in to use the system</p>
+  <p>Don't have an account?</p>
+  <p routerLink="/register">Register here</p>
 
-  <form [formGroup]="form" class="form-section">
-    <div class="field-row-item">
-      <div class="form-control-group login-form-margin">
+  <form [formGroup]="form" class="w-75 mx-auto mt-4">
+    <div class="w-50 mx-auto">
+      <div class="mt-2">
         <input
           nbInput
           fullWidth
@@ -22,7 +20,7 @@
         />
       </div>
 
-      <div class="form-control-group login-form-margin">
+      <div class="mt-2">
         <input
           nbInput
           fullWidth
@@ -31,11 +29,11 @@
           placeholder="Password"
         />
       </div>
-      <div class="login-setup">
-        <div class="form-control-group accept-group">
+      <div class="d-flex justify-content-between mt-4">
+        <div class="col">
           <nb-checkbox formControlName="check">Remember me</nb-checkbox>
         </div>
-        <div>
+        <div class="col">
           <a class="color-primary-500" (click)="resetPassword = !resetPassword"
             >Forgot Password?</a
           >
@@ -49,8 +47,8 @@
             </h4></nb-card-header
           >
 
-          <form [formGroup]="form">
-            <div class="form-control-group login-form-margin">
+          <form [formGroup]="formReset">
+            <div>
               <input
                 nbInput
                 fullWidth
@@ -60,12 +58,12 @@
                 formControlName="resetPassword"
               />
             </div>
-            <div class="action-row">
+            <div>
               <button
                 nbButton
                 fullWidth
                 (click)="forgetPassword()"
-                class="login-btn color-primary-500"
+                class="btn btn-primary"
               >
                 Submit
               </button>
@@ -73,15 +71,21 @@
           </form>
         </nb-card-body>
       </nb-card>
-      <div class="action-row">
-        <button nbButton fullWidth (click)="onSubmit()" class="login-btn">
-          Log In
-        </button>
+      <div class="w-100">
+        <button nbButton fullWidth (click)="onSubmit()">Log In</button>
       </div>
-      <div class="networks-icons">
-        <nb-icon (click)="onSignInWithFacebook()" icon="google"></nb-icon>
-        <nb-icon (click)="onSignInWithGoogle()" icon="facebook"></nb-icon>
+      <div class="d-flex justify-content-between mt-4">
+        <nb-icon
+          (click)="onSignInWithFacebook()"
+          icon="google"
+          class="w-25 h-25 col-2"
+        ></nb-icon>
+        <nb-icon
+          (click)="onSignInWithGoogle()"
+          icon="facebook"
+          class="w-25 h-25 col-2"
+        ></nb-icon>
       </div>
     </div>
   </form>
-</nb-card>
+</div>
