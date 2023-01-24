@@ -16,6 +16,7 @@ import { Ticket } from './../interfaces/ticket.interface';
 import { PriorityEnum } from './../enums/priority.enum';
 import { Task } from '../interfaces/task.interface';
 import { TaskTypeEnum } from './../enums/task-type.enum';
+import { UnresolvedTicket } from '../interfaces/unresolved-ticket.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -114,6 +115,36 @@ export class UserService {
   getUserTasks() {
     return from(
       get(child(fbRef(getDatabase()), 'users/' + this.user + '/tasks'))
+    ).pipe(
+      map((data) => data.val()),
+      catchError((error) => throwError(() => error))
+    );
+  }
+
+  addUnresolvedTicket(
+    ticketName: string,
+    ticketNumber: number
+  ) {
+    const ticket: UnresolvedTicket = {
+      ticketName: ticketName,
+      ticketNumber: ticketNumber
+    };
+    const ticketId = push(
+      fbRef(getDatabase(), `users/` + this.user + '/unresolvedTickets'),
+      ticket
+    ).key;
+    ticket['ticketId'] = ticketId!;
+    return from(
+      update(
+        fbRef(getDatabase(), `users/` + this.user + '/unresolvedTickets/' + ticketId),
+        ticket
+      )
+    );
+  }
+
+  getUserUnresolvedTickets() {
+    return from(
+      get(child(fbRef(getDatabase()), 'users/' + this.user + '/unresolvedTickets'))
     ).pipe(
       map((data) => data.val()),
       catchError((error) => throwError(() => error))
