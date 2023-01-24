@@ -1,21 +1,30 @@
 <nb-card>
   <nb-card-header> Clients </nb-card-header>
   <nb-card-body>
-    <div style="display: flex; justify-content: space-between; margin: 30px 0">
-      <p>All tickets</p>
-      <div style="display: flex; justify-content: space-between">
-        <img
-          (click)="open(dialog)"
-          src="./assets/icons/plus-icon.svg"
-          style="width: 20px; height: 20px"
-        />
-        <img
-          src="./assets/icons/filter-icon.svg"
-          style="width: 20px; height: 20px"
-        />
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-9">
+          <p class="text-left">All tickets</p>
+        </div>
+        <div class="col">
+          <div class="row" (click)="open(dialog)">
+            <div class="col">Add</div>
+            <div class="col">
+              <img src="./assets/icons/plus-icon.svg" class="w-75 h-75" />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">Filter</div>
+            <div class="col">
+              <img src="./assets/icons/filter-icon.svg" class="w-75 h-75" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <table style="width: 100%">
+    <table class="w-100">
       <tr>
         <th *ngFor="let header of headers">{{ header }}</th>
       </tr>
@@ -30,12 +39,12 @@
 </nb-card>
 
 <ng-template #dialog let-ref="dialogRef">
-  <nb-card style="width: 70vh; height: 50vh">
+  <nb-card class="w-100 h-100">
     <nb-card-header>Add new ticket</nb-card-header>
     <nb-card-body>
       <form [formGroup]="form">
-        <div style="display: flex; justify-content: space-between">
-          <div class="form-control-group login-form-margin">
+        <div class="row">
+          <div class="col form-control-group login-form-margin">
             <input
               nbInput
               fullWidth
@@ -44,7 +53,7 @@
               formControlName="ticketDetails"
             />
           </div>
-          <div class="form-control-group login-form-margin">
+          <div class="col form-control-group login-form-margin">
             <input
               nbInput
               fullWidth
@@ -55,8 +64,8 @@
           </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between">
-          <div class="form-control-group login-form-margin">
+        <div class="row">
+          <div class="col form-control-group login-form-margin">
             <input
               nbInput
               fullWidth
@@ -64,19 +73,24 @@
               type="date"
               autofocus
               formControlName="date"
+              class="w-100"
             />
           </div>
-          <nb-select placeholder="Priority" formControlName="priority">
-            <nb-option *ngFor="let priority of priorities" [value]="priority">{{
-              priority
-            }}</nb-option>
-          </nb-select>
+          <div class="col">
+            <nb-select placeholder="Priority" formControlName="priority">
+              <nb-option
+                *ngFor="let priority of priorities"
+                [value]="priority"
+                >{{ priority }}</nb-option
+              >
+            </nb-select>
+          </div>
         </div>
       </form>
     </nb-card-body>
-    <nb-card-footer style="display: flex; justify-content: space-around">
-      <button nbButton (click)="addTicket()">Add</button>
-      <button nbButton (click)="ref.close()">Cancel</button>
+    <nb-card-footer class="row">
+      <button class="col-5" nbButton (click)="addTicket()">Add</button>
+      <button class="col-5" nbButton (click)="ref.close()">Cancel</button>
     </nb-card-footer>
   </nb-card>
 </ng-template>
