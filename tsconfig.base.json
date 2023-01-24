@@ -44,6 +44,9 @@
       "@office-app/services/ticket-interface": [
         "libs/services/src/lib/interfaces/ticket.interface.ts"
       ],
+      "@office-app/services/unresolved-ticket-interface": [
+        "libs/services/src/lib/interfaces/unresolved-ticket.interface.ts"
+      ],
       "@office-app/services/user-service": [
         "libs/services/src/lib/services/user.service.ts"
       ]
