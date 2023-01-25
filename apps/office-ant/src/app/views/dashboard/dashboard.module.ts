@@ -12,6 +12,13 @@ import { DashboardTaskComponent } from './components/dashboard-task/dashboard-ta
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { DashboardTaskDialogComponent } from './components/dashboard-task-dialog/dashboard-task-dialog.component';
+import { DashboardTicketDialogComponent } from './components/dashboard-ticket-dialog/dashboard-ticket-dialog.component';
 
 const routes: Routes = [
   {
@@ -26,6 +33,8 @@ const routes: Routes = [
     DashboardChartComponent,
     DashboardTicketComponent,
     DashboardTaskComponent,
+    DashboardTaskDialogComponent,
+    DashboardTicketDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -39,7 +48,12 @@ const routes: Routes = [
     NzGridModule,
     NzDividerModule,
     NzCheckboxModule,
-    NzCardModule
+    NzCardModule,
+    NzInputModule,
+    NzFormModule,
+    NzButtonModule,
+    NzSelectModule,
+    NzModalModule,
   ],
 })
 export class DashboardModule {}
