@@ -3,6 +3,8 @@ export const environment = {
   firebaseConfig: {
     apiKey: 'AIzaSyAXYRxIwoAbgGld5J-o3C-a2n-wDbrZyUk',
     authDomain: 'office-nebular.firebaseapp.com',
+    databaseURL:
+      'https://office-nebular-default-rtdb.europe-west1.firebasedatabase.app',
     projectId: 'office-nebular',
     storageBucket: 'office-nebular.appspot.com',
     messagingSenderId: '613474323250',

@@ -9,7 +9,54 @@
   </div>
   <hr />
   <div class="d-flex justify-content-between mt-3">
-    <div>Waiting on Feature Request</div>
-    <div>4238</div>
+    <div class="col-4 d-flex justify-content-start">Create new ticket</div>
+    <div class="col-1" (click)="open(dialogWindow)">
+      <img src="./assets/icons/add-icon.svg" />
+    </div>
+  </div>
+  <div *ngFor="let ticket of unresolvedTickets">
+    <hr />
+    <div class="d-flex justify-content-between">
+      <div class="col-8 d-flex justify-content-start">
+        <nb-checkbox>{{ ticket.ticketName }}</nb-checkbox>
+      </div>
+      <div class="col-2">{{ ticket.ticketNumber }}</div>
+    </div>
   </div>
 </nb-card>
+
+<ng-template #dialogWindow let-ref="dialogRef">
+  <nb-card class="w-100 h-100">
+    <nb-card-header>Add new task</nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Ticket name"
+              autofocus
+              formControlName="ticketName"
+            />
+          </div>
+          <div class="col">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Ticket number"
+              autofocus
+              formControlName="ticketNumber"
+            />
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+    <nb-card-footer class="row">
+      <button class="col-5" nbButton (click)="addUnresolvedTicket()">
+        Add
+      </button>
+      <button class="col-5" nbButton (click)="ref.close()">Cancel</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

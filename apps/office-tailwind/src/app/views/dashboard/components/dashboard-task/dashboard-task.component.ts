@@ -42,7 +42,6 @@ export class DashboardTaskComponent implements OnDestroy {
           return;
         }
         this.tasks = [...Object.values(result)].reverse();
-        console.log(this.tasks);
       });
     this.tasks = [];
   }
