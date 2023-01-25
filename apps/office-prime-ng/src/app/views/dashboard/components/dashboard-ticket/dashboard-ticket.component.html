@@ -5,17 +5,30 @@
   </div>
 
   <div class="mt-6">
-    <div>
+    <div class="flex justify-content-between">
+      <div class="text-base font-bold text-gray-500">Create new task</div>
+      <img
+        src="./assets/icons/add-icon.svg"
+        class="cursor-pointer"
+        (click)="showModalDialog()"
+      />
+    </div>
+    <div *ngFor="let ticket of unresolvedTickets">
+      <p-divider></p-divider>
       <div class="flex justify-content-between">
         <div class="p-field-checkbox">
           <p-checkbox inputId="check"></p-checkbox>
-          <label for="check" class="text-xs font-bold"
-            >Waiting on Feature Request</label
-          >
+          <label for="check" class="text-xs font-bold">{{
+            ticket.ticketName
+          }}</label>
         </div>
-        <div class="text-xs text-gray-600 font-medium">3345</div>
+        <div class="text-base font-bold">{{ ticket.ticketNumber }}</div>
       </div>
-      <p-divider></p-divider>
     </div>
   </div>
 </div>
+
+<office-app-dashboard-ticket-dialog
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-dashboard-ticket-dialog>
