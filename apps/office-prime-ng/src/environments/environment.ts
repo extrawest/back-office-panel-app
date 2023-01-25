@@ -1,11 +1,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyAfxGmi463a19PsYDqZchV7R0Nn8D2xDp8',
-    authDomain: 'office-ngprime.firebaseapp.com',
-    projectId: 'office-ngprime',
-    storageBucket: 'office-ngprime.appspot.com',
-    messagingSenderId: '1090811859757',
-    appId: '1:1090811859757:web:4473a230af538d2f8fb9a4',
+    apiKey: 'AIzaSyDNha-_gtPlr2k_-Qp1cQMzLFaRK6YoQC0',
+    authDomain: 'office-ng-prime.firebaseapp.com',
+    databaseURL:
+      'https://office-ng-prime-default-rtdb.europe-west1.firebasedatabase.app',
+    projectId: 'office-ng-prime',
+    storageBucket: 'office-ng-prime.appspot.com',
+    messagingSenderId: '628960793385',
+    appId: '1:628960793385:web:f978d23395190114f51d38',
   },
 };
