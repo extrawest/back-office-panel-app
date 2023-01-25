@@ -9,14 +9,22 @@
   </div>
   <div nz-row>
     <div nz-col nzSpan="22">Create new task</div>
-    <div nz-col nzSpan="2">
+    <div nz-col nzSpan="2" (click)="showModalDialog()">
       <img src="./assets/icons/add-icon.svg" />
     </div>
   </div>
-  <nz-divider></nz-divider>
-  <div nz-row>
-    <div>
-      <label nz-checkbox>Finish ticket update</label>
+  <div nz-row *ngFor="let task of tasks">
+    <nz-divider></nz-divider>
+    <div nz-col nzSpan="20">
+      <label nz-checkbox>{{ task.taskName }}</label>
+    </div>
+    <div nz-col nzSpan="4">
+      {{ task.taskStatus }}
     </div>
   </div>
 </div>
+
+<office-app-dashboard-task-dialog
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-dashboard-task-dialog>
