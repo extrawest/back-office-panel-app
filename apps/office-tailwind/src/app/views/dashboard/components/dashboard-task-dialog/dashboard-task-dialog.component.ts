@@ -3,21 +3,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TaskTypes } from '@office-app/services/task-types';
 
 @Component({
-  selector: 'office-app-dashboard-ticket-dialog',
-  templateUrl: './dashboard-ticket-dialog.component.html',
-  styleUrls: ['./dashboard-ticket-dialog.component.less'],
+  selector: 'office-app-dashboard-task-dialog',
+  templateUrl: './dashboard-task-dialog.component.html',
+  styleUrls: ['./dashboard-task-dialog.component.css'],
 })
-export class DashboardTicketDialogComponent implements OnDestroy {
+export class DashboardTaskDialogComponent implements OnDestroy {
   @Output() isModalClosed = new EventEmitter<boolean>();
   public form: FormGroup;
-  private componentDestroyed$: Subject<void> = new Subject();
   public isModalVisible = true;
-  constructor(private userService: UserService, private fb: FormBuilder) {
+  public statuses = TaskTypes;
+  private componentDestroyed$: Subject<void> = new Subject();
+  constructor(private fb: FormBuilder, private userService: UserService) {
     this.form = this.fb.group({
-      ticketName: [''],
-      ticketNumber: [''],
+      taskName: [''],
+      taskStatus: [''],
     });
   }
 
@@ -31,10 +33,10 @@ export class DashboardTicketDialogComponent implements OnDestroy {
     this.isModalClosed.emit(true);
   }
 
-  public addUnresolvedTicket() {
-    const { ticketName, ticketNumber } = this.form.getRawValue();
+  public addTask() {
+    const { taskName, taskStatus } = this.form.getRawValue();
     this.userService
-      .addUnresolvedTicket(ticketName, ticketNumber)
+      .addTask(taskName, taskStatus)
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({
         complete: () => {

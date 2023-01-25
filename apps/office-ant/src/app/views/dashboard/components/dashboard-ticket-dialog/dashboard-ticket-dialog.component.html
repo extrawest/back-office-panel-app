@@ -1,6 +1,6 @@
 <nz-modal
   [(nzVisible)]="isModalVisible"
-  nzTitle="Add new task"
+  nzTitle="Add new ticket"
   (nzOnCancel)="closeModal()"
   [nzOkDisabled]="true"
 >
@@ -24,7 +24,7 @@
             <nz-form-item>
               <nz-input-group>
                 <input
-                  type="text"
+                  type="number"
                   nz-input
                   formControlName="ticketNumber"
                   placeholder="Ticket number"
@@ -40,7 +40,7 @@
             nzOffset="9"
             nz-button
             nzType="primary"
-            (click)="addTask()"
+            (click)="addUnresolvedTicket()"
           >
             Submit
           </button>

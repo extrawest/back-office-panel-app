@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'office-app-dashboard-ticket-dialog',
   templateUrl: './dashboard-ticket-dialog.component.html',
-  styleUrls: ['./dashboard-ticket-dialog.component.less'],
+  styleUrls: ['./dashboard-ticket-dialog.component.css'],
 })
 export class DashboardTicketDialogComponent implements OnDestroy {
   @Output() isModalClosed = new EventEmitter<boolean>();

@@ -6,6 +6,9 @@ import { DashboardTaskComponent } from './components/dashboard-task/dashboard-ta
 import { DashboardTicketComponent } from './components/dashboard-ticket/dashboard-ticket.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardTaskDialogComponent } from './components/dashboard-task-dialog/dashboard-task-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardTicketDialogComponent } from './components/dashboard-ticket-dialog/dashboard-ticket-dialog.component';
 
 const routes: Routes = [
   {
@@ -20,10 +23,14 @@ const routes: Routes = [
     DashboardChartComponent,
     DashboardTaskComponent,
     DashboardTicketComponent,
+    DashboardTaskDialogComponent,
+    DashboardTicketDialogComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

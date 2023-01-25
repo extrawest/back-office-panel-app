@@ -31,7 +31,7 @@ export class DashboardTicketDialogComponent implements OnDestroy {
     this.isModalClosed.emit(true);
   }
 
-  public addTask() {
+  public addUnresolvedTicket() {
     const { ticketName, ticketNumber } = this.form.getRawValue();
     this.userService
       .addUnresolvedTicket(ticketName, ticketNumber)
