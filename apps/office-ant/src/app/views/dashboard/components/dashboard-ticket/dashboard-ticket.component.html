@@ -1,16 +1,28 @@
 <div style="border: 1px solid #dfe0eb; padding: 20px">
   <div nz-row>
-    <div nz-col nzSpan="16">
+    <div nz-col nzSpan="18">
       <h4>Unresolved tickets</h4>
     </div>
-    <div nz-col nzSpan="8">
+    <div nz-col nzSpan="6">
       <h4>View details</h4>
     </div>
   </div>
   <div nz-row>
-    <div>
-      <label nz-checkbox>Finish ticket update</label>
+    <div nz-col nzSpan="22">Create new task</div>
+    <div nz-col nzSpan="2" (click)="showModalDialog()">
+      <img src="./assets/icons/add-icon.svg" />
     </div>
   </div>
-  <nz-divider></nz-divider>
+  <div nz-row *ngFor="let ticket of unresolvedTickets">
+    <nz-divider></nz-divider>
+    <div nz-col nzSpan="22">
+      <label nz-checkbox>{{ ticket.ticketName }}</label>
+    </div>
+    <div nz-col nzSpan="2">{{ ticket.ticketNumber }}</div>
+  </div>
 </div>
+
+<office-app-dashboard-ticket-dialog
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-dashboard-ticket-dialog>
