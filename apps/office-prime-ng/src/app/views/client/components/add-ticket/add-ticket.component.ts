@@ -45,7 +45,7 @@ export class AddTicketComponent implements OnDestroy {
     const { ticketDetails, customerName, date, priority } =
       this.form.getRawValue();
     this.userService
-      .addTicket(ticketDetails, customerName, date, priority)
+      .addTicket(ticketDetails, customerName, date, priority.name)
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({
         complete: () => {
