@@ -1,4 +1,4 @@
-<div class="p-3 w-12 border-1 border-gray-300 border-round-lg">
+<div class="p-3 w-12 border-1 border-gray-300 border-round-lg h-full">
   <div class="flex justify-content-between">
     <div class="text-lg font-semibold text-color">Tasks</div>
     <div class="text-base font-semibold text-blue-600">View all</div>
@@ -6,18 +6,28 @@
   <div class="mt-6">
     <div class="flex justify-content-between">
       <div class="text-base font-bold text-gray-500">Create new task</div>
-      <img src="./assets/icons/add-icon.svg" class="cursor-pointer" />
+      <img
+        src="./assets/icons/add-icon.svg"
+        class="cursor-pointer"
+        (click)="showModalDialog()"
+      />
     </div>
-    <div>
+    <div *ngFor="let task of tasks">
       <p-divider></p-divider>
       <div class="flex justify-content-between">
         <div class="p-field-checkbox">
           <p-checkbox inputId="check"></p-checkbox>
-          <label for="check" class="text-xs font-bold"
-            >Finish ticket update</label
-          >
+          <label for="check" class="text-xs font-bold">{{
+            task.taskName
+          }}</label>
         </div>
+        <div class="text-base font-bold">{{ task.taskStatus }}</div>
       </div>
     </div>
   </div>
 </div>
+
+<office-app-dashboard-task-dialog
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-dashboard-task-dialog>
