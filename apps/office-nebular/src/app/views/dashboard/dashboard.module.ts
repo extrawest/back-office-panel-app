@@ -13,6 +13,12 @@ import {
   NbCardModule,
   NbThemeModule,
   NbCheckboxModule,
+  NbTreeGridModule,
+  NbDialogModule,
+  NbInputModule,
+  NbSelectModule,
+  NbButtonModule,
+  NbDialogService,
 } from '@nebular/theme';
 
 const routes: Routes = [
@@ -38,10 +44,16 @@ const routes: Routes = [
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
+    NbDialogModule.forRoot(),
     NbIconModule,
     NbCardModule,
     NbThemeModule,
     NbCheckboxModule,
+    NbTreeGridModule,
+    NbInputModule,
+    NbSelectModule,
+    NbButtonModule,
   ],
+  providers: [NbDialogService],
 })
 export class DashboardModule {}
