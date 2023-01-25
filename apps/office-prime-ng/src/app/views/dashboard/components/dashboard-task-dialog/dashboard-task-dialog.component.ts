@@ -41,7 +41,7 @@ export class DashboardTaskDialogComponent implements OnDestroy {
   public addTask() {
     const { taskName, taskStatus } = this.form.getRawValue();
     this.userService
-      .addTask(taskName, taskStatus)
+      .addTask(taskName, taskStatus.name)
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({
         complete: () => {
