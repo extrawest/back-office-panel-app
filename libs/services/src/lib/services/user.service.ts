@@ -17,6 +17,7 @@ import { PriorityEnum } from './../enums/priority.enum';
 import { Task } from '../interfaces/task.interface';
 import { TaskTypeEnum } from './../enums/task-type.enum';
 import { UnresolvedTicket } from '../interfaces/unresolved-ticket.interface';
+import { Graph } from '../interfaces/graph.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -145,6 +146,33 @@ export class UserService {
   getUserUnresolvedTickets() {
     return from(
       get(child(fbRef(getDatabase()), 'users/' + this.user + '/unresolvedTickets'))
+    ).pipe(
+      map((data) => data.val()),
+      catchError((error) => throwError(() => error))
+    );
+  }
+
+
+  addGraphData() {
+    const graphData: Graph = {
+      graphData: [820, 932, 901, 934, 1290, 1430, 1550, 1200, 1650, 1680],
+    }
+    const graphId = push(
+      fbRef(getDatabase(), `users/` + this.user + '/graphData'),
+      graphData
+    ).key;
+    graphData['graphId'] = graphId!;
+    return from(
+      update(
+        fbRef(getDatabase(), `users/` + this.user + '/graphData/' + graphId),
+        graphData
+      )
+    );
+  }
+
+  getGraphData() {
+    return from(
+      get(child(fbRef(getDatabase()), 'users/' + this.user + '/graphData'))
     ).pipe(
       map((data) => data.val()),
       catchError((error) => throwError(() => error))

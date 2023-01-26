@@ -111,3 +111,7 @@ mat-divider {
   display: flex;
   justify-content: flex-start !important;
 }
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  text-align: start;
+}

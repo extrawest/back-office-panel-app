@@ -20,6 +20,9 @@
       "@office-app/services/auth-service": [
         "libs/services/src/lib/services/auth.service.ts"
       ],
+      "@office-app/services/graph-interface": [
+        "libs/services/src/lib/interfaces/graph.interface.ts"
+      ],
       "@office-app/services/local-storage-service": [
         "libs/services/src/lib/services/local-storage.service.ts"
       ],
