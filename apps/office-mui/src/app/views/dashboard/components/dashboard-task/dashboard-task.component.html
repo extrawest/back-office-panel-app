@@ -11,8 +11,8 @@
       ></mat-grid-tile>
     </mat-grid-list>
     <div>
-      <mat-divider></mat-divider>
       <mat-grid-list *ngFor="let task of tasks" rowHeight="50px" cols="10">
+        <mat-divider></mat-divider>
         <mat-grid-tile colspan="9">
           <mat-checkbox> {{ task.taskName }} </mat-checkbox></mat-grid-tile
         >
