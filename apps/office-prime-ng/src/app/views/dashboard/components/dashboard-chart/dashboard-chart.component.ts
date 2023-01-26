@@ -1,42 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { EChartsOption } from 'echarts';
+import { UserService } from '@office-app/services/user-service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'office-app-dashboard-chart',
   templateUrl: './dashboard-chart.component.html',
-  styleUrls: ['./dashboard-chart.component.scss'],
+  styleUrls: ['./dashboard-chart.component.less'],
 })
-export class DashboardChartComponent {
-  chartOption: EChartsOption = {
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    },
-    yAxis: {
-      type: 'value',
-    },
-    series: [
-      {
-        name: 'todayData',
-        data: [820, 932, 901, 934, 1290, 1430, 1550, 1200, 1650, 1680],
-        type: 'line',
-        areaStyle: {},
-        colorBy: 'data',
+export class DashboardChartComponent implements OnDestroy {
+  public graphData: any[] = [];
+  private componentDestroyed$: Subject<void> = new Subject();
+  public chartOption: EChartsOption;
+  constructor(private userService: UserService) {
+    this.userService.addGraphData().subscribe({
+      complete: () => {
+        this.getGraphData();
       },
-      {
-        name: 'yesterdayData',
-        data: [620, 932, 1301, 1334, 1590, 830, 650, 800, 765, 680],
-        type: 'line',
-        areaStyle: {},
-      },
-    ],
-  };
-  barChartcustomColors = [
-    { name: '1', value: '#febb00' },
-    { name: '2', value: '#1dd068' },
-    { name: '3', value: '#1dd068' },
-    { name: '4', value: '#febb00' },
-  ];
-  constructor() {}
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
+  }
+
+  private getGraphData() {
+    this.userService
+      .getGraphData()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((result: any[]) => {
+        if (!result) {
+          return;
+        }
+        this.graphData = [...Object.values(result)].reverse();
+        this.chartOption = {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          },
+          yAxis: {
+            type: 'value',
+          },
+          series: [
+            {
+              name: 'todayData',
+              data: this.graphData[0]['graphData'],
+              type: 'line',
+              areaStyle: {},
+              colorBy: 'data',
+            },
+          ],
+        };
+      });
+  }
 }
