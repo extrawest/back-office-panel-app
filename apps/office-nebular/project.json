@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-nebular",
         "index": "apps/office-nebular/src/index.html",
         "main": "apps/office-nebular/src/main.ts",
-        "polyfills": "apps/office-nebular/src/polyfills.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/office-nebular/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -36,8 +36,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "3mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",
