@@ -9,6 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -22,7 +23,8 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzIconModule,
     NzButtonModule,
     NzUploadModule,
-    NzSpaceModule
+    NzSpaceModule,
+    FooterModule
   ],
 })
 export class SideMenuModule {}

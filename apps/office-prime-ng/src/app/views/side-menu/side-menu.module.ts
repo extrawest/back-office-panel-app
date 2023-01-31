@@ -6,6 +6,7 @@ import { SideMenuRoutes } from './side-menu.routes';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { FileUploadModule } from 'primeng/fileupload';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -17,6 +18,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     SideMenuRoutes,
     SidebarModule,
     FileUploadModule,
+    FooterModule
   ],
 })
 export class SideMenuModule {}

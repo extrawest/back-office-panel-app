@@ -6,6 +6,7 @@ import { SideMenuRoutes } from './side-menu.routes';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { NbSidebarModule, NbCardModule, NbLayoutModule } from '@nebular/theme';
 import { NbThemeModule, NbInputModule } from '@nebular/theme';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -20,6 +21,7 @@ import { NbThemeModule, NbInputModule } from '@nebular/theme';
     NbCardModule,
     NbLayoutModule,
     NbInputModule,
+    FooterModule
   ],
 })
 export class SideMenuModule {}
