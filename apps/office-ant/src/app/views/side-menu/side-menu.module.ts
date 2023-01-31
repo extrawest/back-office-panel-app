@@ -22,7 +22,7 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzIconModule,
     NzButtonModule,
     NzUploadModule,
-    NzSpaceModule,
+    NzSpaceModule
   ],
 })
 export class SideMenuModule {}

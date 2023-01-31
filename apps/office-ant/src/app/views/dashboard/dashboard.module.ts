@@ -19,6 +19,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { DashboardTaskDialogComponent } from './components/dashboard-task-dialog/dashboard-task-dialog.component';
 import { DashboardTicketDialogComponent } from './components/dashboard-ticket-dialog/dashboard-ticket-dialog.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 const routes: Routes = [
   {
@@ -54,6 +55,7 @@ const routes: Routes = [
     NzButtonModule,
     NzSelectModule,
     NzModalModule,
+    NzIconModule
   ],
 })
 export class DashboardModule {}
