@@ -68,7 +68,7 @@ export class UserService {
       fbRef(getDatabase(), `users/` + this.user + '/tickets'),
       ticket
     ).key;
-    ticket['ticketId'] = ticketId!;
+    if (ticketId) ticket['ticketId'] = ticketId;
     return from(
       update(
         fbRef(getDatabase(), `users/` + this.user + '/tickets/' + ticketId),
@@ -104,7 +104,7 @@ export class UserService {
       fbRef(getDatabase(), `users/` + this.user + '/tasks'),
       task
     ).key;
-    task['taskId'] = taskId!;
+    if (taskId) task['taskId'] = taskId;
     return from(
       update(
         fbRef(getDatabase(), `users/` + this.user + '/tasks/' + taskId),
@@ -122,22 +122,22 @@ export class UserService {
     );
   }
 
-  addUnresolvedTicket(
-    ticketName: string,
-    ticketNumber: number
-  ) {
+  addUnresolvedTicket(ticketName: string, ticketNumber: number) {
     const ticket: UnresolvedTicket = {
       ticketName: ticketName,
-      ticketNumber: ticketNumber
+      ticketNumber: ticketNumber,
     };
     const ticketId = push(
       fbRef(getDatabase(), `users/` + this.user + '/unresolvedTickets'),
       ticket
     ).key;
-    ticket['ticketId'] = ticketId!;
+    if (ticketId) ticket['ticketId'] = ticketId;
     return from(
       update(
-        fbRef(getDatabase(), `users/` + this.user + '/unresolvedTickets/' + ticketId),
+        fbRef(
+          getDatabase(),
+          `users/` + this.user + '/unresolvedTickets/' + ticketId
+        ),
         ticket
       )
     );
@@ -145,18 +145,19 @@ export class UserService {
 
   getUserUnresolvedTickets() {
     return from(
-      get(child(fbRef(getDatabase()), 'users/' + this.user + '/unresolvedTickets'))
+      get(
+        child(fbRef(getDatabase()), 'users/' + this.user + '/unresolvedTickets')
+      )
     ).pipe(
       map((data) => data.val()),
       catchError((error) => throwError(() => error))
     );
   }
 
-
   addGraphData() {
     const graphData: Graph = {
       graphData: [820, 932, 901, 934, 1290, 1430, 1550, 1200, 1650, 1680],
-    }
+    };
     const graphId = push(
       fbRef(getDatabase(), `users/` + this.user + '/graphData'),
       graphData
