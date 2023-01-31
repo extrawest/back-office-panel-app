@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-ant",
         "index": "apps/office-ant/src/index.html",
         "main": "apps/office-ant/src/main.ts",
-        "polyfills": "apps/office-ant/src/polyfills.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/office-ant/tsconfig.app.json",
         "inlineStyleLanguage": "less",
         "assets": [
@@ -40,8 +40,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",
