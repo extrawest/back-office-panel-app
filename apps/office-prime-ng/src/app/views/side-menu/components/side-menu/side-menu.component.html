@@ -34,6 +34,7 @@
             class="list-none mt-3 flex align-items-center cursor-pointer"
             *ngFor="let item of menuItems"
             [routerLink]="item.url"
+            [style]="item.styles"
           >
             <img [src]="item.image" />
             <a class="ml-2 text-sm text-gray-700">{{ item.name }}</a>
