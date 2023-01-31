@@ -112,6 +112,17 @@ mat-divider {
   justify-content: flex-start !important;
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
   text-align: start;
+}
+
+p[ng-reflect-router-link],
+h3[ng-reflect-router-link],
+li[ng-reflect-router-link],
+mat-icon,
+label,
+button {
+  cursor: pointer;
 }
