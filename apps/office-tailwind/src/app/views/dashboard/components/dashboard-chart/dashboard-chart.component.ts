@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'office-app-dashboard-chart',
   templateUrl: './dashboard-chart.component.html',
-  styleUrls: ['./dashboard-chart.component.less'],
+  styleUrls: ['./dashboard-chart.component.css'],
 })
 export class DashboardChartComponent implements OnDestroy {
   public graphData: any[] = [];

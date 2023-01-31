@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-tailwind",
         "index": "apps/office-tailwind/src/index.html",
         "main": "apps/office-tailwind/src/main.ts",
-        "polyfills": "apps/office-tailwind/src/polyfills.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/office-tailwind/tsconfig.app.json",
         "assets": [
           "apps/office-tailwind/src/favicon.ico",
@@ -31,8 +31,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",

@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/office-nebular",
         "index": "apps/office-nebular/src/index.html",
         "main": "apps/office-nebular/src/main.ts",
-        "polyfills": "apps/office-nebular/src/polyfills.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/office-nebular/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
