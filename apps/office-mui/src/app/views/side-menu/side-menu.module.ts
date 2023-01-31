@@ -6,6 +6,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SideMenuRoutes } from './side-menu.routes';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -17,6 +18,7 @@ import { SideMenuRoutes } from './side-menu.routes';
     MatSidenavModule,
     MatListModule,
     SideMenuRoutes,
+    FooterModule
   ],
 })
 export class SideMenuModule {}

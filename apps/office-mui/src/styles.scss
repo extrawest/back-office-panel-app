@@ -126,3 +126,19 @@ label,
 button {
   cursor: pointer;
 }
+
+footer {
+  height: 150px;
+  padding: 30px;
+}
+
+footer img {
+  width: 25%;
+  margin: auto;
+}
+
+footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
