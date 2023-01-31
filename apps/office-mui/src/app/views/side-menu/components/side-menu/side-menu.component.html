@@ -35,6 +35,7 @@
         mat-list-item
         *ngFor="let item of menuItems"
         [routerLink]="item.url"
+        [style]="item.styles"
       >
         <img
           matListItemAvatar
