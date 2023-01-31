@@ -1,0 +1,38 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+build:
+  only:
+    refs:
+      - development
+  stage: build
+  before_script:
+    - npm i --force
+  script:
+    - npm run build:all
+  environment:
+    name: 'Development'
+  artifacts:
+    expire_in: '300'
+    paths:
+      - dist
+
+deploy_dev:
+  only:
+    - development
+  except:
+    - master
+  stage: deploy
+  before_script:
+    - npm i -g firebase-tools
+  script:
+    - firebase deploy --only hosting:office-ant --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting:office-mui --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting:office-nebular --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting:office-prime-ng --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting:office-tailwind --token $FIREBASE_TOKEN
+  environment:
+    name: 'Development'
