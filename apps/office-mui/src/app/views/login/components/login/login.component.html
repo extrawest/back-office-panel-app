@@ -69,10 +69,10 @@
         ></mat-grid-tile
       >
       <mat-grid-tile colspan="3">
-        <div (click)="resetPassword = !resetPassword">
-          Forgot password ?
-        </div></mat-grid-tile
-      >
+        <button mat-button (click)="resetPassword = !resetPassword">
+          Forgot password
+        </button>
+      </mat-grid-tile>
     </mat-grid-list>
     <mat-card *ngIf="resetPassword">
       <form [formGroup]="formReset">
