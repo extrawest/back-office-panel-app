@@ -1,15 +1,7 @@
 @use '@angular/material' as mat;
 @import '@angular/material/theming';
 @import '../themes/theme.scss';
-@import './../../app/views/login/components/login/login.component.mixin';
-@import './../../app/views/register/components/register/register.component.mixin';
-
-@mixin template-mixin($theme) {
-  @include login-mixin($theme);
-  @include register-mixin($theme);
-}
 
 .custom-theme {
   @include angular-material-theme($custom-theme);
-  @include template-mixin($custom-theme);
 }
