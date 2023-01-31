@@ -5,6 +5,7 @@ import { LocalStorageService } from '@office-app/services/local-storage-service'
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'office-app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private notification: NzNotificationService
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.email]],
@@ -87,7 +89,12 @@ export class LoginComponent implements OnDestroy {
     this.router.navigate(['/home']);
   }
 
-  private showMessage(massage: string) {
-    this.message.next(massage);
+  private showMessage(message: string) {
+    this.notification
+      .blank(
+        'Error',
+        `${message}`
+      )
+      .onClick.subscribe();
   }
 }

@@ -7,6 +7,7 @@ import { environment } from './../../../../../environments/environment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { menuItems } from '@office-app/services/menu-items';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'office-app-side-menu',
@@ -47,8 +48,8 @@ export class SideMenuComponent implements OnDestroy {
       });
   }
 
-  public uploadPhoto(event: any): void {
-    const file = event.currentFiles[0];
+  public uploadPhoto(event: NzUploadChangeParam): void {
+    const file = event.file.originFileObj;
     const reader = new FileReader();
     if (file) {
       reader.readAsDataURL(file);

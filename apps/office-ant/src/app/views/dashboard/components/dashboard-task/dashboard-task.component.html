@@ -10,7 +10,7 @@
   <div nz-row>
     <div nz-col nzSpan="22">Create new task</div>
     <div nz-col nzSpan="2" (click)="showModalDialog()">
-      <img src="./assets/icons/add-icon.svg" />
+      <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
     </div>
   </div>
   <div nz-row *ngFor="let task of tasks">

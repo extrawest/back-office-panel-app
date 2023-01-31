@@ -11,9 +11,20 @@
             />
           </div>
           <ng-template #defaultImage>
-            <img src="./assets/icons/unknown-user.png" alt="Profile photo"
-            style="width: 60px; height: 60px; border-radius: 50%" />
+            <img
+              src="./assets/icons/unknown-user.png"
+              alt="Profile photo"
+              style="width: 60px; height: 60px; border-radius: 50%"
+            />
           </ng-template>
+        </div>
+        <div *nzSpaceItem>
+          <nz-upload [nzDisabled]="false" (nzChange)="uploadPhoto($event)">
+            <button nz-button>
+              <span nz-icon nzType="upload"></span>
+              Click to Upload
+            </button>
+          </nz-upload>
         </div>
         <div *nzSpaceItem>
           <h2>{{ userName }}</h2>
@@ -21,15 +32,27 @@
         </div>
         <div *nzSpaceItem>
           <ul>
-            <li *ngFor="let item of menuItems" nz-row [routerLink]="item.url">
+            <li
+              *ngFor="let item of menuItems"
+              nz-row
+              [routerLink]="item.url"
+              [style]="item.styles"
+            >
               <img [src]="item.image" />
               <div>{{ item.name }}</div>
             </li>
           </ul>
         </div>
-        <div *nzSpaceItem nz-row (click)="onLogout()">
-          <img src="./assets/icons/logout-icon.png" />
-          <div>Log out</div>
+        <div *nzSpaceItem (click)="onLogout()">
+          <span
+            nz-col
+            nzSpan="6"
+            nz-icon
+            nzType="logout"
+            nzTheme="outline"
+            style="font-size: 28px; margin-top: 10px"
+          ></span>
+          <a>Log out</a>
         </div>
       </nz-space>
     </div>
