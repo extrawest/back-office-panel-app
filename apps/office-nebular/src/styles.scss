@@ -102,3 +102,7 @@ input[type='checkbox'] {
 .nb-theme-default [nbInput].size-medium {
   padding: 0 !important;
 }
+
+p[ng-reflect-router-link], h3[ng-reflect-router-link], li[ng-reflect-router-link], button, a, nb-icon {
+  cursor: pointer;
+}
