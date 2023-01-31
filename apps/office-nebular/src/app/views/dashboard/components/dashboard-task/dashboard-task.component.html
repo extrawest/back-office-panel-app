@@ -10,9 +10,9 @@
   <hr />
   <div class="d-flex justify-content-between mt-3">
     <div class="col-4 d-flex justify-content-start">Create new task</div>
-    <div class="col-1" (click)="open(dialogWindow)">
+    <a class="col-1" (click)="open(dialogWindow)">
       <img src="./assets/icons/add-icon.svg" />
-    </div>
+    </a>
   </div>
   <div nz-row *ngFor="let task of tasks">
     <hr />
