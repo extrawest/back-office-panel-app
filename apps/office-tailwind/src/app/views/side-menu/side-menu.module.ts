@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SideMenuRoutes } from './side-menu.routes';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -13,6 +14,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     FormsModule,
     ReactiveFormsModule,
     SideMenuRoutes,
+    FooterModule
   ],
 })
 export class SideMenuModule {}
