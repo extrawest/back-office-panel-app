@@ -1,0 +1,27 @@
+{
+  "projects": {
+    "default": "office-ant-43abe"
+  },
+  "targets": {
+    "office-ant-43abe": {
+      "hosting": {
+        "office-ant": [
+          "office-ant"
+        ],
+        "office-mui": [
+          "office-material"
+        ],
+        "office-nebular": [
+          "office-nebular-5206c"
+        ],
+        "office-prime-ng": [
+          "office-prime-ng"
+        ],
+        "office-tailwind": [
+          "office-tailwind-2589"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
