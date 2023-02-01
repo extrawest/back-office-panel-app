@@ -90,11 +90,19 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/office-nebular/jest.config.ts",
-        "passWithNoTests": true
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/office-nebular/tsconfig.spec.json",
+        "karmaConfig": "apps/office-nebular/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "codeCoverage": true,
+        "assets": [
+          "apps/office-nebular/src/favicon.ico",
+          "apps/office-nebular/src/assets"
+        ],
+        "styles": ["apps/office-nebular/src/styles.scss"],
+        "scripts": []
       }
     }
   },
