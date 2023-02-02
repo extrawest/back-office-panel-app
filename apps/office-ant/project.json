@@ -97,13 +97,20 @@
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/office-ant/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/office-ant/tsconfig.spec.json",
+        "karmaConfig": "apps/office-ant/karma.conf.js",
+        "inlineStyleLanguage": "less",
+        "codeCoverage": true,
+        "assets": [
+          "apps/office-ant/src/favicon.ico",
+          "apps/office-ant/src/assets"
+        ],
+        "styles": ["apps/office-ant/src/styles.less"],
+        "scripts": []
+      }
     }
   },
   "tags": [],

@@ -85,11 +85,19 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/office-tailwind/jest.config.ts",
-        "passWithNoTests": true
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/office-tailwind/tsconfig.spec.json",
+        "karmaConfig": "apps/office-tailwind/karma.conf.js",
+        "inlineStyleLanguage": "css",
+        "codeCoverage": true,
+        "assets": [
+          "apps/office-tailwind/src/favicon.ico",
+          "apps/office-tailwind/src/assets"
+        ],
+        "styles": ["apps/office-tailwind/src/styles.css"],
+        "scripts": []
       }
     }
   },
