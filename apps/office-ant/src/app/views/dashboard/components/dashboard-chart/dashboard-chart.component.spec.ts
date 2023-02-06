@@ -19,4 +19,17 @@ describe('DashboardChartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get graph data', () => {
+    fixture.whenStable().then(() => {
+      expect(component.graphData.length).not.toBe(0);
+    });
+  });
+
+  it('should display graph', () => {
+    const graphEl = fixture.nativeElement.querySelector('div');
+    fixture.whenStable().then(() => {
+      expect(graphEl).toBeTruthy();
+    });
+  });
 });
