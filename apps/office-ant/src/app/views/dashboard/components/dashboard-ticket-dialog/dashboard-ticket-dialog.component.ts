@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -16,8 +16,8 @@ export class DashboardTicketDialogComponent implements OnDestroy {
   public isModalVisible = true;
   constructor(private userService: UserService, private fb: FormBuilder) {
     this.form = this.fb.group({
-      ticketName: [''],
-      ticketNumber: [''],
+      ticketName: ['', [Validators.required]],
+      ticketNumber: ['', [Validators.required]],
     });
   }
 
