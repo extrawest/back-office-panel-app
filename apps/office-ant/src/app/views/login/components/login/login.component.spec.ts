@@ -81,11 +81,11 @@ describe('LoginComponent', () => {
     expect(component.formReset.valid).toBeFalsy();
   });
 
-  it('username field validity', () => {
-    const name = component.formReset.controls['resetPassword'];
-    expect(name.valid).toBeFalsy();
-    name.setValue('');
-    expect(name.hasError('required')).toBeTruthy();
+  it('resetPassword field validity', () => {
+    const resetPassword = component.formReset.controls['resetPassword'];
+    expect(resetPassword.valid).toBeFalsy();
+    resetPassword.setValue('');
+    expect(resetPassword.hasError('required')).toBeTruthy();
   });
 
   it('formReset should be valid', () => {
