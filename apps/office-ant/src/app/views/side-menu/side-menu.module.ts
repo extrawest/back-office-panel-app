@@ -9,6 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { FooterModule } from '../footer/footer.module';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FooterModule } from '../footer/footer.module';
     NzButtonModule,
     NzUploadModule,
     NzSpaceModule,
+    NzDividerModule,
     FooterModule
   ],
 })
