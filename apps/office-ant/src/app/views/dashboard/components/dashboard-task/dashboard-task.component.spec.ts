@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DashboardTaskComponent } from './dashboard-task.component';
 
 describe('DashboardTaskComponent', () => {
@@ -18,5 +17,13 @@ describe('DashboardTaskComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show dialog window', () => {
+    component.displayModal = true;
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('office-app-dashboard-task-dialog')
+    ).toBeTruthy();
   });
 });

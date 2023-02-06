@@ -86,7 +86,7 @@ export class LoginComponent implements OnDestroy {
   }
 
   private redirectToHomePage(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/dashboard']);
   }
 
   private showMessage(message: string) {
