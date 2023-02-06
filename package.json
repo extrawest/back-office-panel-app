@@ -25,8 +25,11 @@
     "lint:all": "nx run-many --target=lint --all --maxWarnings=0",
     "lint:all:fix": "nx run-many --target=lint --all --fix --maxWarnings=0",
     "e2e:template": "nx e2e template-e2e --browser chrome --watch",
-    "test:templateapp": "nx test templateapp --watch --updateSnapshot",
-    "test:template": "nx test office-ant --watch --updateSnapshot",
+    "test:ant": "nx test office-ant",
+    "test:mui": "nx test office-mui",
+    "test:nebular": "nx test office-nebular",
+    "test:prime-ng": "nx test office-prime-ng",
+    "test:tailwind": "nx test office-tailwind",
     "test:ci": "nx run-many --target=test --all --parallel=5 --maxParallel=10 --updateSnapshot --ci --clearCache --coverage"
   },
   "private": true,

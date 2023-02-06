@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DashboardTicketComponent } from './dashboard-ticket.component';
 
 describe('DashboardTicketComponent', () => {
@@ -19,4 +18,10 @@ describe('DashboardTicketComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show dialog window', ()=> {
+    component.displayModal = true;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('office-app-dashboard-ticket-dialog')).toBeTruthy();
+  })
 });
