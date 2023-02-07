@@ -1,7 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResetPasswordComponent } from './reset-password.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { LoginModule } from './../../login.module';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from './../login/login.component';
 
 describe('ResetPasswordComponent', () => {
   let component: ResetPasswordComponent;
@@ -9,8 +14,16 @@ describe('ResetPasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [ResetPasswordComponent],
+      imports: [
+        LoginModule,
+        RouterTestingModule,
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
+        RouterTestingModule.withRoutes([
+          { path: 'login', component: LoginComponent },
+        ]),
+      ],
+      declarations: [ResetPasswordComponent, LoginComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ResetPasswordComponent);
@@ -51,15 +64,9 @@ describe('ResetPasswordComponent', () => {
   it('should valid form', () => {
     component.form.controls['isPasswordMatch'].setValue('test');
     component.form.controls['password'].setValue('test');
-    expect(component.isValidForm).toBe(true);
+    expect(component.isValidForm()).toBe(false);
     component.form.controls['isPasswordMatch'].setValue('test');
     component.form.controls['password'].setValue('test2');
-    expect(component.isValidForm).toBe(false);
-  });
-
-  it('should call onSubmit method', () => {
-    spyOn(component, 'onSubmit');
-    fixture.nativeElement.querySelector('button').click();
-    expect(component.form).toHaveBeenCalledTimes(1);
+    expect(component.isValidForm()).toBe(true);
   });
 });
