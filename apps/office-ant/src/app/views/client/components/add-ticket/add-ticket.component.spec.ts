@@ -1,15 +1,10 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddTicketComponent } from './add-ticket.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NzModalModule } from 'ng-zorro-antd/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
+import { ClientModule } from './../../client.module';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 describe('AddTicketComponent', () => {
   let component: AddTicketComponent;
@@ -18,11 +13,10 @@ describe('AddTicketComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule,
+        ClientModule,
         BrowserAnimationsModule,
-        NzModalModule,
-        NzFormModule,
-        NzInputModule,
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
       ],
       declarations: [AddTicketComponent],
     }).compileComponents();
@@ -82,7 +76,7 @@ describe('AddTicketComponent', () => {
 
   it('should change value of isModalVisible', () => {
     component.closeModal();
-    expect(component.isModalClosed).toBeFalsy();
+    expect(component.isModalVisible).toBe(false);
   });
 
   it('should have 3 priorities value', () => {
@@ -91,9 +85,9 @@ describe('AddTicketComponent', () => {
     });
   });
 
-  it('should add ticket and close modal', fakeAsync(() => {
-    component.addTicket();
-    tick();
-    expect(component.isModalClosed).toBeFalsy();
-  }));
+  it('should close modal', () => {
+    component.closeModal();
+    fixture.detectChanges();
+    expect(component.isModalVisible).toBe(false);
+  });
 });

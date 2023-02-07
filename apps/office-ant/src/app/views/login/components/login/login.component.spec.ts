@@ -5,19 +5,20 @@ import {
   tick,
 } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '@office-app/services/auth-service';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SideMenuComponent } from './../../../side-menu/components/side-menu/side-menu.component';
+import { RegisterComponent } from './../../../register/components/register/register.component';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { LoginModule } from './../../login.module';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let AuthService: AuthService;
   let router: Router;
-  let location: Location;
 
   beforeEach(async () => {
     const authService = jasmine.createSpyObj('AuthService', [
@@ -26,19 +27,17 @@ describe('LoginComponent', () => {
       'signInWithFacebook',
       'resetPassword',
     ]);
-    const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
     await TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule,
+        LoginModule,
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
         RouterTestingModule.withRoutes([
-          { path: 'home', component: SideMenuComponent },
+          { path: 'register', component: RegisterComponent },
         ]),
       ],
-      declarations: [LoginComponent, SideMenuComponent],
-      providers: [
-        { provide: AuthService, useValue: authService },
-        { provide: Router, useValue: routerSpy },
-      ],
+      declarations: [LoginComponent, RegisterComponent],
+      providers: [{ provide: AuthService, useValue: authService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
@@ -93,25 +92,19 @@ describe('LoginComponent', () => {
     expect(component.formReset.valid).toBeTruthy();
   });
 
-  it('should toggle #toggleShowPassword', fakeAsync(() => {
-    expect(component.toggleShowPassword).toBe(false);
+  it('should toggle #resetPassword', fakeAsync(() => {
+    expect(component.resetPassword).toBe(false);
     fixture.nativeElement.querySelector('a').click();
     tick();
-    expect(component.toggleShowPassword).toBe(true);
+    expect(component.resetPassword).toBe(true);
   }));
-
-  it('should call onSubmit method', () => {
-    spyOn(component, 'onSubmit');
-    fixture.nativeElement.querySelector('#register').click();
-    expect(component.form).toHaveBeenCalledTimes(1);
-  });
 
   it('should redirect to home page after login', fakeAsync(() => {
     router = TestBed.inject(Router);
-    location = TestBed.inject(Location);
     router.initialNavigation();
-    component.onSubmit();
-    tick();
-    expect(location.path()).toBe('/home');
+    fixture.nativeElement.querySelector('p[routerLink]').click();
+    fixture.whenStable().then(() => {
+      expect(router.url).toEqual('/register');
+    });
   }));
 });

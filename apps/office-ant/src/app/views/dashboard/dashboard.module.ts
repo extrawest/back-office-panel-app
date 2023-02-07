@@ -20,6 +20,14 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { DashboardTaskDialogComponent } from './components/dashboard-task-dialog/dashboard-task-dialog.component';
 import { DashboardTicketDialogComponent } from './components/dashboard-ticket-dialog/dashboard-ticket-dialog.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { PlusCircleOutline } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../environments/environment.prod';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+const icons: IconDefinition[] = [PlusCircleOutline];
 
 const routes: Routes = [
   {
@@ -55,7 +63,11 @@ const routes: Routes = [
     NzButtonModule,
     NzSelectModule,
     NzModalModule,
-    NzIconModule
+    NzIconModule.forChild(icons),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth()),
   ],
 })
 export class DashboardModule {}

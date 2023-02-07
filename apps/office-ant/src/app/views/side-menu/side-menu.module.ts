@@ -11,6 +11,9 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { FooterModule } from '../footer/footer.module';
+import { LogoutOutline, UploadOutline } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+const icons: IconDefinition[] = [LogoutOutline, UploadOutline];
 
 @NgModule({
   declarations: [SideMenuComponent],
@@ -21,12 +24,12 @@ import { FooterModule } from '../footer/footer.module';
     ReactiveFormsModule,
     SideMenuRoutes,
     NzGridModule,
-    NzIconModule,
+    NzIconModule.forChild(icons),
     NzButtonModule,
     NzUploadModule,
     NzSpaceModule,
     NzDividerModule,
-    FooterModule
+    FooterModule,
   ],
 })
 export class SideMenuModule {}

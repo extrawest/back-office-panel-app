@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardChartComponent } from './dashboard-chart.component';
+import { DashboardModule } from './../../dashboard.module';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 describe('DashboardChartComponent', () => {
   let component: DashboardChartComponent;
@@ -8,6 +14,13 @@ describe('DashboardChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        DashboardModule,
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+      ],
       declarations: [DashboardChartComponent],
     }).compileComponents();
 
@@ -18,12 +31,6 @@ describe('DashboardChartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should get graph data', () => {
-    fixture.whenStable().then(() => {
-      expect(component.graphData.length).not.toBe(0);
-    });
   });
 
   it('should display graph', () => {

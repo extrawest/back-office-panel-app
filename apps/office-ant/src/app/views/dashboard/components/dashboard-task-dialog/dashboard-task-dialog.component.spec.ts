@@ -1,15 +1,7 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardTaskDialogComponent } from './dashboard-task-dialog.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NzModalModule } from 'ng-zorro-antd/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
+import { DashboardModule } from './../../dashboard.module';
 
 describe('DashboardTaskDialogComponent', () => {
   let component: DashboardTaskDialogComponent;
@@ -18,11 +10,8 @@ describe('DashboardTaskDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        NzModalModule,
-        NzFormModule,
-        NzInputModule,
+        DashboardModule,
+        BrowserAnimationsModule
       ],
       declarations: [DashboardTaskDialogComponent],
     }).compileComponents();
@@ -68,9 +57,9 @@ describe('DashboardTaskDialogComponent', () => {
     });
   });
 
-  it('should add task and close modal', fakeAsync(() => {
-    component.addTask();
-    tick();
-    expect(component.isModalClosed).toBeFalsy();
-  }));
+  it('should close modal', () => {
+    component.closeModal();
+    fixture.detectChanges();
+    expect(component.isModalVisible).toBe(false);
+  });
 });

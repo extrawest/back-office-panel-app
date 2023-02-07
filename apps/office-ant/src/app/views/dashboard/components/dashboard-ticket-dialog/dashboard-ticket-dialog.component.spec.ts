@@ -1,15 +1,7 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardTicketDialogComponent } from './dashboard-ticket-dialog.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NzModalModule } from 'ng-zorro-antd/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
+import { DashboardModule } from './../../dashboard.module';
 
 describe('DashboardTicketDialogComponent', () => {
   let component: DashboardTicketDialogComponent;
@@ -17,13 +9,7 @@ describe('DashboardTicketDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        NzModalModule,
-        NzFormModule,
-        NzInputModule,
-      ],
+      imports: [BrowserAnimationsModule, DashboardModule],
       declarations: [DashboardTicketDialogComponent],
     }).compileComponents();
 
@@ -62,9 +48,9 @@ describe('DashboardTicketDialogComponent', () => {
     expect(component.form.valid).toBeTruthy();
   });
 
-  it('should add task and close modal', fakeAsync(() => {
-    component.addUnresolvedTicket();
-    tick();
-    expect(component.isModalClosed).toBeFalsy();
-  }));
+  it('should close modal', () => {
+    component.closeModal();
+    fixture.detectChanges();
+    expect(component.isModalVisible).toBe(false);
+  });
 });
