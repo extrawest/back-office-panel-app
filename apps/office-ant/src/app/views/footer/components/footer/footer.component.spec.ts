@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { FooterModule } from './../../footer.module';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -10,7 +10,7 @@ describe('FooterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FooterComponent],
-      imports: [NzDividerModule],
+      imports: [FooterModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);
