@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardTaskComponent } from './dashboard-task.component';
+import { DashboardModule } from './../../dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DashboardTaskComponent', () => {
   let component: DashboardTaskComponent;
@@ -7,6 +9,10 @@ describe('DashboardTaskComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        DashboardModule,
+        BrowserAnimationsModule
+      ],
       declarations: [DashboardTaskComponent],
     }).compileComponents();
 
