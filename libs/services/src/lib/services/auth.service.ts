@@ -86,7 +86,7 @@ export class AuthService {
   private authLogin(provider: any) {
     from(this.logInWithPopup(provider)).subscribe({
       complete: () => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home/dashboard');
       },
       error: (error) => {
         const code = error.code;
@@ -97,7 +97,7 @@ export class AuthService {
               this.logInWithPopup(provider).then(() => {
                 onAuthStateChanged(this.auth, (user) => {
                   if (user) {
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/home/dashboard');
                   }
                 });
               });
