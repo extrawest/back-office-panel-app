@@ -13,6 +13,14 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { PlusOutline } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../environments/environment.prod';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+const icons: IconDefinition[] = [PlusOutline];
 
 const routes: Routes = [
   {
@@ -26,6 +34,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth()),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -36,7 +48,7 @@ const routes: Routes = [
     NzFormModule,
     NzButtonModule,
     NzSelectModule,
-    NzIconModule
+    NzIconModule.forChild(icons),
   ],
 })
 export class ClientModule {}
