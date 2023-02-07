@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardTicketComponent } from './dashboard-ticket.component';
+import { DashboardTicketDialogComponent } from './../dashboard-ticket-dialog/dashboard-ticket-dialog.component';
+import { DashboardModule } from './../../dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DashboardTicketComponent', () => {
   let component: DashboardTicketComponent;
@@ -7,7 +10,8 @@ describe('DashboardTicketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DashboardTicketComponent],
+      imports: [DashboardModule, BrowserAnimationsModule],
+      declarations: [DashboardTicketComponent, DashboardTicketDialogComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardTicketComponent);
@@ -19,9 +23,11 @@ describe('DashboardTicketComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show dialog window', ()=> {
-    component.displayModal = true;
+  it('should show dialog window', () => {
+    component.showModalDialog();
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('office-app-dashboard-ticket-dialog')).toBeTruthy();
-  })
+    expect(
+      fixture.nativeElement.querySelector('office-app-dashboard-ticket-dialog')
+    ).toBeTruthy();
+  });
 });
