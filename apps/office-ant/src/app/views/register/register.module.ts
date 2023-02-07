@@ -11,6 +11,23 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import {
+  FacebookOutline,
+  GoogleOutline,
+  LockOutline,
+  UnlockOutline,
+  MailOutline,
+  UserOutline,
+} from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+const icons: IconDefinition[] = [
+  FacebookOutline,
+  GoogleOutline,
+  LockOutline,
+  UnlockOutline,
+  MailOutline,
+  UserOutline,
+];
 
 const routes: Routes = [
   {
@@ -30,10 +47,10 @@ const routes: Routes = [
     NzFormModule,
     NzInputModule,
     NzCheckboxModule,
-    NzIconModule,
+    NzIconModule.forChild(icons),
     NzButtonModule,
     NzGridModule,
-    NzCardModule
+    NzCardModule,
   ],
   exports: [RegisterComponent],
 })
