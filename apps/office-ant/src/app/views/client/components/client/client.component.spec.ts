@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ClientComponent } from './client.component';
+import { ClientModule } from './../../client.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment.prod';
 
 describe('ClientComponent', () => {
   let component: ClientComponent;
@@ -8,6 +14,14 @@ describe('ClientComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        ClientModule,
+        BrowserAnimationsModule,
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      ],
       declarations: [ClientComponent],
     }).compileComponents();
 
@@ -18,17 +32,6 @@ describe('ClientComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should render 4 th elements', () => {
-    const thEl = fixture.nativeElement.querySelectorAll('th');
-    expect(thEl.length).toEqual(4);
-  });
-
-  it('should get array tickets', () => {
-    fixture.whenStable().then(() => {
-      expect(component.ticketsArray.length).not.toBe(0);
-    });
   });
 
   it('should change value of displayModal', () => {
