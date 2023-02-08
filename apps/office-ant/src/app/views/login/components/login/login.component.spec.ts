@@ -13,6 +13,15 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { environment } from './../../../../../environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { LoginModule } from './../../login.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import {
+  FacebookOutline,
+  GoogleOutline,
+  LockOutline,
+  UnlockOutline,
+  MailOutline,
+  UserOutline,
+} from '@ant-design/icons-angular/icons';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -27,6 +36,14 @@ describe('LoginComponent', () => {
       'signInWithFacebook',
       'resetPassword',
     ]);
+    const icons = [
+      FacebookOutline,
+      GoogleOutline,
+      LockOutline,
+      UnlockOutline,
+      MailOutline,
+      UserOutline,
+    ];
     await TestBed.configureTestingModule({
       imports: [
         LoginModule,
@@ -35,6 +52,7 @@ describe('LoginComponent', () => {
         RouterTestingModule.withRoutes([
           { path: 'register', component: RegisterComponent },
         ]),
+        NzIconModule.forChild(icons),
       ],
       declarations: [LoginComponent, RegisterComponent],
       providers: [{ provide: AuthService, useValue: authService }],

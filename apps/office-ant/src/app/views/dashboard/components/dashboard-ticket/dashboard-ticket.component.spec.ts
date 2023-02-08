@@ -3,6 +3,10 @@ import { DashboardTicketComponent } from './dashboard-ticket.component';
 import { DashboardTicketDialogComponent } from './../dashboard-ticket-dialog/dashboard-ticket-dialog.component';
 import { DashboardModule } from './../../dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { PlusCircleOutline } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+const icons: IconDefinition[] = [PlusCircleOutline];
 
 describe('DashboardTicketComponent', () => {
   let component: DashboardTicketComponent;
@@ -10,7 +14,7 @@ describe('DashboardTicketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardModule, BrowserAnimationsModule],
+      imports: [DashboardModule, BrowserAnimationsModule, NzIconModule.forChild(icons),],
       declarations: [DashboardTicketComponent, DashboardTicketDialogComponent],
     }).compileComponents();
 

@@ -28,14 +28,14 @@
         </div>
       </div>
     </div>
-    <div *ngIf="ticketsArray.length">
+    <div>
       <nz-table #basicTable [nzData]="ticketsArray">
         <thead>
           <tr>
             <th *ngFor="let header of headers">{{ header }}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="ticketsArray.length">
           <tr *ngFor="let data of basicTable.data">
             <td>{{ data.ticketDetails }}</td>
             <td>{{ data.customerName }}</td>
