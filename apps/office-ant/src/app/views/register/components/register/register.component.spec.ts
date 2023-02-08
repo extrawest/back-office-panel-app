@@ -5,6 +5,23 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { environment } from './../../../../../environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import {
+  FacebookOutline,
+  GoogleOutline,
+  LockOutline,
+  UnlockOutline,
+  MailOutline,
+  UserOutline,
+} from '@ant-design/icons-angular/icons';
+const icons = [
+  FacebookOutline,
+  GoogleOutline,
+  LockOutline,
+  UnlockOutline,
+  MailOutline,
+  UserOutline,
+];
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -15,6 +32,7 @@ describe('RegisterComponent', () => {
       imports: [
         RegisterModule,
         RouterTestingModule,
+        NzIconModule.forChild(icons),
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideAuth(() => getAuth()),
       ],
