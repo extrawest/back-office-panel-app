@@ -1,28 +1,40 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { ClientComponent } from './client.component';
 import { ClientModule } from './../../client.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { environment } from './../../../../../environments/environment.prod';
+import { UserService } from '@office-app/services/user-service';
+import { of } from 'rxjs';
+import { Ticket } from '@office-app/services/ticket-interface';
+import { PriorityEnum } from '@office-app/services/priority-enum';
 
 describe('ClientComponent', () => {
   let component: ClientComponent;
   let fixture: ComponentFixture<ClientComponent>;
+  let tickets: Ticket[];
 
   beforeEach(async () => {
+    tickets = [
+      {
+        customerName: 'testUser',
+        date: '2023-02-01',
+        priority: PriorityEnum.HIGH,
+        ticketDetails: 'ticket',
+        ticketId: '-NNkqwm1B_bU6r8rXtUL',
+      },
+    ];
+    const userService = jasmine.createSpyObj('UserService', ['getUserTickets']);
+    const getUserTicketsSpy = userService.getUserTickets.and.returnValue(
+      of(tickets)
+    );
     await TestBed.configureTestingModule({
-      imports: [
-        ClientModule,
-        BrowserAnimationsModule,
-        provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
-        provideStorage(() => getStorage()),
-        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      ],
+      imports: [ClientModule, BrowserAnimationsModule],
       declarations: [ClientComponent],
+      providers: [{ provide: UserService, useValue: userService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ClientComponent);
@@ -36,6 +48,7 @@ describe('ClientComponent', () => {
 
   it('should change value of displayModal', () => {
     component.showModalDialog();
+    fixture.detectChanges();
     expect(component.displayModal).toBe(true);
   });
 
@@ -47,4 +60,11 @@ describe('ClientComponent', () => {
     fixture.detectChanges();
     expect(modalEl).toBeTruthy();
   });
+
+  it('should get tickets', fakeAsync(() => {
+    component.ngOnInit();
+    tick(30000);
+    fixture.detectChanges();
+    expect(component.ticketsArray).toEqual(tickets);
+  }));
 });
