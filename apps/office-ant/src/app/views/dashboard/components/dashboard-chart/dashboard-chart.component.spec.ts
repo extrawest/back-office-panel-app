@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UserService } from '@office-app/services/user-service';
 import { DashboardChartComponent } from './dashboard-chart.component';
 import { DashboardModule } from './../../dashboard.module';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
@@ -22,6 +22,7 @@ describe('DashboardChartComponent', () => {
         provideStorage(() => getStorage()),
       ],
       declarations: [DashboardChartComponent],
+      providers: [UserService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardChartComponent);

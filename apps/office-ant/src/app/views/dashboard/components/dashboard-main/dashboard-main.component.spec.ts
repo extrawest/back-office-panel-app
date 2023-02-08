@@ -2,6 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardMainComponent } from './dashboard-main.component';
 import { DashboardChartComponent } from './../dashboard-chart/dashboard-chart.component';
 import { DashboardModule } from './../../dashboard.module';
+import { UserService } from '@office-app/services/user-service';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { PlusCircleOutline } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+const icons: IconDefinition[] = [PlusCircleOutline];
 
 describe('DashboardMainComponent', () => {
   let component: DashboardMainComponent;
@@ -9,8 +14,9 @@ describe('DashboardMainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardModule],
+      imports: [DashboardModule, NzIconModule.forChild(icons)],
       declarations: [DashboardMainComponent, DashboardChartComponent],
+      providers: [UserService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardMainComponent);
