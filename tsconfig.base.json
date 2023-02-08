@@ -18,13 +18,13 @@
       "@office-app/assets": ["libs/assets/src/index.ts"],
       "@office-app/services": ["libs/services/src/index.ts"],
       "@office-app/services/auth-service": [
-        "libs/services/src/lib/services/auth.service.ts"
+        "libs/services/src/lib/services/auth/auth.service.ts"
       ],
       "@office-app/services/graph-interface": [
         "libs/services/src/lib/interfaces/graph.interface.ts"
       ],
       "@office-app/services/local-storage-service": [
-        "libs/services/src/lib/services/local-storage.service.ts"
+        "libs/services/src/lib/services/local-storage/local-storage.service.ts"
       ],
       "@office-app/services/menu-items": [
         "libs/services/src/lib/consts/menu-item.const.ts"
@@ -51,7 +51,7 @@
         "libs/services/src/lib/interfaces/unresolved-ticket.interface.ts"
       ],
       "@office-app/services/user-service": [
-        "libs/services/src/lib/services/user.service.ts"
+        "libs/services/src/lib/services/user/user.service.ts"
       ]
     }
   },
