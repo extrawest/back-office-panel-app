@@ -17,7 +17,7 @@ import {
 import { from, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { getDatabase, ref, set } from 'firebase/database';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

@@ -9,15 +9,15 @@ import {
   push,
   get,
 } from 'firebase/database';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from './../local-storage/local-storage.service';
 import { getStorage, uploadBytesResumable, ref } from 'firebase/storage';
 import { initializeApp } from '@angular/fire/app';
-import { Ticket } from './../interfaces/ticket.interface';
-import { PriorityEnum } from './../enums/priority.enum';
-import { Task } from '../interfaces/task.interface';
-import { TaskTypeEnum } from './../enums/task-type.enum';
-import { UnresolvedTicket } from '../interfaces/unresolved-ticket.interface';
-import { Graph } from '../interfaces/graph.interface';
+import { Ticket } from './../../interfaces/ticket.interface';
+import { PriorityEnum } from './../../enums/priority.enum';
+import { Task } from '../../interfaces/task.interface';
+import { TaskTypeEnum } from './../../enums/task-type.enum';
+import { UnresolvedTicket } from '../../interfaces/unresolved-ticket.interface';
+import { Graph } from '../../interfaces/graph.interface';
 
 @Injectable({
   providedIn: 'root',
