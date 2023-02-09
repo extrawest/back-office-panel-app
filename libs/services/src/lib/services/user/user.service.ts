@@ -18,13 +18,16 @@ import { Task } from '../../interfaces/task.interface';
 import { TaskTypeEnum } from './../../enums/task-type.enum';
 import { UnresolvedTicket } from '../../interfaces/unresolved-ticket.interface';
 import { Graph } from '../../interfaces/graph.interface';
+import {
+  Auth
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   user = this.localStorageService.getValue('user')?.slice(1, -1);
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(private localStorageService: LocalStorageService, private auth: Auth) {}
 
   uploadFile(file: any, firebaseConfig: any) {
     const storageRef = ref(

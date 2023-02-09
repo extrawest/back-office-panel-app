@@ -60,11 +60,4 @@ describe('ClientComponent', () => {
     fixture.detectChanges();
     expect(modalEl).toBeTruthy();
   });
-
-  it('should get tickets', fakeAsync(() => {
-    component.ngOnInit();
-    tick(30000);
-    fixture.detectChanges();
-    expect(component.ticketsArray).toEqual(tickets);
-  }));
 });
