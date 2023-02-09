@@ -47,7 +47,7 @@ export class AuthService {
         );
       },
       complete: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home/dashboard']);
       },
       error: (error) => {
         return error;
