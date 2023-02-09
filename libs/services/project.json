@@ -6,12 +6,13 @@
   "prefix": "office-app",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "libs/services/jest.config.ts",
-        "passWithNoTests": true,
-        "codeCoverage": true
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "libs/services/tsconfig.spec.json",
+        "karmaConfig": "libs/services/karma.conf.js",
+        "codeCoverage": true,
+        "scripts": []
       }
     },
     "lint": {
