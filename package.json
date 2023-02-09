@@ -30,6 +30,7 @@
     "test:nebular": "nx test office-nebular",
     "test:prime-ng": "nx test office-prime-ng",
     "test:tailwind": "nx test office-tailwind",
+    "test:services": "nx test services",
     "open-test-report:ant": "npx http-server ./apps/office-ant/coverage/office-ant",
     "create-coverage-report:ant": "npx nx test office-ant --watch=false --code-coverage=true",
     "test:ci": "nx run-many --target=test --all --parallel=5 --maxParallel=10 --updateSnapshot --ci --clearCache --coverage"
