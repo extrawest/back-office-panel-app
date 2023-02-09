@@ -31,8 +31,10 @@
     "test:prime-ng": "nx test office-prime-ng",
     "test:tailwind": "nx test office-tailwind",
     "test:services": "nx test services",
-    "open-test-report:ant": "npx http-server ./apps/office-ant/coverage/office-ant",
+    "create-coverage-report:services": "npx nx test services --watch=false --code-coverage=true",
+    "open-test-report:services": "npx http-server ./libs/services/coverage/services",
     "create-coverage-report:ant": "npx nx test office-ant --watch=false --code-coverage=true",
+    "open-test-report:ant": "npx http-server ./apps/office-ant/coverage/office-ant",
     "test:ci": "nx run-many --target=test --all --parallel=5 --maxParallel=10 --updateSnapshot --ci --clearCache --coverage"
   },
   "private": true,
