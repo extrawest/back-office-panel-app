@@ -1,16 +1,10 @@
 import {
-  TestBed,
-  ComponentFixture,
-  fakeAsync,
-  tick,
-  waitForAsync,
-  inject,
+  TestBed
 } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { environment } from '../../../../../services/environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 
 describe('AuthService', () => {
   let authService: AuthService;
