@@ -1,5 +1,5 @@
 import { Component, TemplateRef, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -24,8 +24,8 @@ export class DashboardTaskComponent implements OnDestroy {
     private userService: UserService
   ) {
     this.form = this.fb.group({
-      taskName: [''],
-      taskStatus: [''],
+      taskName: ['', [Validators.required]],
+      taskStatus: ['', [Validators.required]],
     });
     this.getTasks();
   }

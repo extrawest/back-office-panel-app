@@ -1,6 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UserService } from '@office-app/services/user-service';
 import { DashboardChartComponent } from './dashboard-chart.component';
+import { DashboardModule } from './../../dashboard.module';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { NbThemeModule } from '@nebular/theme';
 
 describe('DashboardChartComponent', () => {
   let component: DashboardChartComponent;
@@ -8,7 +15,16 @@ describe('DashboardChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        DashboardModule,
+        NbThemeModule.forRoot(),
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+      ],
       declarations: [DashboardChartComponent],
+      providers: [UserService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardChartComponent);
@@ -18,5 +34,12 @@ describe('DashboardChartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display graph', () => {
+    const graphEl = fixture.nativeElement.querySelector('div');
+    fixture.whenStable().then(() => {
+      expect(graphEl).toBeTruthy();
+    });
   });
 });

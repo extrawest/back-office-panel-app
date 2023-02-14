@@ -4,7 +4,7 @@ import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Priorities } from '@office-app/services/priorities';
 
 @Component({
@@ -30,11 +30,14 @@ export class ClientComponent implements OnDestroy {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      ticketDetails: [''],
-      customerName: [''],
-      date: [''],
-      priority: [''],
+      ticketDetails: ['', [Validators.required]],
+      customerName: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      priority: ['', [Validators.required]],
     });
+  }
+
+  ngOnInit() {
     this.getTickets();
   }
 
@@ -70,6 +73,5 @@ export class ClientComponent implements OnDestroy {
         }
         this.ticketsArray = [...Object.values(result)].reverse();
       });
-    this.ticketsArray = [];
   }
 }
