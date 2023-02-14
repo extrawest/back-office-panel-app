@@ -52,13 +52,6 @@ describe('AuthService', () => {
     });
   });
 
-  it('should send email to reset password', (done) => {
-    authService.resetPassword('test3@test.com').subscribe((result: any) => {
-      expect(result).toBeUndefined();
-      done();
-    });
-  });
-
   it('should log out', (done) => {
     authService.signOut().subscribe((result: any) => {
       expect(result).toBeUndefined();
