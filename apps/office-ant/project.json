@@ -109,7 +109,11 @@
           "apps/office-ant/src/assets"
         ],
         "styles": ["apps/office-ant/src/styles.less"],
-        "scripts": []
+        "scripts": [],
+        "codeCoverageExclude": [
+          "/**/*.routes.ts",
+          "/**/*.module.ts"
+      ] 
       }
     }
   },
