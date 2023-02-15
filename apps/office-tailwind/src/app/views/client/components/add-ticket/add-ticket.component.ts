@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '@office-app/services/user-service';
 import { Priorities } from '@office-app/services/priorities';
 import { Subject } from 'rxjs';
@@ -18,10 +18,10 @@ export class AddTicketComponent implements OnDestroy {
   public isModalVisible = true;
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.form = this.fb.group({
-      ticketDetails: [''],
-      customerName: [''],
-      date: [''],
-      priority: [''],
+      ticketDetails: ['', [Validators.required]],
+      customerName: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      priority: ['', [Validators.required]],
     });
   }
 
