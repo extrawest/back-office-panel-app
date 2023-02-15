@@ -105,7 +105,7 @@ describe('LoginComponent', () => {
     expect(component.resetPassword).toBe(true);
   }));
 
-  it('should redirect to home page after login', fakeAsync(() => {
+  it('should redirect to register page', fakeAsync(() => {
     router = TestBed.inject(Router);
     router.initialNavigation();
     fixture.nativeElement.querySelector('p[routerLink]').click();
