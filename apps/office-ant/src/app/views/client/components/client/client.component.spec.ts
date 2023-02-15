@@ -28,9 +28,7 @@ describe('ClientComponent', () => {
       },
     ];
     const userService = jasmine.createSpyObj('UserService', ['getUserTickets']);
-    const getUserTicketsSpy = userService.getUserTickets.and.returnValue(
-      of(tickets)
-    );
+    userService.getUserTickets.and.returnValue(of(tickets));
     await TestBed.configureTestingModule({
       imports: [ClientModule, BrowserAnimationsModule],
       declarations: [ClientComponent],
@@ -60,4 +58,10 @@ describe('ClientComponent', () => {
     fixture.detectChanges();
     expect(modalEl).toBeTruthy();
   });
+
+  it('should get tickets', fakeAsync(() => {
+    component.ngOnInit();
+    tick(100);
+    expect(component.ticketsArray).toEqual(tickets);
+  }));
 });
