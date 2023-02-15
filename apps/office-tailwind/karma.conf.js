@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/office-ant'),
+      dir: require('path').join(__dirname, './coverage/office-tailwind'),
       subdir: '.',
       reporters: [
         { type: 'html' },

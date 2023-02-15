@@ -97,6 +97,7 @@
           "apps/office-tailwind/src/assets"
         ],
         "styles": ["apps/office-tailwind/src/styles.css"],
+        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"],
         "scripts": []
       }
     }

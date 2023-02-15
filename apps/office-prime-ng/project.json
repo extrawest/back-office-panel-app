@@ -104,8 +104,8 @@
           "apps/office-prime-ng/src/assets"
         ],
         "styles": ["apps/office-prime-ng/src/styles.scss"],
-        "scripts": [],
-        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"]
+        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"],
+        "scripts": []
       }
     }
   },
