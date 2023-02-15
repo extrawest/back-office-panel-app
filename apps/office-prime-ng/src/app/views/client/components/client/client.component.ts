@@ -23,7 +23,9 @@ export class ClientComponent implements OnDestroy {
 
   rows = 10;
   private componentDestroyed$: Subject<void> = new Subject();
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
     this.getTickets();
   }
 
@@ -75,6 +77,5 @@ export class ClientComponent implements OnDestroy {
         }
         this.ticketsArray = [...Object.values(result)].reverse();
       });
-    this.ticketsArray = [];
   }
 }
