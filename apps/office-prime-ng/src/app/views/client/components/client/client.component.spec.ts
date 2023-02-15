@@ -59,6 +59,13 @@ describe('ClientComponent', () => {
     expect(modalEl).toBeTruthy();
   });
 
+  it('should close modal window', () => {
+    const methodPeremeter = true;
+    component.closeAccountModal(methodPeremeter);
+    fixture.detectChanges();
+    expect(component.displayModal).toBe(false);
+  });
+
   it('should get tickets', fakeAsync(() => {
     component.ngOnInit();
     tick(100);
