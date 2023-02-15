@@ -13,7 +13,9 @@ export class DashboardTaskComponent implements OnDestroy {
   public displayModal: boolean;
   public tasks: Task[] = [];
   private componentDestroyed$: Subject<void> = new Subject();
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
     this.getTasks();
   }
 
@@ -43,6 +45,5 @@ export class DashboardTaskComponent implements OnDestroy {
         }
         this.tasks = [...Object.values(result)].reverse();
       });
-    this.tasks = [];
   }
 }
