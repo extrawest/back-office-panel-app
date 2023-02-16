@@ -16,7 +16,9 @@ export class DashboardTicketComponent implements OnDestroy {
   private ticketName: string;
   private ticketNumber: number;
   private componentDestroyed$: Subject<void> = new Subject();
-  constructor(public dialog: MatDialog, private userService: UserService) {
+  constructor(public dialog: MatDialog, private userService: UserService) {}
+
+  ngOnInit() {
     this.getUserUnresolvedTickets();
   }
 
@@ -55,6 +57,5 @@ export class DashboardTicketComponent implements OnDestroy {
         }
         this.unresolvedTicket = [...Object.values(result)].reverse();
       });
-    this.unresolvedTicket = [];
   }
 }
