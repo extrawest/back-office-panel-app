@@ -1,6 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { SideMenuComponent } from './side-menu.component';
+import { LoginComponent } from './../../../login/components/login/login.component';
+import { SideMenuModule } from './../../side-menu.module';
+import { AuthService } from '@office-app/services/auth-service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from './../../../../../environments/environment.prod';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SideMenuComponent', () => {
   let component: SideMenuComponent;
@@ -8,7 +20,17 @@ describe('SideMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        SideMenuModule,
+        BrowserAnimationsModule,
+        RouterTestingModule.withRoutes([
+          { path: 'login', component: LoginComponent },
+        ]),
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
+      ],
       declarations: [SideMenuComponent],
+      providers: [AuthService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SideMenuComponent);
@@ -18,5 +40,26 @@ describe('SideMenuComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a name of user', fakeAsync(() => {
+    tick();
+    expect(component.userName?.length).not.toBe(0);
+  }));
+
+  it('should render 6 menu items', fakeAsync(() => {
+    tick();
+    expect(component.menuItems.length).toEqual(6);
+  }));
+
+  it('should call method and unsubscribe on destroy', () => {
+    const destroy = spyOn(component, 'ngOnDestroy').and.callThrough();
+    const next = spyOn(component.componentDestroyed$, 'next');
+    const complete = spyOn(component.componentDestroyed$, 'complete');
+    component.ngOnDestroy();
+    fixture.detectChanges();
+    expect(destroy).toHaveBeenCalled();
+    expect(next).toHaveBeenCalled();
+    expect(complete).toHaveBeenCalled();
   });
 });
