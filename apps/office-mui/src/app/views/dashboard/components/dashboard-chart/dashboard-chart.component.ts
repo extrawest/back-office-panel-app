@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class DashboardChartComponent implements OnDestroy {
   public graphData: any[] = [];
-  private componentDestroyed$: Subject<void> = new Subject();
+  public componentDestroyed$: Subject<void> = new Subject();
   public chartOption: EChartsOption;
   constructor(private userService: UserService) {
     this.userService.addGraphData().subscribe({
