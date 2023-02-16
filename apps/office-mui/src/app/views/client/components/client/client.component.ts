@@ -71,7 +71,11 @@ export class ClientComponent implements OnDestroy {
     dialogRef
       .afterClosed()
       .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe();
+      .subscribe({
+        complete: () => {
+          this.getTickets();
+        },
+      });
   }
 
   private getTickets() {
