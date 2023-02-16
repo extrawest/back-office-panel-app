@@ -25,7 +25,7 @@ export class ClientComponent implements OnDestroy {
   public priority: PriorityEnum;
   public dataSource: MatTableDataSource<Ticket>;
   public ticketsArray: Ticket[] = [];
-  private componentDestroyed$: Subject<void> = new Subject();
+  public componentDestroyed$: Subject<void> = new Subject();
 
   constructor(
     public dialog: MatDialog,
@@ -45,6 +45,9 @@ export class ClientComponent implements OnDestroy {
         './assets/icons/filter-icon.svg'
       )
     );
+  }
+
+  ngOnInit() {
     this.getTickets();
   }
 
@@ -68,7 +71,11 @@ export class ClientComponent implements OnDestroy {
     dialogRef
       .afterClosed()
       .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe();
+      .subscribe({
+        complete: () => {
+          this.getTickets();
+        },
+      });
   }
 
   private getTickets() {
@@ -83,6 +90,5 @@ export class ClientComponent implements OnDestroy {
         this.dataSource = new MatTableDataSource<any>(this.ticketsArray);
         this.dataSource.paginator = this.paginator;
       });
-    this.ticketsArray = [];
   }
 }

@@ -1,11 +1,10 @@
 import { Component, Inject, NgZone, ViewChild, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
-import { Ticket } from '@office-app/services/ticket-interface';
 import { UserService } from '@office-app/services/user-service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -20,11 +19,11 @@ export class AddTicketComponent implements OnDestroy{
   public form: FormGroup;
   public priorities = Priorities;
   public isModalClosed = false;
-  private componentDestroyed$: Subject<void> = new Subject();
+  public componentDestroyed$: Subject<void> = new Subject();
   
   constructor(
     public dialogRef: MatDialogRef<AddTicketComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Ticket,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
@@ -38,10 +37,10 @@ export class AddTicketComponent implements OnDestroy{
       )
     );
     this.form = this.fb.group({
-      ticketDetails: [''],
-      customerName: [''],
-      date: [''],
-      priority: [''],
+      ticketDetails: ['', [Validators.required]],
+      customerName: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      priority: ['', [Validators.required]],
     });
   }
 

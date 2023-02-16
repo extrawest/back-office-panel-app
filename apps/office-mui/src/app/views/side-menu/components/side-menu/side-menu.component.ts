@@ -17,7 +17,7 @@ export class SideMenuComponent implements OnDestroy {
   public menuItems = menuItems;
   public imageUrl: Subject<string> = new Subject<string>();
   public userName: string;
-  private componentDestroyed$: Subject<void> = new Subject();
+  public componentDestroyed$: Subject<void> = new Subject();
   constructor(
     private authService: AuthService,
     private router: Router,

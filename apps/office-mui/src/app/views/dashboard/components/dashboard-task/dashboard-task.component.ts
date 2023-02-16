@@ -31,6 +31,9 @@ export class DashboardTaskComponent implements OnDestroy {
         './assets/icons/add-icon.svg'
       )
     );
+  }
+
+  ngOnInit() {
     this.getTasks();
   }
 
@@ -69,6 +72,5 @@ export class DashboardTaskComponent implements OnDestroy {
         }
         this.tasks = [...Object.values(result)].reverse();
       });
-    this.tasks = [];
   }
 }
