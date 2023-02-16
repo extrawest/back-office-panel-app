@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@include mat.core();
 @import '@angular/material/theming';
 @import './assets/themes/theme.scss';
 @import './assets/themes/customize';
@@ -37,9 +38,9 @@ input[type='file'] {
   }
 }
 
-$primary: map-get($custom-theme, primary);
-$accent: map-get($custom-theme, accent);
-$warn: map-get($custom-theme, warn);
+//$primary: map-get($custom-theme, primary);
+///$accent: map-get($custom-theme, accent);
+//$warn: map-get($custom-theme, warn);
 
 mat-form-field {
   width: 100%;
@@ -51,7 +52,7 @@ button {
   height: 52px;
   border-radius: 38px;
   margin: auto;
-  color: mat.get-color-from-palette($primary);
+  //color: mat.get-color-from-palette($primary);
 }
 
 mat-sidenav {
@@ -66,7 +67,7 @@ mat-card {
   width: 50%;
   padding: 22px;
   margin: auto;
-  border: 1px solid mat.get-color-from-palette($accent, 400);
+  //border: 1px solid mat.get-color-from-palette($accent, 400);
   border-radius: 8px;
   text-align: center;
 }
