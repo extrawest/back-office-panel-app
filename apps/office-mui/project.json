@@ -102,8 +102,8 @@
           "apps/office-mui/src/assets"
         ],
         "styles": ["apps/office-mui/src/styles.scss"],
-        "scripts": [],
-        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"]
+        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"],
+        "scripts": []
       }
     }
   },
