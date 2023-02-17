@@ -18,7 +18,7 @@
 
 - **primeng": v15.0.0;**
 
--**tailwind": v3.2.4;**
+- **tailwind": v3.2.4;**
 
 - **bootstrap v5.2.3;**
 
