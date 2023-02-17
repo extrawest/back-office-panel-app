@@ -58,9 +58,7 @@ describe('DashboardTaskComponent', () => {
     expect(component.form.valid).toBeTruthy();
   });
 
-  it('should have 3 task statuses value', () => {
-    fixture.whenStable().then(() => {
-      expect(component.statuses.length).toEqual(3);
-    });
+  it('should have 3 task statuses value', function () {
+    expect(component.statuses.length).toBe(3);
   });
 });
