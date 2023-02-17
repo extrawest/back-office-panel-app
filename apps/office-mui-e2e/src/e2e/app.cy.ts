@@ -17,7 +17,7 @@ describe('office-mui', () => {
     cy.get('mat-select#mat-select').click();
     cy.get('mat-option').contains('LOW').click();
     cy.contains('button', 'Add').click();
-    cy.get('td').contains('some ticket details').should('be.visible');
+    cy.contains('td', 'some ticket details').should('be.visible');
   });
 
   it('should log user out', () => {
