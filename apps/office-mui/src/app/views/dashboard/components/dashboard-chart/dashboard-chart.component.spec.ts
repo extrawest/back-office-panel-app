@@ -34,11 +34,9 @@ describe('DashboardChartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display graph', () => {
+  it('should display graph', function () {
     const graphEl = fixture.nativeElement.querySelector('div');
-    fixture.whenStable().then(() => {
-      expect(graphEl).toBeTruthy();
-    });
+    expect(graphEl).toBeTruthy();
   });
 
   it('should call method and unsubscribe on destroy', () => {
@@ -52,4 +50,3 @@ describe('DashboardChartComponent', () => {
     expect(complete).toHaveBeenCalled();
   });
 });
-

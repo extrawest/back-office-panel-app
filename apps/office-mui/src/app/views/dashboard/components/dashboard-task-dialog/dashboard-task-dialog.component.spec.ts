@@ -70,10 +70,8 @@ describe('DashboardTaskDialogComponent', () => {
     expect(component.form.valid).toBeTruthy();
   });
 
-  it('should have 3 task statuses value', () => {
-    fixture.whenStable().then(() => {
-      expect(component.taskTypes.length).toEqual(3);
-    });
+  it('should have 3 task statuses value', function () {
+    expect(component.taskTypes.length).toBe(3);
   });
 
   it('should call the function to close the dialog', () => {
