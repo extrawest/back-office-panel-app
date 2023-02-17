@@ -1,1 +1,145 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+@import '@angular/material/theming';
+@import './assets/themes/theme.scss';
+@import './assets/themes/customize';
+@import './assets/themes/palettes.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+}
+body {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  padding: 0;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.material-icons {
+  font-size: 24px;
+  font-family: 'Material Icons', 'Material Icons';
+  .mat-badge-content {
+    font-family: 'Roboto';
+  }
+}
+
+//$primary: map-get($custom-theme, primary);
+///$accent: map-get($custom-theme, accent);
+//$warn: map-get($custom-theme, warn);
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-flat-button,
+button {
+  width: 186px;
+  height: 52px;
+  border-radius: 38px;
+  margin: auto;
+  //color: mat.get-color-from-palette($primary);
+}
+
+mat-sidenav {
+  padding: 5%;
+}
+
+.mat-mdc-list-item .mdc-list-item__primary-text {
+  font-size: 12px;
+}
+
+mat-card {
+  width: 50%;
+  padding: 22px;
+  margin: auto;
+  //border: 1px solid mat.get-color-from-palette($accent, 400);
+  border-radius: 8px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 0;
+}
+
+th {
+  font-weight: 700;
+  font-size: 12px;
+  color: #9fa2b4;
+}
+
+td {
+  font-weight: 500;
+  font-size: 14px;
+  color: #252733;
+}
+
+.mdc-list-item--with-leading-avatar .mdc-list-item__start {
+  margin-left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+mat-divider {
+  margin: 15px 0;
+}
+
+.mat-grid-list .mat-grid-tile .mat-grid-tile-content {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  text-align: start;
+}
+
+p[ng-reflect-router-link],
+h3[ng-reflect-router-link],
+li[ng-reflect-router-link],
+mat-icon,
+label,
+button {
+  cursor: pointer;
+}
+
+footer {
+  height: 150px;
+  padding: 30px;
+}
+
+footer img {
+  width: 25%;
+  margin: auto;
+}
+
+footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,82 @@
+<div nz-row>
+  <div nz-col nzSpan="10" nzOffset="6">
+    <nz-card>
+      <div>
+        <h1>
+          Register <br />
+          your account
+        </h1>
+        <p>If you already have an account, just log in to use the system</p>
+        <p routerLink="/login">Login here</p>
+      </div>
+      <form nz-form [formGroup]="form">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your name">
+            <nz-input-group nzPrefixIcon="user">
+              <input
+                type="text"
+                nz-input
+                formControlName="name"
+                placeholder="Name"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input valid email!">
+            <nz-input-group nzPrefixIcon="mail">
+              <input
+                type="email"
+                nz-input
+                formControlName="email"
+                placeholder="Login"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input
+                [type]="toggleShowPassword ? 'password' : 'text'"
+                nz-input
+                formControlName="password"
+                placeholder="Password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <div>
+          <button
+            nz-button
+            nzType="primary"
+            [disabled]="isValidForm()"
+            (click)="onSubmit()"
+            id="register"
+          >
+            Register
+          </button>
+        </div>
+        <div nz-row>
+          <span
+            nz-col
+            nzSpan="3"
+            nzOffset="9"
+            nz-icon
+            nzType="facebook"
+            nzTheme="outline"
+            style="font-size: 28px; margin-top: 10px"
+          ></span>
+          <span
+            nz-col
+            nzSpan="3"
+            nz-icon
+            nzType="google"
+            nzTheme="outline"
+            style="font-size: 28px; margin-top: 10px"
+          ></span>
+        </div>
+      </form>
+    </nz-card>
+  </div>
+</div>

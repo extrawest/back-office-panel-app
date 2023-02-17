@@ -1,0 +1,91 @@
+<div class="w-75 mx-auto mt-4 text-center">
+  <h1>
+    Login <br />
+    to account
+  </h1>
+  <p>If you already have an account, just log in to use the system</p>
+  <p>Don't have an account?</p>
+  <p routerLink="/register">Register here</p>
+
+  <form [formGroup]="form" class="w-75 mx-auto mt-4">
+    <div class="w-50 mx-auto">
+      <div class="mt-2">
+        <input
+          nbInput
+          fullWidth
+          pattern=".+@.+\..+"
+          placeholder="Login"
+          autofocus
+          formControlName="name"
+        />
+      </div>
+
+      <div class="mt-2">
+        <input
+          nbInput
+          fullWidth
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+        />
+      </div>
+      <div class="d-flex justify-content-between mt-4">
+        <div class="col">
+          <nb-checkbox formControlName="check">Remember me</nb-checkbox>
+        </div>
+        <div class="col">
+          <a class="color-primary-500" (click)="resetPassword = !resetPassword"
+            >Forgot Password?</a
+          >
+        </div>
+      </div>
+      <nb-card *ngIf="resetPassword">
+        <nb-card-body>
+          <nb-card-header
+            ><h4>
+              Please enter your login to reset your password
+            </h4></nb-card-header
+          >
+
+          <form [formGroup]="formReset">
+            <div>
+              <input
+                nbInput
+                fullWidth
+                pattern=".+@.+\..+"
+                placeholder="Email"
+                autofocus
+                formControlName="resetPassword"
+              />
+            </div>
+            <div>
+              <button
+                nbButton
+                fullWidth
+                (click)="forgetPassword()"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
+      <div class="w-100">
+        <button nbButton fullWidth (click)="onSubmit()">Log In</button>
+      </div>
+      <div class="d-flex justify-content-between mt-4">
+        <nb-icon
+          (click)="onSignInWithGoogle()"
+          icon="google"
+          class="w-25 h-25 col-2"
+        ></nb-icon>
+        <nb-icon
+          (click)="onSignInWithFacebook()"
+          icon="facebook"
+          class="w-25 h-25 col-2"
+        ></nb-icon>
+      </div>
+    </div>
+  </form>
+</div>

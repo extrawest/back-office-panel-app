@@ -1,0 +1,100 @@
+<nb-card>
+  <nb-card-header> Clients </nb-card-header>
+  <nb-card-body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-9">
+          <p class="text-left">All tickets</p>
+        </div>
+        <div class="col">
+          <div class="row" (click)="open(dialog)">
+            <div class="col">
+              <a>Add</a>
+            </div>
+            <div class="col">
+              <a
+                ><img src="./assets/icons/plus-icon.svg" class="w-75 h-75"
+              /></a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col">Filter</div>
+            <div class="col">
+              <img src="./assets/icons/filter-icon.svg" class="w-75 h-75" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="w-100">
+      <tr>
+        <th *ngFor="let header of headers">{{ header }}</th>
+      </tr>
+      <tr *ngFor="let data of ticketsArray">
+        <td>{{ data.ticketDetails }}</td>
+        <td>{{ data.customerName }}</td>
+        <td>{{ data.date }}</td>
+        <td>{{ data.priority }}</td>
+      </tr>
+    </table>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #dialog let-ref="dialogRef">
+  <nb-card class="w-100 h-100">
+    <nb-card-header>Add new ticket</nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col form-control-group login-form-margin">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Ticket details"
+              autofocus
+              formControlName="ticketDetails"
+            />
+          </div>
+          <div class="col form-control-group login-form-margin">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Customer name"
+              autofocus
+              formControlName="customerName"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col form-control-group login-form-margin">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Date"
+              type="date"
+              autofocus
+              formControlName="date"
+              class="w-100"
+            />
+          </div>
+          <div class="col">
+            <nb-select placeholder="Priority" formControlName="priority">
+              <nb-option
+                *ngFor="let priority of priorities"
+                [value]="priority"
+                >{{ priority }}</nb-option
+              >
+            </nb-select>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+    <nb-card-footer class="row">
+      <button class="col-5" nbButton (click)="addTicket()">Add</button>
+      <button class="col-5" nbButton (click)="ref.close()">Cancel</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

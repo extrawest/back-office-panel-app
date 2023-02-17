@@ -1,0 +1,51 @@
+<div style="padding: 70px 45px">
+  <h2>Clients</h2>
+  <mat-card style="width: 100%">
+    <mat-grid-list rowHeight="50px" cols="12">
+      <mat-grid-tile colspan="10">
+        <h3>All tickets</h3>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" (click)="openDialog()" id="openModal">
+        <mat-icon svgIcon="plus-icon"></mat-icon>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-icon svgIcon="filter-icon"></mat-icon>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef>Ticket details</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.ticketDetails }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Customer name</th>
+          <td mat-cell *matCellDef="let element">{{ element.customerName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date | date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+          <th mat-header-cell *matHeaderCellDef>Priority</th>
+          <td mat-cell *matCellDef="let element">{{ element.priority }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </mat-card>
+</div>

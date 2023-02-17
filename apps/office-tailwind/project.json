@@ -16,7 +16,12 @@
         "tsConfig": "apps/office-tailwind/tsconfig.app.json",
         "assets": [
           "apps/office-tailwind/src/favicon.ico",
-          "apps/office-tailwind/src/assets"
+          "apps/office-tailwind/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
         "styles": ["apps/office-tailwind/src/styles.css"],
         "scripts": []
@@ -26,8 +31,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",
@@ -50,6 +55,9 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4204
+      },
       "configurations": {
         "production": {
           "browserTarget": "office-tailwind:build:production"
@@ -77,11 +85,20 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/office-tailwind/jest.config.ts",
-        "passWithNoTests": true
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/office-tailwind/tsconfig.spec.json",
+        "karmaConfig": "apps/office-tailwind/karma.conf.js",
+        "inlineStyleLanguage": "css",
+        "codeCoverage": true,
+        "assets": [
+          "apps/office-tailwind/src/favicon.ico",
+          "apps/office-tailwind/src/assets"
+        ],
+        "styles": ["apps/office-tailwind/src/styles.css"],
+        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"],
+        "scripts": []
       }
     }
   },

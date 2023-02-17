@@ -1,0 +1,80 @@
+<nz-modal
+  [(nzVisible)]="isModalVisible"
+  nzTitle="Add new ticket"
+  (nzOnCancel)="closeModal()"
+  [nzOkDisabled]="true"
+>
+  <ng-container *nzModalContent>
+    <div>
+      <form [formGroup]="form" nz-form>
+        <div nz-row nzJustify="space-evenly">
+          <div nz-col nzSpan="8">
+            <nz-form-item>
+              <nz-input-group>
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="ticketDetails"
+                  placeholder="Ticket details"
+                  id="ticketDetails"
+                />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="8">
+            <nz-form-item>
+              <nz-input-group>
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="customerName"
+                  placeholder="Customer name"
+                  id="customerName"
+                />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row nzJustify="space-evenly">
+          <div nz-col nzSpan="8">
+            <nz-form-item>
+              <nz-input-group>
+                <input
+                  type="date"
+                  nz-input
+                  formControlName="date"
+                  placeholder="Date"
+                  id="date"
+                />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="8">
+            <nz-form-item>
+              <nz-select nzPlaceHolder="Priority" formControlName="priority">
+                <nz-option
+                  *ngFor="let priority of priorities"
+                  [nzValue]="priority"
+                  [nzLabel]="priority"
+                ></nz-option>
+              </nz-select>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <button
+            nz-col
+            nzSpan="6"
+            nzOffset="9"
+            nz-button
+            nzType="primary"
+            (click)="addTicket()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</nz-modal>

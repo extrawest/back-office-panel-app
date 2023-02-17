@@ -1,0 +1,138 @@
+<mat-card>
+  <mat-card *ngIf="message | async as message">
+    <h3>Notification</h3>
+    <p>{{ message }}</p>
+  </mat-card>
+  <div>
+    <h1>
+      Login <br />
+      to account
+    </h1>
+    <p>If you already have an account, just log in to use the system</p>
+    <p routerLink="/register">
+      Don't have an account? <br />
+      Register here
+    </p>
+  </div>
+
+  <form [formGroup]="form">
+    <div>
+      <mat-form-field>
+        <mat-icon matPrefix>person_outline</mat-icon>
+        <input
+          type="text"
+          placeholder="Login"
+          formControlName="name"
+          autocomplete="off"
+          matInput
+        />
+        <mat-error *ngIf="form.controls['name'].hasError('required')">
+          Login is required</mat-error
+        >
+        <mat-error
+          *ngIf="
+            !form.controls['name'].hasError('required') &&
+            form.controls['name'].hasError('email')
+          "
+        >
+          Please enter a valid Login</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field floatLabel="auto">
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          type="password"
+          placeholder="Password"
+          [type]="toggleShowPassword ? 'password' : 'text'"
+          formControlName="password"
+          autocomplete="off"
+          matInput
+        />
+        <mat-icon
+          (click)="toggleShowPassword = !toggleShowPassword"
+          class="input-icon"
+          matSuffix
+        >
+          {{ toggleShowPassword ? 'visibility_off' : 'visibility' }}</mat-icon
+        >
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+          Enter your password</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <mat-grid-list rowHeight="50px" cols="10">
+      <mat-grid-tile colspan="7">
+        <mat-checkbox formControlName="check"
+          >Remember me</mat-checkbox
+        ></mat-grid-tile
+      >
+      <mat-grid-tile colspan="3">
+        <a (click)="resetPassword = !resetPassword">
+          Forgot password
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-card *ngIf="resetPassword">
+      <form [formGroup]="formReset">
+        <h3>Please enter your login to reset your password</h3>
+        <div>
+          <mat-form-field floatLabel="auto">
+            <input
+              type="text"
+              placeholder="Email"
+              formControlName="resetPassword"
+              autocomplete="off"
+              matInput
+            />
+
+            <mat-error
+              *ngIf="formReset.controls['resetPassword'].hasError('required')"
+            >
+              Login is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                !formReset.controls['resetPassword'].hasError('required') &&
+                formReset.controls['resetPassword'].hasError('email')
+              "
+            >
+              Please enter a valid Login</mat-error
+            >
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button color="primary" (click)="forgetPassword()" mat-flat-button>
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-card>
+    <div>
+      <button
+        color="primary"
+        [disabled]="isValidForm()"
+        (click)="onSubmit()"
+        mat-raised-button
+      >
+        Login
+      </button>
+    </div>
+    <mat-grid-list rowHeight="50px" cols="10">
+      <mat-grid-tile colspan="2">
+        <mat-icon
+          svgIcon="facebook-icon"
+          (click)="onSignInWithFacebook()"
+        ></mat-icon
+      ></mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <mat-icon
+          svgIcon="google-icon"
+          (click)="onSignInWithGoogle()"
+        ></mat-icon
+      ></mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-card>

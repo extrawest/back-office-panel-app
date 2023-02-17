@@ -1,0 +1,67 @@
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+  id="modal2"
+>
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div
+      class="flex min-h-full justify-center p-4 text-center items-center sm:p-0"
+    >
+      <div
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+      >
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 h-full">
+          <h1 class="font-bold tet-center">Add new ticket</h1>
+          <form [formGroup]="form" class="h-full mt-6">
+            <div class="flex items-center justify-between mt-5 px-0 mt-6 h-8">
+              <div class="w-5/12">
+                <span class="w-full">
+                  <input
+                    type="text"
+                    pInputText
+                    class="w-full border border-solid rounded-lg border-slate-300 h-10 px-2"
+                    placeholder="Task's name"
+                    formControlName="taskName"
+                  />
+                </span>
+              </div>
+              <div class="w-5/12">
+                <select
+                  formControlName="taskStatus"
+                  class="w-full border border-solid rounded-lg border-slate-300 h-10 px-2"
+                >
+                  <option disabled selected>Choose status</option>
+                  <option *ngFor="let status of statuses">
+                    {{ status }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div
+          class="h-full w-full bg-gray-50 py-4 mt-6 sm:flex sm:flex-row-reverse sm:px-6"
+        >
+          <div class="flex h-full w-5/6 m-auto justify-around">
+            <button
+              (click)="addTask()"
+              class="bg-primary rounded-lg w-5/12 h-8"
+            >
+              Add
+            </button>
+            <button
+              (click)="closeModal()"
+              class="bg-primary rounded-lg w-5/12 h-8"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

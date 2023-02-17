@@ -17,9 +17,22 @@
         "inlineStyleLanguage": "less",
         "assets": [
           "apps/office-ant/src/favicon.ico",
-          "apps/office-ant/src/assets"
+          "apps/office-ant/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
-        "styles": ["apps/office-ant/src/styles.less"],
+        "styles": [
+          "node_modules/ng-zorro-antd/ng-zorro-antd.less",
+          "apps/office-ant/src/styles.less"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -27,8 +40,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",
@@ -47,10 +60,15 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4200
+      },
       "configurations": {
         "production": {
           "browserTarget": "office-ant:build:production"
@@ -75,16 +93,114 @@
           "apps/office-ant/**/*.ts",
           "apps/office-ant/**/*.html"
         ]
-      }
+      },
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/office-ant/jest.config.ts",
-        "passWithNoTests": true
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/office-ant/tsconfig.spec.json",
+        "karmaConfig": "apps/office-ant/karma.conf.js",
+        "inlineStyleLanguage": "less",
+        "codeCoverage": true,
+        "assets": [
+          "apps/office-ant/src/favicon.ico",
+          "apps/office-ant/src/assets"
+        ],
+        "styles": ["apps/office-ant/src/styles.less"],
+        "scripts": [],
+        "codeCoverageExclude": ["/**/*.routes.ts", "/**/*.module.ts"]
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "files": [
+    {
+      "file": "apps/office-ant/.eslintrc.json",
+      "hash": "ea6643dc5971d1b1af8effe8539c080ae8feca4a"
+    },
+    {
+      "file": "apps/office-ant/jest.config.ts",
+      "hash": "36adb66cb09c374e9a547ac278a088c47040284c"
+    },
+    {
+      "file": "apps/office-ant/project.json",
+      "hash": "53cdab7e7d4aa64eeab6c8ca524431fc2d45bf95"
+    },
+    {
+      "file": "apps/office-ant/src/app/app.component.html",
+      "hash": "0680b43f9c6ae05df91c576141f20ed411d07c7d"
+    },
+    {
+      "file": "apps/office-ant/src/app/app.component.less",
+      "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "file": "apps/office-ant/src/app/app.component.spec.ts",
+      "hash": "622fae7617e3c744a98186da673bf27c2eb7aa6c",
+      "deps": ["npm:@angular/core", "npm:@angular/router"]
+    },
+    {
+      "file": "apps/office-ant/src/app/app.component.ts",
+      "hash": "176f7d4b662a6556daf5ad58b8aa67f1ae426152",
+      "deps": ["npm:@angular/core"]
+    },
+    {
+      "file": "apps/office-ant/src/app/app.module.ts",
+      "hash": "3d71af06c452ad0b562f845d60c39b4c7ebe9776",
+      "deps": [
+        "npm:@angular/core",
+        "npm:@angular/platform-browser",
+        "npm:@angular/router"
+      ]
+    },
+    {
+      "file": "apps/office-ant/src/app/app.routes.ts",
+      "hash": "8762dfe2c6510c01425b35c6cf76371cc0b332c6",
+      "deps": ["npm:@angular/router"]
+    },
+    {
+      "file": "apps/office-ant/src/assets/.gitkeep",
+      "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "file": "apps/office-ant/src/favicon.ico",
+      "hash": "317ebcb2336e0833a22dddf0ab287849f26fda57"
+    },
+    {
+      "file": "apps/office-ant/src/index.html",
+      "hash": "b9a06b924f026be87624f8379053f637f6dbed17"
+    },
+    {
+      "file": "apps/office-ant/src/main.ts",
+      "hash": "17a5cd4e0acab76fc50883a7833b33e1046c6d97",
+      "deps": ["npm:@angular/platform-browser-dynamic"]
+    },
+    {
+      "file": "apps/office-ant/src/styles.less",
+      "hash": "90d4ee0072ce3fc41812f8af910219f9eea3c3de"
+    },
+    {
+      "file": "apps/office-ant/src/test-setup.ts",
+      "hash": "1100b3e8a6ed08f4b5c27a96471846d57023c320",
+      "deps": ["npm:jest-preset-angular"]
+    },
+    {
+      "file": "apps/office-ant/tsconfig.app.json",
+      "hash": "fff4a41d444a486d4cf163be19f8601e0510c270"
+    },
+    {
+      "file": "apps/office-ant/tsconfig.editor.json",
+      "hash": "8ae117d96293c675141bebfc2fad8c5df58429d3"
+    },
+    {
+      "file": "apps/office-ant/tsconfig.json",
+      "hash": "e01cf19bd9d5ff6c8db1b3c2e180e5d79e6999b1"
+    },
+    {
+      "file": "apps/office-ant/tsconfig.spec.json",
+      "hash": "f6a7d97bb8d04fb3cb2ddeab186d1e2a0a560a13"
+    }
+  ]
 }

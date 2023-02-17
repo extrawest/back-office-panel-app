@@ -8,14 +8,51 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2017",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@office-app/common-ui": ["libs/common-ui/src/index.ts"]
+      "@office-app/assets": ["libs/assets/src/index.ts"],
+      "@office-app/services": ["libs/services/src/index.ts"],
+      "@office-app/services/auth-service": [
+        "libs/services/src/lib/services/auth/auth.service.ts"
+      ],
+      "@office-app/services/graph-interface": [
+        "libs/services/src/lib/interfaces/graph.interface.ts"
+      ],
+      "@office-app/services/local-storage-service": [
+        "libs/services/src/lib/services/local-storage/local-storage.service.ts"
+      ],
+      "@office-app/services/menu-items": [
+        "libs/services/src/lib/consts/menu-item.const.ts"
+      ],
+      "@office-app/services/priorities": [
+        "libs/services/src/lib/consts/priorities.const.ts"
+      ],
+      "@office-app/services/priority-enum": [
+        "libs/services/src/lib/enums/priority.enum.ts"
+      ],
+      "@office-app/services/task-interface": [
+        "libs/services/src/lib/interfaces/task.interface.ts"
+      ],
+      "@office-app/services/task-types": [
+        "libs/services/src/lib/consts/task-type.const.ts"
+      ],
+      "@office-app/services/task-types-enum": [
+        "libs/services/src/lib/enums/task-type.enum.ts"
+      ],
+      "@office-app/services/ticket-interface": [
+        "libs/services/src/lib/interfaces/ticket.interface.ts"
+      ],
+      "@office-app/services/unresolved-ticket-interface": [
+        "libs/services/src/lib/interfaces/unresolved-ticket.interface.ts"
+      ],
+      "@office-app/services/user-service": [
+        "libs/services/src/lib/services/user/user.service.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

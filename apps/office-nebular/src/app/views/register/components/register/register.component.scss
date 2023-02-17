@@ -1,0 +1,39 @@
+.header-text {
+  text-align: center;
+}
+
+.form-section {
+  .field-row-item {
+    margin: 20px auto 0;
+    width: 40%;
+  }
+  .login-setup {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  .action-row {
+    margin: 50px 0 0 0;
+    display: flex;
+    justify-content: center;
+    .login-btn {
+      width: 186px;
+      height: 52px;
+      border-radius: 38px;
+      margin: auto;
+    }
+  }
+  .networks-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    margin: 30px auto 0;
+    .network-icon:hover {
+      cursor: pointer;
+    }
+  }
+}
+.login-form-margin {
+  margin-bottom: 20px;
+}

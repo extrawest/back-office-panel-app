@@ -1,13 +1,31 @@
-import { getGreeting } from '../support/app.po';
-
 describe('office-prime-ng', () => {
-  beforeEach(() => cy.visit('/'));
+  it('should log user in', () => {
+    cy.visit('/login');
+    cy.url().should('includes', 'login');
+    cy.get('input[type="text"]').type('test3@test.com');
+    cy.get('input[type="password"]').type('test123');
+    cy.get('button[label="Log in"]').click();
+    cy.contains('span', 'Log out').should('be.visible');
+  });
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('should register new user', () => {
+    const randomString = () =>
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+    const email = `${randomString()}@${randomString()}.test`;
+    cy.visit('/register');
+    cy.url().should('includes', 'register');
+    cy.get('input[type="text"]').type('userName');
+    cy.get('input[type="email"]').type(email);
+    cy.get('input[type="password"]').type('test123');
+    cy.get('button[label="Register"]').click();
+    cy.contains('span', 'Log out').should('be.visible');
+  });
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome office-prime-ng');
+  it('should log user out', () => {
+    cy.visit('/home/dashboard');
+    cy.url().should('includes', '/home/dashboard');
+    cy.get('span').contains('Log out').click();
+    cy.contains('div', 'Login to account').should('be.visible');
   });
 });

@@ -1,0 +1,42 @@
+<div style="padding: 20px 30px">
+  <mat-grid-list rowHeight="100px" cols="10">
+    <mat-grid-tile colspan="9"> <h1>Add new task</h1></mat-grid-tile>
+    <mat-grid-tile colspan="1"
+      ><mat-icon svgIcon="close-icon" (click)="closeDialog()"></mat-icon
+    ></mat-grid-tile>
+  </mat-grid-list>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <div>
+        <mat-form-field appearance="fill" floatLabel="auto">
+          <textarea
+            placeholder="Task's name"
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            formControlName="taskName"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" floatLabel="auto">
+          <mat-label>Choose status</mat-label>
+          <mat-select
+            #fontSize
+            (selectionChange)="triggerResize()"
+            formControlName="taskStatus"
+          >
+            <mat-option *ngFor="let taskType of taskTypes" [value]="taskType">{{
+              taskType
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="addTask()">Add</button>
+  </div>
+</div>

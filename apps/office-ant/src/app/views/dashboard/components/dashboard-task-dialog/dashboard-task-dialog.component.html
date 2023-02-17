@@ -1,0 +1,53 @@
+<nz-modal
+  [(nzVisible)]="isModalVisible"
+  nzTitle="Add new task"
+  (nzOnCancel)="closeModal()"
+  [nzOkDisabled]="true"
+>
+  <ng-container *nzModalContent>
+    <div>
+      <form [formGroup]="form" nz-form>
+        <div nz-row nzJustify="space-evenly">
+          <div nz-col nzSpan="8">
+            <nz-form-item>
+              <nz-input-group>
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="taskName"
+                  placeholder="Task's name"
+                />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="8">
+            <nz-form-item>
+              <nz-select
+                nzPlaceHolder="Choose status"
+                formControlName="taskStatus"
+              >
+                <nz-option
+                  *ngFor="let status of statuses"
+                  [nzValue]="status"
+                  [nzLabel]="status"
+                ></nz-option>
+              </nz-select>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <button
+            nz-col
+            nzSpan="6"
+            nzOffset="9"
+            nz-button
+            nzType="primary"
+            (click)="addTask()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</nz-modal>

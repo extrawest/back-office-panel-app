@@ -1,0 +1,58 @@
+<nb-layout>
+  <nb-sidebar>
+    <div *ngIf="imageUrl | async as url; else defaultImage">
+      <img
+        [src]="url"
+        alt="Profile photo"
+        style="width: 60px; height: 60px"
+        class="rounded-circle"
+      />
+    </div>
+    <ng-template #defaultImage>
+      <img
+        src="./assets/icons/unknown-user.png"
+        alt="Profile photo"
+        style="width: 60px; height: 60px"
+        class="rounded-circle"
+      />
+    </ng-template>
+    <div>
+      <div>
+        <input
+          id="file-upload"
+          type="file"
+          nbInput
+          (change)="uploadPhoto($event)"
+        />
+      </div>
+      <h2>{{ userName }}</h2>
+      <p>Admin</p>
+    </div>
+    <div>
+      <ul>
+        <li
+          *ngFor="let item of menuItems"
+          [routerLink]="item.url"
+          [style]="item.styles"
+          class="mt-2"
+        >
+          <img [src]="item.image" class="mr-5" />
+          <span>{{ item.name }}</span>
+        </li>
+      </ul>
+    </div>
+    <div (click)="onLogout()" class="mt-5">
+      <a>
+        <img src="./assets/icons/logout-icon.png" />
+      </a>
+      <a>Log out</a>
+    </div>
+  </nb-sidebar>
+
+  <nb-layout-column class="colored-column-success">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
+<div>
+  <office-app-footer></office-app-footer>
+</div>

@@ -1,13 +1,22 @@
-import { getGreeting } from '../support/app.po';
-
 describe('office-tailwind', () => {
-  beforeEach(() => cy.visit('/'));
+  it('should link to client page', () => {
+    cy.visit('/home/dashboard');
+    cy.get('a').contains('Clients').click();
+    cy.url().should('includes', '/home/clients');
+    cy.get('table').should('be.visible');
+  });
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('should open modal window for adding new task', () => {
+    cy.visit('/home/dashboard');
+    cy.url().should('includes', '/home/dashboard');
+    cy.get('#openModalTask').click();
+    cy.contains('button', 'Add').should('be.visible');
+  });
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome office-tailwind');
+  it('should open modal window for adding new task', () => {
+    cy.visit('/home/dashboard');
+    cy.url().should('includes', '/home/dashboard');
+    cy.get('#openModalTicket').click();
+    cy.contains('button', 'Add').should('be.visible');
   });
 });

@@ -17,18 +17,27 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/office-nebular/src/favicon.ico",
-          "apps/office-nebular/src/assets"
+          "apps/office-nebular/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/assets/src/lib/assets/",
+            "output": "./assets/"
+          }
         ],
-        "styles": ["apps/office-nebular/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "apps/office-nebular/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.css",
+          "node_modules/@nebular/theme/styles/prebuilt/default.css"
+        ],
+        "scripts": ["node_modules/bootstrap/dist/js/bootstrap.js"]
       },
       "configurations": {
         "production": {
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "3mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",
@@ -51,6 +60,9 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4202
+      },
       "configurations": {
         "production": {
           "browserTarget": "office-nebular:build:production"
@@ -78,11 +90,19 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/office-nebular/jest.config.ts",
-        "passWithNoTests": true
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/office-nebular/tsconfig.spec.json",
+        "karmaConfig": "apps/office-nebular/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "codeCoverage": true,
+        "assets": [
+          "apps/office-nebular/src/favicon.ico",
+          "apps/office-nebular/src/assets"
+        ],
+        "styles": ["apps/office-nebular/src/styles.scss"],
+        "scripts": []
       }
     }
   },

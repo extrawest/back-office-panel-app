@@ -1,0 +1,54 @@
+<nz-card nz-col nzSpan="20">
+  <h1>Clients</h1>
+  <div>
+    <div nz-row>
+      <div nz-col nzSpan="4">
+        <h3>All tickets</h3>
+      </div>
+      <div nz-col nzSpan="15"></div>
+      <div nz-col nzSpan="5">
+        <div nz-row>
+          <div nz-col nzSpan="10">
+            <div id="openModal" nz-row (click)="showModalDialog()">
+              <div nz-col>
+                <span nz-icon nzType="plus" nzTheme="outline"></span>
+              </div>
+              <div nz-col>Add</div>
+            </div>
+          </div>
+          <div nzSpan="4"></div>
+          <div nz-col nzSpan="10">
+            <div nz-row>
+              <div nz-col>
+                <img src="./assets/icons/filter-icon.svg" alt="" />
+              </div>
+              <div nz-col>Filter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <nz-table #basicTable [nzData]="ticketsArray">
+        <thead>
+          <tr>
+            <th *ngFor="let header of headers">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="ticketsArray.length">
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.ticketDetails }}</td>
+            <td>{{ data.customerName }}</td>
+            <td>{{ data.date }}</td>
+            <td>{{ data.priority }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</nz-card>
+
+<office-app-add-ticket
+  *ngIf="displayModal"
+  (isModalClosed)="closeAccountModal($event)"
+></office-app-add-ticket>

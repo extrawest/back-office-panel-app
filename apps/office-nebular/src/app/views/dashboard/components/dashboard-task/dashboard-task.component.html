@@ -1,0 +1,60 @@
+<nb-card class="border rounded p-3">
+  <div class="d-flex justify-content-between">
+    <div class="col-2">
+      <h6>Tasks</h6>
+    </div>
+    <div class="col-3">
+      <h6>View all</h6>
+    </div>
+  </div>
+  <hr />
+  <div class="d-flex justify-content-between mt-3">
+    <div class="col-4 d-flex justify-content-start">Create new task</div>
+    <a class="col-1" (click)="open(dialogWindow)">
+      <img src="./assets/icons/add-icon.svg" />
+    </a>
+  </div>
+  <div nz-row *ngFor="let task of tasks">
+    <hr />
+    <div class="d-flex justify-content-between">
+      <div class="col-8 d-flex justify-content-start">
+        <nb-checkbox>{{ task.taskName }}</nb-checkbox>
+      </div>
+      <div class="col-2">{{ task.taskStatus }}</div>
+    </div>
+  </div>
+</nb-card>
+
+<ng-template #dialogWindow let-ref="dialogRef">
+  <nb-card class="w-100 h-100">
+    <nb-card-header>Add new task</nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col">
+            <input
+              nbInput
+              fullWidth
+              placeholder="Task's name"
+              type="text"
+              autofocus
+              formControlName="taskName"
+              class="w-100"
+            />
+          </div>
+          <div class="col">
+            <nb-select placeholder="Choose status" formControlName="taskStatus">
+              <nb-option *ngFor="let status of statuses" [value]="status">{{
+                status
+              }}</nb-option>
+            </nb-select>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+    <nb-card-footer class="row">
+      <button class="col-5" nbButton (click)="addTask()">Add</button>
+      <button class="col-5" nbButton (click)="ref.close()">Cancel</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

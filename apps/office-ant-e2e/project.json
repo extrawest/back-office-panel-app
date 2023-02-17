@@ -15,16 +15,57 @@
         "production": {
           "devServerTarget": "office-ant:serve:production"
         }
-      }
+      },
+      "inputs": ["default", "^production"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/office-ant-e2e/**/*.{js,ts}"]
-      }
+      },
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
   },
   "tags": [],
-  "implicitDependencies": ["office-ant"]
+  "implicitDependencies": ["office-ant"],
+  "files": [
+    {
+      "file": "apps/office-ant-e2e/.eslintrc.json",
+      "hash": "696cb8b12127425419f6d2809c5f15a5963d86de"
+    },
+    {
+      "file": "apps/office-ant-e2e/cypress.config.ts",
+      "hash": "22f7c84eb637d4f23447fcb59dee130dd25b2de0",
+      "deps": ["npm:cypress", "npm:@nrwl/cypress"]
+    },
+    {
+      "file": "apps/office-ant-e2e/project.json",
+      "hash": "55d0aae52c55310aaea1845db2b63d719c76bcae"
+    },
+    {
+      "file": "apps/office-ant-e2e/src/e2e/app.cy.ts",
+      "hash": "ed08b9852e1e752e55a7a4ddc0d8498315b1f431"
+    },
+    {
+      "file": "apps/office-ant-e2e/src/fixtures/example.json",
+      "hash": "294cbed6ce9e0b948b787452e8676aee486cb3be"
+    },
+    {
+      "file": "apps/office-ant-e2e/src/support/app.po.ts",
+      "hash": "32934246969c2ecb827ac05677785933a707a54d"
+    },
+    {
+      "file": "apps/office-ant-e2e/src/support/commands.ts",
+      "hash": "310f1fa0e043ffebbbcf575c5a4d17f13a6b14d6"
+    },
+    {
+      "file": "apps/office-ant-e2e/src/support/e2e.ts",
+      "hash": "3d469a6b6cf31eb66117d73e278bcf74f398f1db"
+    },
+    {
+      "file": "apps/office-ant-e2e/tsconfig.json",
+      "hash": "9e27f75c6fadf5f6175f48ca953d551089aef787"
+    }
+  ]
 }

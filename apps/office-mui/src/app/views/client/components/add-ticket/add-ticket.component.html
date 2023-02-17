@@ -1,0 +1,77 @@
+<div style="padding: 20px 30px">
+  <mat-grid-list rowHeight="100px" cols="10">
+    <mat-grid-tile colspan="9"> <h1>Add new ticket</h1></mat-grid-tile>
+    <mat-grid-tile colspan="1"
+      ><mat-icon svgIcon="close-icon" (click)="closeDialog()"></mat-icon
+    ></mat-grid-tile>
+  </mat-grid-list>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-grid-list rowHeight="100px" cols="8">
+        <mat-grid-tile colspan="4">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="auto">
+              <textarea
+                placeholder="Ticket details"
+                matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"
+                formControlName="ticketDetails"
+              ></textarea>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="auto">
+              <input
+                type="text"
+                placeholder="Customer name"
+                matInput
+                formControlName="customerName"
+              />
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list rowHeight="100px" cols="8">
+        <mat-grid-tile colspan="4">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="auto">
+              <input
+                type="date"
+                placeholder="Date"
+                matInput
+                formControlName="date"
+              />
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4">
+          <div>
+            <mat-form-field appearance="fill" floatLabel="auto">
+              <mat-label>Choose priority</mat-label>
+              <mat-select
+                id="mat-select"
+                #fontSize
+                (selectionChange)="triggerResize()"
+                formControlName="priority"
+              >
+                <mat-option
+                  *ngFor="let priority of priorities"
+                  [value]="priority"
+                  >{{ priority }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="addTicket()">Add</button>
+  </div>
+</div>
