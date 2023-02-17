@@ -101,9 +101,7 @@ describe('ClientComponent', () => {
     expect(component.form.valid).toBeTruthy();
   });
 
-  it('should have 3 priorities value', () => {
-    fixture.whenStable().then(() => {
-      expect(component.priorities.length).toEqual(3);
-    });
+  it('should have 3 priorities value', function () {
+    expect(component.priorities.length).toBe(3);
   });
 });
