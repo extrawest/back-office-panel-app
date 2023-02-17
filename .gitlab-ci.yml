@@ -7,7 +7,7 @@ stages:
 build:
   only:
     refs:
-      - development
+      - master
   stage: build
   before_script:
     - npm i --force
@@ -22,8 +22,6 @@ build:
 
 deploy_dev:
   only:
-    - development
-  except:
     - master
   stage: deploy
   before_script:
