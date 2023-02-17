@@ -47,7 +47,7 @@
     "open-coverage-report:tailwind": "npx http-server ./apps/office-tailwind/coverage/office-tailwind",
     "create-coverage-report:services": "npx nx test services --watch=false --code-coverage=true",
     "open-coverage-report:services": "npx http-server ./libs/services/coverage/services",
-    "test:ci": "nx run-many --target=test --projects=office-ant,office-mui,office-nebular,office-prime-ng,office-tailwind --parallel=5 --maxParallel=10 --watch --code-coverage=true"
+    "test:all": "nx run-many --target=test --projects=office-ant,office-mui,office-nebular,office-prime-ng,office-tailwind --parallel=5 --maxParallel=10 --watch --code-coverage=true"
   },
   "private": true,
   "dependencies": {
