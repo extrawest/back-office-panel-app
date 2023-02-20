@@ -46,26 +46,26 @@
 **1) Clone this repo to your folder:**
 
 ```
-git clone https://github.com/extrawest/stripe-training.git
+git clone https://github.com/extrawest/back-office-panel-app.git
 ```
 
 **2. Change current directory to the cloned folder:**
 
 ```
-cd stripe-training
+cd back-office-panel-app
 ```
 
 **3) You must have installed Node.js v16.15.0 or higher. Run in terminal in root project directory:**
 
 ```
 # with npm
-npm install
+npm install --force
 
 # with yarn
-yarn install
+yarn install --force
 
 # with pnpm
-pnpm install
+pnpm install --force
 ```
 
 **4) Start project. Run in terminal:**
